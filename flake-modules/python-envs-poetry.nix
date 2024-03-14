@@ -12,6 +12,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
       topLevel.config.flake.flakeModules.vscode
       topLevel.config.flake.flakeModules.pythonVscode
       topLevel.config.flake.flakeModules.pythonPackage
+      topLevel.config.flake.flakeModules.runtime
     ];
     options.perSystem = flake-parts-lib.mkPerSystemOption
       ({ lib, system, pkgs, ... }: {
