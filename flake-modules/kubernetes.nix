@@ -158,9 +158,43 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                 ];
                               };
                             };
-                            options.pushImage = lib.mkOption {
+                            options.pushImageToRegistry = lib.mkOption {
                               default = { };
                               type = lib.types.submoduleWith {
+                                modules = [
+                                  {
+                                    imports = [ perSystem.config.ml-ops.overridablePackage ];
+                                    config.base-package =
+                                      pkgs.writeShellScriptBin
+                                        "${runtime.config._module.args.name}-push-image-to-registry.sh"
+                                        ''
+                                          read -a skopeoCopyArgsArray <<< "$SKOPEO_ARGS"
+                                          ${lib.escapeShellArgs [
+                                            "${inputs.nix2container.packages.${system}.skopeo-nix2container}/bin/skopeo"
+                                            "--insecure-policy"
+                                            "copy"
+                                          ]} \
+                                          "''${skopeoCopyArgsArray[@]}" \
+                                          ${lib.escapeShellArgs [
+                                            "nix:${perSystem.config.devenv.shells.${runtime.config.name}.containers.processes.derivation}"
+                                            "docker://${
+                                              hostPath
+                                            }/${
+                                              runtime.config._module.args.name
+                                            }-${
+                                              launcher.config._module.args.name
+                                            }:${
+                                              builtins.replaceStrings ["+"] ["_"] runtime.config.version
+                                            }"
+                                          ]} 
+                                        '';
+                                  }
+                                ];
+                              };
+                            };
+                            options.pushImage = lib.mkOption {
+                              default = { };
+                              type = (lib.types.submoduleWith {
                                 modules = [
                                   {
                                     imports = [ perSystem.config.ml-ops.overridablePackage ];
@@ -196,6 +230,10 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                       '';
                                   }
                                 ];
+                              }) // {
+                                deprecationMessage = ''
+                                  Use `pushImageToRegistry` instead.
+                                '';
                               };
                             };
 
