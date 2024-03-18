@@ -18,7 +18,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             "nix.enableLanguageServer" = true;
             "nix.serverPath" = "${pkgs.nil}/bin/nil";
             "nix.serverSettings" = {
-              nil.formatting.command = [
+              nil.formatting.command = lib.mkForce [
                 "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt"
               ];
             };
