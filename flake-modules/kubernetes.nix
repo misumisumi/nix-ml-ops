@@ -436,6 +436,12 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                   };
                 };
               };
+
+              ml-ops.devcontainer.devenvShellModule = {
+                packages = [
+                  pkgs.kubectl
+                ];
+              };
             }
           );
         };
