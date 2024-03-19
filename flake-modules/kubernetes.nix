@@ -18,11 +18,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                   (launcherName: launcher:
                     lib.attrsets.concatMapAttrs
                       (packageName: package:
+                        let
+                          toKebabCase = lib.replaceStrings lib.upperChars (map (s: "-${s}") lib.lowerChars);
+
+                        in
                         if package.type or null == "derivation" then {
-                          "${runtimeName}-${launcherName}-${packageName}" =
+                          "${runtimeName}-${launcherName}-${toKebabCase packageName}" =
                             package;
                         } else if (package.overridden-package or { }).type or null == "derivation" then {
-                          "${runtimeName}-${launcherName}-${packageName}" =
+                          "${runtimeName}-${launcherName}-${toKebabCase packageName}" =
                             package.overridden-package;
                         } else { }
                       )
@@ -133,8 +137,8 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                         type = lib.types.str;
                                       };
                                       image = lib.mkOption {
-                                        defaultText = lib.literalExpression "perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.overridden-package.remoteImage";
-                                        default = kubernetes.config.pushImage.overridden-package.remoteImage;
+                                        defaultText = lib.literalExpression "perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage";
+                                        default = kubernetes.config.remoteImage;
                                       };
                                       env = lib.mkOption {
                                         defaultText = lib.literalExpression ''
@@ -172,11 +176,11 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                     builtins.replaceStrings ["+"] ["_"] runtime.config.version
                                   }";
                               };
-                            options.pushImageToRegistry = lib.mkOption {
+                            options.pushImage = lib.mkOption {
                               default = { };
                               type = lib.types.submoduleWith {
                                 modules = [
-                                  (pushImageToRegistry: {
+                                  (pushImage: {
                                     imports = [ perSystem.config.ml-ops.overridablePackage ];
                                     options.skopeoCopyArgs = lib.mkOption {
                                       type = lib.types.listOf lib.types.str;
@@ -193,7 +197,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                             "copy"
                                           ]} \
                                           ${
-                                            lib.escapeShellArgs pushImageToRegistry.config.skopeoCopyArgs
+                                            lib.escapeShellArgs pushImage.config.skopeoCopyArgs
                                           } \
                                           "''${skopeoCopyArgsArray[@]}" \
                                           ${lib.escapeShellArgs [
@@ -205,42 +209,6 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                 ];
                               };
                             };
-                            options.pushImage = lib.mkOption {
-                              default = { };
-                              type = (lib.types.submoduleWith {
-                                modules = [
-                                  {
-                                    imports = [ perSystem.config.ml-ops.overridablePackage ];
-                                    config.base-package = pkgs.runCommand "${runtime.config._module.args.name}-push-image.txt"
-                                      {
-                                        __impure = true;
-                                        nativeBuildInputs = [
-                                          pkgs.cacert
-                                        ];
-                                        HOME = ".";
-                                        remoteImage = kubernetes.config.remoteImage;
-
-                                        specification = perSystem.config.devenv.shells.${runtime.config.name}.containers.processes.derivation;
-                                      }
-                                      ''
-                                        read -a skopeoCopyArgsArray <<< "$skopeoCopyArgs"
-                                        ${lib.escapeShellArgs [
-                                          "${pkgs.findutils}/bin/xargs"
-                                          "${inputs.nix2container.packages.${system}.skopeo-nix2container}/bin/skopeo"
-                                          "--insecure-policy"
-                                          "copy"
-                                        ]} "''${skopeoCopyArgsArray[@]}" "nix:$specification" "docker://$remoteImage" &&
-                                        printf "%s" "$remoteImage" > "$out"
-                                      '';
-                                  }
-                                ];
-                              }) // {
-                                deprecationMessage = ''
-                                  Use `pushImageToRegistry` instead.
-                                '';
-                              };
-                            };
-
                             options.helmTemplates = lib.mkOption {
                               description = lib.mdDoc ''
                                 Kubernetes manifests to be templated by Helm.
@@ -380,56 +348,34 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                 modules = [
                                   {
                                     imports = [ perSystem.config.ml-ops.overridablePackage ];
-                                    config.base-package = pkgs.runCommand
-                                      "${runtime.config._module.args.name}-helm-upgrade.txt"
-                                      {
-                                        __impure = true;
+                                    config.base-package = pkgs.writeShellScriptBin
+                                      "${runtime.config._module.args.name}-helm-upgrade.sh"
 
-                                        nativeBuildInputs = [
-                                          pkgs.cacert
-                                          pkgs.kubernetes-helm
-                                        ];
-                                        HOME = ".";
-                                        inherit (kubernetes.config) helmReleaseName;
-
-                                        HELM_CHART = toString kubernetes.config.helm-chart;
-
-                                        pushImage = kubernetes.config.pushImage.overridden-package;
-                                      }
-                                      ''
-                                        helm upgrade --install --force "$helmReleaseName" "$HELM_CHART" &&
-                                        printenv helmReleaseName > "$out"
-                                      '';
+                                      (lib.escapeShellArgs [
+                                        "${pkgs.kubernetes-helm}/bin/helm"
+                                        "upgrade"
+                                        "--install"
+                                        "--force"
+                                        kubernetes.config.helmReleaseName
+                                        kubernetes.config.helm-chart
+                                      ]);
                                   }
                                 ];
-
                               };
                             };
-
                             options.helmDelete = lib.mkOption {
                               default = { };
                               type = lib.types.submoduleWith {
                                 modules = [
                                   {
                                     imports = [ perSystem.config.ml-ops.overridablePackage ];
-                                    config.base-package = pkgs.runCommand
-                                      "${runtime.config._module.args.name}-helm-delete.txt"
-                                      {
-                                        __impure = true;
-
-                                        nativeBuildInputs = [
-                                          pkgs.cacert
-                                          pkgs.kubernetes-helm
-                                        ];
-                                        HOME = ".";
-                                        inherit (kubernetes.config)
-                                          helmReleaseName
-                                          helm-chart;
-                                      }
-                                      ''
-                                        helm delete "$helmReleaseName" &&
-                                        printenv helmReleaseName > "$out"
-                                      '';
+                                    config.base-package = pkgs.writeShellScriptBin
+                                      "${runtime.config._module.args.name}-helm-delete.sh"
+                                      (lib.escapeShellArgs [
+                                        "${pkgs.kubernetes-helm}/bin/helm"
+                                        "delete"
+                                        kubernetes.config.helmReleaseName
+                                      ]);
                                   }
                                 ];
                               };
