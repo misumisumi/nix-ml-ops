@@ -24,56 +24,82 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                     type = lib.types.submoduleWith {
                       modules = [
                         {
-                          options = lib.attrsets.mapAttrsRecursive
-                            (path: value: lib.mkOption { default = value; })
+                          options =
                             {
-                              service = {
-                                apiVersion = "v1";
-                                kind = "Service";
-                                spec.selector."app.kubernetes.io/name" = "${service.config._module.args.name}-${launcher.config._module.args.name}";
-                                spec.type = "LoadBalancer";
+                              service = lib.mkOption {
+                                default = null;
+                                type = lib.types.nullOr (lib.types.submoduleWith {
+                                  modules = [
+                                    {
+                                      config._module.freeformType = lib.types.attrsOf (lib.types.attrsOf lib.types.anything);
+                                      options = lib.attrsets.mapAttrsRecursive
+                                        (path: value: lib.mkOption { default = value; })
+                                        {
+                                          apiVersion = "v1";
+                                          kind = "Service";
+                                          spec.selector."app.kubernetes.io/name" = "${service.config._module.args.name}-${launcher.config._module.args.name}";
+                                          spec.type = "LoadBalancer";
+                                        };
+                                    }
+                                    {
+                                      options.metadata.name = lib.mkOption {
+                                        default = "${service.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.self.lastModifiedDate}-${flakeModule.self.shortRev or flakeModule.self.dirtyShortRev}";
+                                        defaultText = lib.literalExpression ''
+                                          "''${service.config._module.args.name}-''${launcher.config._module.args.name}-''${flakeModule.self.lastModifiedDate}-''${flakeModule.self.shortRev or flakeModule.self.dirtyShortRev}"
+                                        '';
+                                      };
+                                    }
+                                  ];
+                                });
                               };
-                              deployment = {
-                                apiVersion = "apps/v1";
-                                kind = "Deployment";
-                                spec.selector.matchLabels."app.kubernetes.io/name" =
-                                  "${service.config._module.args.name}-${launcher.config._module.args.name}";
-                                spec.template.metadata.labels."app.kubernetes.io/name" = "${service.config._module.args.name}-${launcher.config._module.args.name}";
-                                spec.template.spec.volumes = kubernetes.config.volumes;
+                              deployment = lib.mkOption {
+                                type = lib.types.submoduleWith {
+                                  modules = [
+                                    {
+                                      config._module.freeformType = lib.types.attrsOf (lib.types.attrsOf lib.types.anything);
+                                      options = lib.attrsets.mapAttrsRecursive
+                                        (path: value: lib.mkOption { default = value; })
+                                        {
+                                          apiVersion = "apps/v1";
+                                          kind = "Deployment";
+                                          spec.selector.matchLabels."app.kubernetes.io/name" =
+                                            "${service.config._module.args.name}-${launcher.config._module.args.name}";
+                                          spec.template.metadata.labels."app.kubernetes.io/name" = "${service.config._module.args.name}-${launcher.config._module.args.name}";
+                                          spec.template.spec.volumes = kubernetes.config.volumes;
+                                        };
+                                    }
+                                    {
+                                      options.metadata.name = lib.mkOption {
+                                        default = "${service.config._module.args.name}-${launcher.config._module.args.name}";
+                                        defaultText = lib.literalExpression ''
+                                          "''${service.config._module.args.name}-''${launcher.config._module.args.name}"
+                                        '';
+                                      };
+
+                                      config.spec.template.spec.containers =
+                                        lib.mapAttrs
+                                          (containerName: container: container.manifest)
+                                          kubernetes.config.containers;
+
+                                      options.spec.template.spec.containers = lib.mkOption {
+                                        type = lib.types.attrsOf (lib.types.submoduleWith {
+                                          modules = [
+                                            kubernetes.config.containerManifest
+                                          ];
+                                        });
+                                        apply = lib.attrsets.mapAttrsToList (name: value:
+                                          value // {
+                                            inherit name;
+                                          }
+                                        );
+                                      };
+                                    }
+                                  ];
+                                };
                               };
                             };
-                        }
-                        {
-                          options.deployment.metadata.name = lib.mkOption {
-                            default = "${service.config._module.args.name}-${launcher.config._module.args.name}";
-                            defaultText = lib.literalExpression ''
-                              "''${service.config._module.args.name}-''${launcher.config._module.args.name}"
-                            '';
-                          };
-                          options.service.metadata.name = lib.mkOption {
-                            default = "${service.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.self.lastModifiedDate}-${builtins.substring 0 8 flakeModule.self.rev or "dirty"}";
-                            defaultText = lib.literalExpression ''
-                              "''${service.config._module.args.name}-''${launcher.config._module.args.name}-''${flakeModule.self.lastModifiedDate}-''${builtins.substring 0 8 flakeModule.self.rev or "dirty"}"
-                            '';
-                          };
 
-                          config.deployment.spec.template.spec.containers =
-                            lib.mapAttrs
-                              (containerName: container: container.manifest)
-                              kubernetes.config.containers;
 
-                          options.deployment.spec.template.spec.containers = lib.mkOption {
-                            type = lib.types.attrsOf (lib.types.submoduleWith {
-                              modules = [
-                                kubernetes.config.containerManifest
-                              ];
-                            });
-                            apply = lib.attrsets.mapAttrsToList (name: value:
-                              value // {
-                                inherit name;
-                              }
-                            );
-                          };
                         }
                       ];
                     };
