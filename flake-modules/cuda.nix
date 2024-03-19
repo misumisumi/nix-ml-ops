@@ -41,6 +41,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
             pkgs.cudaPackages.cuda_cudart
             pkgs.cudaPackages.cudnn
             pkgs.cudaPackages.libcublas
+            pkgs.cudaPackages.nccl
           ];
         };
       };
