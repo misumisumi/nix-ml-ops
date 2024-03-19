@@ -42,6 +42,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
               (builtins.split "/")
               (builtins.filter (s: builtins.isString s && s != ""))
               (builtins.concatStringsSep "-")
+              lib.toLower
             ];
           };
         };
