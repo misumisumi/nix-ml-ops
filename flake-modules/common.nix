@@ -19,7 +19,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
               options.version = lib.mkOption {
                 type = lib.types.str;
                 defaultText = lib.literalMD "1.0.0+<lastModifiedDate>.<hash>";
-                default = "1.0.0+${flakeModule.self.lastModifiedDate}.${builtins.substring 0 8 flakeModule.self.rev or "dirty"}";
+                default = "1.0.0+${flakeModule.self.lastModifiedDate}.${flakeModule.self.shortRev or flakeModule.self.dirtyShortRev}";
                 description = lib.mdDoc ''
                   Version of job or service.
                   This will be used as the image tag.
