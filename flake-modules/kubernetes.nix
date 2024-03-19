@@ -158,12 +158,30 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                 ];
                               };
                             };
+                            options.remoteImage = lib.mkOption
+                              {
+                                type = lib.types.str;
+                                default =
+                                  "${
+                                    hostPath
+                                  }/${
+                                    runtime.config._module.args.name
+                                  }-${
+                                    launcher.config._module.args.name
+                                  }:${
+                                    builtins.replaceStrings ["+"] ["_"] runtime.config.version
+                                  }";
+                              };
                             options.pushImageToRegistry = lib.mkOption {
                               default = { };
                               type = lib.types.submoduleWith {
                                 modules = [
-                                  {
+                                  (pushImageToRegistry: {
                                     imports = [ perSystem.config.ml-ops.overridablePackage ];
+                                    options.skopeoCopyArgs = lib.mkOption {
+                                      type = lib.types.listOf lib.types.str;
+                                      default = [ ];
+                                    };
                                     config.base-package =
                                       pkgs.writeShellScriptBin
                                         "${runtime.config._module.args.name}-push-image-to-registry.sh"
@@ -174,21 +192,16 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                             "--insecure-policy"
                                             "copy"
                                           ]} \
+                                          ${
+                                            lib.escapeShellArgs pushImageToRegistry.config.skopeoCopyArgs
+                                          } \
                                           "''${skopeoCopyArgsArray[@]}" \
                                           ${lib.escapeShellArgs [
                                             "nix:${perSystem.config.devenv.shells.${runtime.config.name}.containers.processes.derivation}"
-                                            "docker://${
-                                              hostPath
-                                            }/${
-                                              runtime.config._module.args.name
-                                            }-${
-                                              launcher.config._module.args.name
-                                            }:${
-                                              builtins.replaceStrings ["+"] ["_"] runtime.config.version
-                                            }"
+                                            "docker://${kubernetes.config.remoteImage}"
                                           ]} 
                                         '';
-                                  }
+                                  })
                                 ];
                               };
                             };
@@ -205,16 +218,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                           pkgs.cacert
                                         ];
                                         HOME = ".";
-                                        remoteImage =
-                                          "${
-                                            hostPath
-                                          }/${
-                                            runtime.config._module.args.name
-                                          }-${
-                                            launcher.config._module.args.name
-                                          }:${
-                                            builtins.replaceStrings ["+"] ["_"] runtime.config.version
-                                          }";
+                                        remoteImage = kubernetes.config.remoteImage;
 
                                         specification = perSystem.config.devenv.shells.${runtime.config.name}.containers.processes.derivation;
                                       }
