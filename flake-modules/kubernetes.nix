@@ -49,7 +49,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
             topLevel.config.flake.flakeModules.nixpkgs
           ];
           options.perSystem = flake-parts-lib.mkPerSystemOption (
-            perSystem@{ pkgs, system, ... }: {
+            perSystem@{ pkgs, system, inputs', ... }: {
               ml-ops.runtime = runtime: {
                 config.launcher = launcher: {
                   options.kubernetes = lib.mkOption {
@@ -440,6 +440,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
               ml-ops.devcontainer.devenvShellModule = {
                 packages = [
                   pkgs.kubectl
+                  inputs'.nix2container.packages.skopeo-nix2container
                 ];
               };
             }
