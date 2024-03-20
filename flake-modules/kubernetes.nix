@@ -302,6 +302,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                 (mountPath: protocolConfig: {
                                   "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-claim" = {
                                     spec.volumeName = "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-volume";
+                                    spec.storageClassName = protocolConfig.kubernetesVolume.storageClassName or "";
                                     metadata.name = "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-claim";
                                   };
                                 })
