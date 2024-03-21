@@ -3,7 +3,7 @@ topLevel@{ flake-parts-lib, lib, ... }: {
     ./devcontainer.nix
     topLevel.inputs.flake-parts.flakeModules.flakeModules
   ];
-  flake.flakeModules.vscode = flakeModule:{
+  flake.flakeModules.vscode = flakeModule: {
     imports = [
       topLevel.config.flake.flakeModules.devcontainer
     ];
@@ -43,6 +43,12 @@ topLevel@{ flake-parts-lib, lib, ... }: {
               then mkRecursiveDefault (builtins.fromJSON (builtins.readFile "${flakeModule.self}/${settingsJson}"))
               else { }
             ;
+            ".vscode/extensions.json".data = {
+              "recommendations" = [
+                "mkhl.direnv"
+              ];
+            };
+
           };
       };
     };

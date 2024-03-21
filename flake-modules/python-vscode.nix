@@ -16,6 +16,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             # Don't let VS Code activate the environment because it should has been activated by devenv already
             "python.terminal.activateEnvironment" = false;
             "[python]"."editor.defaultFormatter" = "ms-python.black-formatter";
+            "[python]"."editor.tabSize" = 4;
           };
           ".vscode/extensions.json".data = {
             "recommendations" = [

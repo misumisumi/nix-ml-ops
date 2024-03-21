@@ -26,7 +26,6 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
           ".vscode/extensions.json".data = {
             "recommendations" = [
               "jnoortheen.nix-ide"
-              "mkhl.direnv"
             ];
           };
         };
