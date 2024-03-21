@@ -322,22 +322,23 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                             options.helm-chart = lib.mkOption {
                               type = lib.types.package;
                               default =
-                                pkgs.symlinkJoin {
-                                  name = "helm-chart";
-                                  paths = [
-                                    (
-                                      pkgs.writeTextDir
-                                        "Chart.yaml"
-                                        (builtins.toJSON kubernetes.config.helmChartYaml)
-                                    )
-                                  ] ++ (
-                                    lib.mapAttrsToList
-                                      (name: content: pkgs.writeTextDir
+                                pkgs.linkFarm "helm-chart" ([
+                                  {
+                                    name = "Chart.yaml";
+                                    path = pkgs.writers.writeYAML
+                                      "Chart.yaml"
+                                      kubernetes.config.helmChartYaml;
+                                  }
+                                ] ++ (
+                                  lib.mapAttrsToList
+                                    (name: content: {
+                                      name = "templates/${name}.yaml";
+                                      path = pkgs.writers.writeYAML
                                         "templates/${name}.yaml"
-                                        (builtins.toJSON content))
-                                      kubernetes.config.helmTemplates
-                                  );
-                                };
+                                        content;
+                                    })
+                                    kubernetes.config.helmTemplates
+                                ));
                             };
 
                             options.helmReleaseName = lib.mkOption {
