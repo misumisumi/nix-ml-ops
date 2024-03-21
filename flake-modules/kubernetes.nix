@@ -323,19 +323,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                               type = lib.types.package;
                               default =
                                 pkgs.linkFarm "helm-chart" ([
-                                  {
+                                  rec {
                                     name = "Chart.yaml";
-                                    path = pkgs.writers.writeYAML
-                                      "Chart.yaml"
-                                      kubernetes.config.helmChartYaml;
+                                    path = pkgs.writers.writeYAML name kubernetes.config.helmChartYaml;
                                   }
                                 ] ++ (
                                   lib.mapAttrsToList
-                                    (name: content: {
-                                      name = "templates/${name}.yaml";
-                                      path = pkgs.writers.writeYAML
-                                        "templates/${name}.yaml"
-                                        content;
+                                    (attrName: content: rec {
+                                      name = "templates/${attrName}.yaml";
+                                      path = pkgs.writers.writeYAML name content;
                                     })
                                     kubernetes.config.helmTemplates
                                 ));
