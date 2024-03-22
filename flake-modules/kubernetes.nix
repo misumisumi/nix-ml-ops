@@ -141,6 +141,10 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                         defaultText = lib.literalExpression "perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage";
                                         default = kubernetes.config.remoteImage;
                                       };
+                                      args = lib.mkOption {
+                                        type = lib.types.nullOr (lib.types.listOf lib.types.str);
+                                        default = null;
+                                      };
                                       env = lib.mkOption {
                                         defaultText = lib.literalExpression ''
                                           lib.attrsets.mapAttrsToList
