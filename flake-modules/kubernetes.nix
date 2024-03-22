@@ -104,7 +104,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                 (mountPath: protocolConfig:
                                   {
                                     name = topLevel.config.flake.lib.pathToKubernetesName mountPath;
-                                    persistentVolumeClaim.claimName = "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-claim";
+                                    persistentVolumeClaim.claimName = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${topLevel.config.flake.lib.pathToKubernetesName mountPath}-claim";
                                   }
                                 )
                               )
@@ -265,7 +265,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                       accessModes = [ "ReadWriteMany" ];
                                       capacity.storage = "1000Ti";
                                     };
-                                    metadata.name = "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-volume";
+                                    metadata.name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${topLevel.config.flake.lib.pathToKubernetesName mountPath}-volume";
                                   };
                                 })
                                 (lib.attrsets.mergeAttrsList (builtins.attrValues runtime.config.volumeMounts or { }));
@@ -305,9 +305,9 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                               lib.attrsets.concatMapAttrs
                                 (mountPath: protocolConfig: {
                                   "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-claim" = {
-                                    spec.volumeName = "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-volume";
+                                    spec.volumeName = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${topLevel.config.flake.lib.pathToKubernetesName mountPath}-volume";
                                     spec.storageClassName = protocolConfig.kubernetesVolume.storageClassName or "";
-                                    metadata.name = "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-claim";
+                                    metadata.name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${topLevel.config.flake.lib.pathToKubernetesName mountPath}-claim";
                                   };
                                 })
                                 (lib.attrsets.mergeAttrsList (builtins.attrValues runtime.config.volumeMounts or { }));
