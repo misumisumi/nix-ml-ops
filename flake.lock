@@ -113,16 +113,16 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1711419388,
-        "narHash": "sha256-3r8Jk39jjQBm2wrTUT62TkeWW9PtalRUYWLjzi8OHsQ=",
+        "lastModified": 1711496471,
+        "narHash": "sha256-mGjEtPtWXJ/Pb80P/vcm65rL2Weq06fZemtBzFMgPjU=",
         "owner": "Atry",
         "repo": "devenv",
-        "rev": "aa8b83bb48acf17c4aa30935cc46f080293c2d8b",
+        "rev": "f99ec24a9ba904bb5790f8b2d6cb4b20fef2e468",
         "type": "github"
       },
       "original": {
         "owner": "Atry",
-        "ref": "layers",
+        "ref": "nix-ml-ops",
         "repo": "devenv",
         "type": "github"
       }

@@ -29,7 +29,7 @@
     devenv = {
       # TODO: Switch to `github:cachix/devenv` when https://github.com/cachix/devenv/pull/718, https://github.com/cachix/devenv/pull/820, https://github.com/cachix/devenv/pull/872 and https://github.com/cachix/devenv/pull/873 get merged
       # url = "github:cachix/devenv";
-      url = "github:Atry/devenv/layers";
+      url = "github:Atry/devenv/nix-ml-ops";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mk-shell-bin = {
