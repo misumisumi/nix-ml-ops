@@ -7,14 +7,9 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
   flake.flakeModules.linkNvidiaDrivers = {
     imports = [
       topLevel.config.flake.flakeModules.common
-      topLevel.config.flake.flakeModules.nixLd
     ];
     options.perSystem = flake-parts-lib.mkPerSystemOption ({ lib, config, pkgs, options, ... }: {
       ml-ops.common = lib.attrsets.optionalAttrs pkgs.stdenv.isLinux {
-        nixLdLibraries = lib.mkAfter [
-          "/run/opengl-driver"
-          "/run/opengl-driver-32"
-        ];
         devenvShellModule.enterShell = ''
           # Link drivers if the script is either known to be in a container, or
           # it cannot detect if it is in a container
