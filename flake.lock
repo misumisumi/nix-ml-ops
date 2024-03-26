@@ -26,15 +26,16 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1700068135,
-        "narHash": "sha256-MN/NqiEjCg3UeFAJ7Uz7t5LyBwRsUEolBwA1DrdSC5w=",
-        "owner": "Preemo-Inc",
+        "lastModified": 1711419388,
+        "narHash": "sha256-3r8Jk39jjQBm2wrTUT62TkeWW9PtalRUYWLjzi8OHsQ=",
+        "owner": "Atry",
         "repo": "devenv",
-        "rev": "804f935a71811ece03ea489a4253593838900ae1",
+        "rev": "aa8b83bb48acf17c4aa30935cc46f080293c2d8b",
         "type": "github"
       },
       "original": {
-        "owner": "Preemo-Inc",
+        "owner": "Atry",
+        "ref": "layers",
         "repo": "devenv",
         "type": "github"
       }
