@@ -16,6 +16,7 @@
       url = "github:DavHau/pypi-deps-db";
       flake = false;
     };
+    ld-floxlib.url = "github:flox/ld-floxlib";
     mach-nix = {
       url = "github:Preemo-Inc/mach-nix";
       flake = false;

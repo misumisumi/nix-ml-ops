@@ -29,7 +29,6 @@
         inputs.nix-ml-ops.flakeModules.cuda
         inputs.nix-ml-ops.flakeModules.devcontainer
         inputs.nix-ml-ops.flakeModules.nixIde
-        inputs.nix-ml-ops.flakeModules.nixLd
         inputs.nix-ml-ops.flakeModules.pythonEnvsPoetry
         inputs.nix-ml-ops.flakeModules.kubernetesJob
         inputs.nix-ml-ops.flakeModules.aksCredential

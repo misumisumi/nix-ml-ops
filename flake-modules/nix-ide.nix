@@ -8,7 +8,6 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
   flake.flakeModules.nixIde = {
     imports = [
       topLevel.config.flake.flakeModules.devcontainer
-      topLevel.config.flake.flakeModules.nixLd
       topLevel.config.flake.flakeModules.vscode
     ];
     options.perSystem = flake-parts-lib.mkPerSystemOption ({ config, pkgs, lib, system, ... }: {
