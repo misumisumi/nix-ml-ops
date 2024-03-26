@@ -5,7 +5,7 @@
       flake = false;
     };
     poetry2nix = {
-      url = "github:nix-community/poetry2nix";
+      url = "github:Atry/poetry2nix/vllm";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     conda-channels = {
