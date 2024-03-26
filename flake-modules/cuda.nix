@@ -35,15 +35,13 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
           options.cuda.packages = lib.mkOption {
             type = lib.types.listOf lib.types.package;
           };
-          config.cuda.packages = lib.mkMerge [
-            [
-              pkgs.cudaPackages.cuda_nvcc
-              pkgs.cudaPackages.cudatoolkit
-              pkgs.cudaPackages.cuda_cudart
-              pkgs.cudaPackages.libcublas
-              pkgs.cudaPackages.nccl
-            ]
-            (lib.mkIf (builtins.hasAttr "cudnn" pkgs.cudaPackages) pkgs.cudaPackages.cudnn)
+          config.cuda.packages = [
+            pkgs.cudaPackages.cuda_nvcc
+            pkgs.cudaPackages.cudatoolkit
+            pkgs.cudaPackages.cuda_cudart
+            pkgs.cudaPackages.libcublas
+            pkgs.cudaPackages.nccl
+            pkgs.cudaPackages.cudnn
           ];
         };
       };

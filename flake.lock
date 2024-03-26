@@ -382,11 +382,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1697285352,
-        "narHash": "sha256-tRGLm/DO8+anGUCgLYxTF5EPqWv8EZ9MVFWRdh285HU=",
+        "lastModified": 1708764364,
+        "narHash": "sha256-+pOtDvmuVTg0Gi58hKDUyrNla5NbyUvt3Xs3gLR0Fws=",
         "owner": "nlewo",
         "repo": "nix2container",
-        "rev": "9d7f33ef0058f4df4c0912025f43c758a3289d76",
+        "rev": "c891f90d2e3c48a6b33466c96e4851e0fc0cf455",
         "type": "github"
       },
       "original": {
@@ -602,16 +602,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1700098197,
-        "narHash": "sha256-4Q2AHNjTNh9VRzqSh+Gw0SI+FyFi5WEAhGZ/YAmU4ow=",
-        "owner": "Preemo-Inc",
+        "lastModified": 1711163522,
+        "narHash": "sha256-YN/Ciidm+A0fmJPWlHBGvVkcarYWSC+s3NTPk/P+q3c=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "91d6584b6dfd23c6eee1419e9ad7bacf0a660cfc",
+        "rev": "44d0940ea560dee511026a53f0e2e2cde489b4d4",
         "type": "github"
       },
       "original": {
-        "owner": "Preemo-Inc",
-        "ref": "nix-ml-ops",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
