@@ -1,7 +1,6 @@
 topLevel@{ flake-parts-lib, inputs, ... }: {
   imports = [
     ./common.nix
-    ./nix-ld.nix
     inputs.flake-parts.flakeModules.flakeModules
   ];
   flake.flakeModules.linkNvidiaDrivers = {

@@ -1,7 +1,6 @@
 topLevel@{ inputs, flake-parts-lib, ... }: {
   imports = [
     ./devcontainer.nix
-    ./nix-ld.nix
     ./vscode.nix
     inputs.flake-parts.flakeModules.flakeModules
   ];

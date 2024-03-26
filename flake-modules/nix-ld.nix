@@ -8,33 +8,27 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
       topLevel.config.flake.flakeModules.common
     ];
     options.perSystem = flake-parts-lib.mkPerSystemOption ({ system, lib, config, pkgs, ... }: {
-      ml-ops.common = { config, ... }: {
+      ml-ops.common = common: {
         options.nixLdLibraries = lib.mkOption {
+          description = ''
+            The list of paths to be added to the `NIX_LD_LIBRARY_PATH` environment variable.
+
+            This option should always be kept empty. Set `flakeModules.ldFloxlib` instead when you want any non-empty library path. See discussion at https://github.com/NixOS/nixpkgs/pull/248547#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project.
+
+            Note that `nix-ld-rs` is still a good idea for executing non-Nix binaries in the case of https://github.com/nix-community/NixOS-WSL/issues/222. When there are system level `NIX_LD_LIBRARY_PATH` set for `nix-ld` or `nix-ld-rs`, this option should be kept as empty in order to disable the system level `NIX_LD_LIBRARY_PATH`.
+          '';
+
           type = lib.types.listOf lib.types.path;
+          default = [];
+
         };
-        config.nixLdLibraries = builtins.filter (package: !package.meta.unsupported) [
-          pkgs.zlib
-          pkgs.zstd
-          pkgs.stdenv.cc.cc
-          pkgs.curl
-          pkgs.openssl
-          pkgs.attr
-          pkgs.libssh
-          pkgs.bzip2
-          pkgs.libxml2
-          pkgs.acl
-          pkgs.libsodium
-          pkgs.util-linux
-          pkgs.xz
-          pkgs.systemd
-        ];
 
         config.environmentVariables = {
           NIX_LD =
             toString (pkgs.runCommand "ld.so" { } ''
               ln -s "$(cat '${pkgs.stdenv.cc}/nix-support/dynamic-linker')" $out
             '');
-          NIX_LD_LIBRARY_PATH = lib.makeLibraryPath config.nixLdLibraries;
+          NIX_LD_LIBRARY_PATH = lib.makeLibraryPath common.config.nixLdLibraries;
         };
 
       };

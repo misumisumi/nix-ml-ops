@@ -58,6 +58,7 @@
           ./flake-modules/devcontainer-gcp-cli-tools.nix
           ./flake-modules/devcontainer-azure-cli-tools.nix
           ./flake-modules/nix-ld.nix
+          ./flake-modules/ld-floxlib-manylinux.nix
           ./flake-modules/options-document.nix
           ./flake-modules/lib.nix
         ];
@@ -72,6 +73,7 @@
         bootstrap.flakeModules.devcontainerGcpCliTools
         bootstrap.flakeModules.devcontainerAzureCliTools
         bootstrap.flakeModules.nixLd
+        bootstrap.flakeModules.ldFloxlibManylinux
         bootstrap.flakeModules.optionsDocument
       ] ++
       # import all nix files under ./flake-modules/
