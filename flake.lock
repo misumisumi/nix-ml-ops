@@ -658,11 +658,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1711409664,
-        "narHash": "sha256-qRAQnnCfPlDmKX+XfklDmhMEL4Ky5zi3EpMM1tMyXdI=",
+        "lastModified": 1711582710,
+        "narHash": "sha256-oSt9Bh8AcRVCA6zHNFhRQ7Bo4WjFMxNh+VX5WYWdBDA=",
         "owner": "Atry",
         "repo": "poetry2nix",
-        "rev": "34caa99de6e589b023baa587cff1b5e4dd443f9f",
+        "rev": "4b57e61747bae1546ce1d92406c0d2ae78790936",
         "type": "github"
       },
       "original": {
