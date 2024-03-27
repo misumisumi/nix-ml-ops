@@ -140,7 +140,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 (
                   pkgs.buildGoModule {
                     name = "azure-vhd-utils";
-                    vendorSha256 = "sha256-KumgBgBI0oBJMKQX8d6z37fd5cxE+B+5ytFYqsFqbfo=";
+                    vendorHash = "sha256-KumgBgBI0oBJMKQX8d6z37fd5cxE+B+5ytFYqsFqbfo=";
                     src = pkgs.fetchFromGitHub {
                       owner = "microsoft";
                       repo = "azure-vhd-utils";
