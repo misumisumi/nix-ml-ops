@@ -77,7 +77,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                     }
                     const char *last_slash = strrchr(name, '/');
                     const char *basename = last_slash == NULL ? name : last_slash + 1;
-                    static const char search_prefix[] = "${lib.strings.escapeC ["\"" "\n"]  (lib.strings.removeSuffix "/" common.config.ldFallback.path)}/";
+                    static const char search_prefix[] = "${lib.strings.escapeC ["\\" "\"" "\r" "\n"]  (lib.strings.removeSuffix "/" common.config.ldFallback.path)}/";
 
                     int search_prefix_length = sizeof(search_prefix) - 1;
                     int basename_max = PATH_MAX - 1 - search_prefix_length;
