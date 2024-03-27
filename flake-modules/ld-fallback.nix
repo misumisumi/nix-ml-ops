@@ -90,7 +90,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                     memcpy(buffer, search_prefix, search_prefix_length);
                     memcpy(buffer + search_prefix_length, basename, basename_length + 1);
                     if (access(buffer, F_OK) != 0) {
-                      log("libaudit.so: %s -> %s\n", name, buffer);
+                      log("libaudit.so: Cannot find a fallback for %s\n", buffer);
                       return (char *)name;
                     }
                     log("libaudit.so: %s -> %s\n", name, buffer);
