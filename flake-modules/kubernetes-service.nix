@@ -43,9 +43,9 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                                     }
                                     {
                                       options.metadata.name = lib.mkOption {
-                                        default = "${service.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.self.shortRev or flakeModule.self.dirtyShortRev}";
+                                        default = "${service.config._module.args.name}-${launcher.config._module.args.name}";
                                         defaultText = lib.literalExpression ''
-                                          "''${service.config._module.args.name}-''${launcher.config._module.args.name}-''${flakeModule.self.shortRev or flakeModule.self.dirtyShortRev}"
+                                          "''${service.config._module.args.name}-''${launcher.config._module.args.name}"
                                         '';
                                       };
                                     }
