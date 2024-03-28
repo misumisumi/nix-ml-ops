@@ -31,12 +31,11 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
           default = pkgs.runCommandNoCC "libaudit.so"
             {
               nativeBuildInputs = [
-                pkgs.musl.dev
                 pkgs.gcc
                 pkgs.binutils
               ];
             } ''
-            musl-gcc -o "$out" -fPIC -shared -static -Wl,--exclude-libs,ALL ${
+            gcc -o "$out" -fPIC -shared ${
               pkgs.writeTextFile {
                 name="libaudit.c";
                 text=''
