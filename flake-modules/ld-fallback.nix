@@ -39,15 +39,12 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
               pkgs.writeTextFile {
                 name="libaudit.c";
                 text=''
-                  #include <stdlib.h>
+                  #include <stdbool.h>
                   #include <stdint.h>
-                  #include <sys/param.h>
                   #include <limits.h>
                   #include <stdio.h>
                   #include <string.h>
-                  #include <link.h>
                   #include <unistd.h>
-                  #include <stdbool.h>
 
                   ${
                     if common.config.ldFallback.logging then ''
