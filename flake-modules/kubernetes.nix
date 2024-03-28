@@ -389,6 +389,8 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                         (lib.escapeShellArgs [
                                           "${pkgs.kubernetes-helm}/bin/helm"
                                           "delete"
+                                          "--cascade"
+                                          "foreground"
                                           kubernetes.config.helmReleaseName
                                         ]);
                                     }
