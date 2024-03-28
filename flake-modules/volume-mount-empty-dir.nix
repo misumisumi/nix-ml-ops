@@ -29,7 +29,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
           type = lib.types.attrsOf (lib.types.submoduleWith {
             modules = [
               ({ config, ... }: {
-                options.kubernetesVolume = lib.mkOption {
+                options.kubernetesInlineVolume = lib.mkOption {
                   default = {
                     emptyDir = {
                       medium = config.medium;

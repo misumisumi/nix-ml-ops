@@ -104,69 +104,72 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                 (mountPath: protocolConfig:
                                   {
                                     name = topLevel.config.flake.lib.pathToKubernetesName mountPath;
+                                  } // protocolConfig.kubernetesInlineVolume or {
                                     persistentVolumeClaim.claimName = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${topLevel.config.flake.lib.pathToKubernetesName mountPath}-claim";
                                   }
                                 )
                               )
                               (builtins.attrValues runtime.config.volumeMounts or { });
-                            options.containers = lib.mkOption {
-                              default = { };
-                              type = (lib.types.attrsOf (lib.types.submoduleWith {
-                                modules = [
-                                  {
-                                    options.manifest = lib.mkOption {
-                                      default = { };
-                                      type = lib.types.deferredModule;
-                                    };
-                                  }
-                                ];
-                              })) // {
-                                deprecationMessage = ''
-                                  Use `ml-ops.services.<name>.launchers.<name>.kubernetes.helmTemplates.deployment.spec.template.spec.containers` or  `ml-ops.jobs.<name>.launchers.<name>.kubernetes.helmTemplates.job.spec.template.spec.containers`  instead.
-                                '';
+                            options.containers = lib.mkOption
+                              {
+                                default = { };
+                                type = (lib.types.attrsOf (lib.types.submoduleWith {
+                                  modules = [
+                                    {
+                                      options.manifest = lib.mkOption {
+                                        default = { };
+                                        type = lib.types.deferredModule;
+                                      };
+                                    }
+                                  ];
+                                })) // {
+                                  deprecationMessage = ''
+                                    Use `ml-ops.services.<name>.launchers.<name>.kubernetes.helmTemplates.deployment.spec.template.spec.containers` or  `ml-ops.jobs.<name>.launchers.<name>.kubernetes.helmTemplates.job.spec.template.spec.containers`  instead.
+                                  '';
+                                };
                               };
-                            };
 
-                            options.containerManifest = lib.mkOption {
-                              default = { };
-                              type = lib.types.deferredModuleWith {
-                                staticModules = [
-                                  (container: {
-                                    config._module.freeformType = lib.types.attrsOf lib.types.anything;
-                                    options = {
-                                      name = lib.mkOption {
-                                        type = lib.types.str;
-                                      };
-                                      image = lib.mkOption {
-                                        defaultText = lib.literalExpression "perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage";
-                                        default = kubernetes.config.remoteImage;
-                                      };
-                                      args = lib.mkOption {
-                                        type = lib.types.nullOr (lib.types.listOf lib.types.str);
-                                        default = null;
-                                      };
-                                      env = lib.mkOption {
-                                        defaultText = lib.literalExpression ''
-                                          lib.attrsets.mapAttrsToList
+                            options.containerManifest = lib.mkOption
+                              {
+                                default = { };
+                                type = lib.types.deferredModuleWith {
+                                  staticModules = [
+                                    (container: {
+                                      config._module.freeformType = lib.types.attrsOf lib.types.anything;
+                                      options = {
+                                        name = lib.mkOption {
+                                          type = lib.types.str;
+                                        };
+                                        image = lib.mkOption {
+                                          defaultText = lib.literalExpression "perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage";
+                                          default = kubernetes.config.remoteImage;
+                                        };
+                                        args = lib.mkOption {
+                                          type = lib.types.nullOr (lib.types.listOf lib.types.str);
+                                          default = null;
+                                        };
+                                        env = lib.mkOption {
+                                          defaultText = lib.literalExpression ''
+                                            lib.attrsets.mapAttrsToList
+                                              lib.attrsets.nameValuePair
+                                              perSystem.ml-ops.services|jobs.<name>.launchers.<name>.kubernetes.containerManifest._module.environmentVariables
+                                          '';
+                                          default = lib.attrsets.mapAttrsToList
                                             lib.attrsets.nameValuePair
-                                            perSystem.ml-ops.services|jobs.<name>.launchers.<name>.kubernetes.containerManifest._module.environmentVariables
-                                        '';
-                                        default = lib.attrsets.mapAttrsToList
-                                          lib.attrsets.nameValuePair
-                                          container.config._module.environmentVariables;
+                                            container.config._module.environmentVariables;
+                                        };
+                                        volumeMounts = lib.mkOption {
+                                          default = kubernetes.config.volumeMounts;
+                                        };
+                                        _module.environmentVariables = lib.mkOption {
+                                          default = launcher.config.environmentVariables;
+                                          defaultText = lib.literalExpression "launchers.<name>.environmentVariables";
+                                        };
                                       };
-                                      volumeMounts = lib.mkOption {
-                                        default = kubernetes.config.volumeMounts;
-                                      };
-                                      _module.environmentVariables = lib.mkOption {
-                                        default = launcher.config.environmentVariables;
-                                        defaultText = lib.literalExpression "launchers.<name>.environmentVariables";
-                                      };
-                                    };
-                                  })
-                                ];
+                                    })
+                                  ];
+                                };
                               };
-                            };
                             options.remoteImage = lib.mkOption
                               {
                                 type = lib.types.str;
@@ -181,84 +184,88 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                     builtins.replaceStrings ["+"] ["_"] runtime.config.version
                                   }";
                               };
-                            options.pushImage = lib.mkOption {
-                              default = { };
-                              type = lib.types.submoduleWith {
-                                modules = [
-                                  (pushImage: {
-                                    imports = [ perSystem.config.ml-ops.overridablePackage ];
-                                    options.skopeoCopyArgs = lib.mkOption {
-                                      type = lib.types.listOf lib.types.str;
-                                      default = [ ];
-                                    };
-                                    config.base-package =
-                                      pkgs.writeShellScriptBin
-                                        "${runtime.config._module.args.name}-push-image-to-registry.sh"
-                                        ''
-                                          read -a skopeoCopyArgsArray <<< "$SKOPEO_ARGS"
-                                          ${lib.escapeShellArgs [
-                                            "${inputs.nix2container.packages.${system}.skopeo-nix2container}/bin/skopeo"
-                                            "--insecure-policy"
-                                            "copy"
-                                          ]} \
-                                          ${
-                                            lib.escapeShellArgs pushImage.config.skopeoCopyArgs
-                                          } \
-                                          "''${skopeoCopyArgsArray[@]}" \
-                                          ${lib.escapeShellArgs [
-                                            "nix:${perSystem.config.devenv.shells.${runtime.config.name}.containers.processes.derivation}"
-                                            "docker://${kubernetes.config.remoteImage}"
-                                          ]} 
-                                        '';
-                                  })
-                                ];
+                            options.pushImage = lib.mkOption
+                              {
+                                default = { };
+                                type = lib.types.submoduleWith {
+                                  modules = [
+                                    (pushImage: {
+                                      imports = [ perSystem.config.ml-ops.overridablePackage ];
+                                      options.skopeoCopyArgs = lib.mkOption {
+                                        type = lib.types.listOf lib.types.str;
+                                        default = [ ];
+                                      };
+                                      config.base-package =
+                                        pkgs.writeShellScriptBin
+                                          "${runtime.config._module.args.name}-push-image-to-registry.sh"
+                                          ''
+                                            read -a skopeoCopyArgsArray <<< "$SKOPEO_ARGS"
+                                            ${lib.escapeShellArgs [
+                                              "${inputs.nix2container.packages.${system}.skopeo-nix2container}/bin/skopeo"
+                                              "--insecure-policy"
+                                              "copy"
+                                            ]} \
+                                            ${
+                                              lib.escapeShellArgs pushImage.config.skopeoCopyArgs
+                                            } \
+                                            "''${skopeoCopyArgsArray[@]}" \
+                                            ${lib.escapeShellArgs [
+                                              "nix:${perSystem.config.devenv.shells.${runtime.config.name}.containers.processes.derivation}"
+                                              "docker://${kubernetes.config.remoteImage}"
+                                            ]} 
+                                          '';
+                                    })
+                                  ];
+                                };
                               };
-                            };
-                            options.helmTemplates = lib.mkOption {
-                              description = lib.mdDoc ''
-                                Kubernetes manifests to be templated by Helm.
+                            options.helmTemplates = lib.mkOption
+                              {
+                                description = lib.mdDoc ''
+                                  Kubernetes manifests to be templated by Helm.
 
-                                For each template, the key is the base file name of the template (extension is always `yaml`), and the value is the template itself.
-                              '';
-                              type = lib.types.submoduleWith {
-                                modules = [
-                                  {
-                                    _module.freeformType = lib.types.attrsOf (lib.types.attrsOf lib.types.anything);
-                                  }
-                                ];
+                                  For each template, the key is the base file name of the template (extension is always `yaml`), and the value is the template itself.
+                                '';
+                                type = lib.types.submoduleWith {
+                                  modules = [
+                                    {
+                                      _module.freeformType = lib.types.attrsOf (lib.types.attrsOf lib.types.anything);
+                                    }
+                                  ];
+                                };
+                                default = { };
                               };
-                              default = { };
-                            };
-                            config.helmTemplates = lib.attrsets.mergeAttrsList [
-                              kubernetes.config.persistentVolumeManifests
-                              kubernetes.config.persistentVolumeClaimManifests
-                            ];
-                            options.persistentVolumeManifests = lib.mkOption {
-                              type = lib.types.attrsOf (lib.types.submoduleWith {
-                                modules = [
-                                  (persistentVolumeManifest: {
-                                    options = {
-                                      apiVersion = lib.mkOption {
-                                        default = "v1";
+                            config.helmTemplates = lib.attrsets.mergeAttrsList
+                              [
+                                kubernetes.config.persistentVolumeManifests
+                                kubernetes.config.persistentVolumeClaimManifests
+                              ];
+                            options.persistentVolumeManifests = lib.mkOption
+                              {
+                                type = lib.types.attrsOf (lib.types.submoduleWith {
+                                  modules = [
+                                    (persistentVolumeManifest: {
+                                      options = {
+                                        apiVersion = lib.mkOption {
+                                          default = "v1";
+                                        };
+                                        kind = lib.mkOption {
+                                          default = "PersistentVolume";
+                                        };
+                                        metadata.name = lib.mkOption {
+                                          type = lib.types.str;
+                                        };
+                                        spec = lib.mkOption {
+                                          type = lib.types.attrsOf lib.types.anything;
+                                        };
                                       };
-                                      kind = lib.mkOption {
-                                        default = "PersistentVolume";
-                                      };
-                                      metadata.name = lib.mkOption {
-                                        type = lib.types.str;
-                                      };
-                                      spec = lib.mkOption {
-                                        type = lib.types.attrsOf lib.types.anything;
-                                      };
-                                    };
 
-                                  })
-                                ];
-                              });
-                            };
+                                    })
+                                  ];
+                                });
+                              };
                             config.persistentVolumeManifests =
                               lib.attrsets.concatMapAttrs
-                                (mountPath: protocolConfig: {
+                                (mountPath: protocolConfig: lib.optionalAttrs (protocolConfig?kubernetesVolume) {
                                   "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-volume" = {
                                     spec = protocolConfig.kubernetesVolume // {
                                       # # TODO(bo@preemo.io, 11/21/2023): Make it be configurable
@@ -270,40 +277,41 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                 })
                                 (lib.attrsets.mergeAttrsList (builtins.attrValues runtime.config.volumeMounts or { }));
 
-                            options.persistentVolumeClaimManifests = lib.mkOption {
-                              type = lib.types.attrsOf (lib.types.submoduleWith {
-                                modules = [
-                                  (persistentVolumeClaimManifest: {
-                                    options = {
-                                      apiVersion = lib.mkOption {
-                                        default = "v1";
+                            options.persistentVolumeClaimManifests = lib.mkOption
+                              {
+                                type = lib.types.attrsOf (lib.types.submoduleWith {
+                                  modules = [
+                                    (persistentVolumeClaimManifest: {
+                                      options = {
+                                        apiVersion = lib.mkOption {
+                                          default = "v1";
+                                        };
+                                        kind = lib.mkOption {
+                                          default = "PersistentVolumeClaim";
+                                        };
+                                        metadata.name = lib.mkOption {
+                                          type = lib.types.str;
+                                        };
+                                        spec.volumeName = lib.mkOption {
+                                          type = lib.types.str;
+                                        };
+                                        spec.storageClassName = lib.mkOption {
+                                          default = "";
+                                        };
+                                        spec.accessModes = lib.mkOption {
+                                          default = [ "ReadWriteMany" ];
+                                        };
+                                        spec.resources.requests.storage = lib.mkOption {
+                                          default = "1000Ti";
+                                        };
                                       };
-                                      kind = lib.mkOption {
-                                        default = "PersistentVolumeClaim";
-                                      };
-                                      metadata.name = lib.mkOption {
-                                        type = lib.types.str;
-                                      };
-                                      spec.volumeName = lib.mkOption {
-                                        type = lib.types.str;
-                                      };
-                                      spec.storageClassName = lib.mkOption {
-                                        default = "";
-                                      };
-                                      spec.accessModes = lib.mkOption {
-                                        default = [ "ReadWriteMany" ];
-                                      };
-                                      spec.resources.requests.storage = lib.mkOption {
-                                        default = "1000Ti";
-                                      };
-                                    };
-                                  })
-                                ];
-                              });
-                            };
+                                    })
+                                  ];
+                                });
+                              };
                             config.persistentVolumeClaimManifests =
                               lib.attrsets.concatMapAttrs
-                                (mountPath: protocolConfig: {
+                                (mountPath: protocolConfig: lib.optionalAttrs (protocolConfig?kubernetesVolume) {
                                   "${topLevel.config.flake.lib.pathToKubernetesName mountPath}-claim" = {
                                     spec.volumeName = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${topLevel.config.flake.lib.pathToKubernetesName mountPath}-volume";
                                     spec.storageClassName = protocolConfig.kubernetesVolume.storageClassName or "";
@@ -323,66 +331,70 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                               version = runtime.config.version;
                             };
 
-                            options.helm-chart = lib.mkOption {
-                              type = lib.types.package;
-                              default =
-                                pkgs.linkFarm "helm-chart" ([
-                                  rec {
-                                    name = "Chart.yaml";
-                                    path = pkgs.writers.writeYAML name kubernetes.config.helmChartYaml;
-                                  }
-                                ] ++ (
-                                  lib.mapAttrsToList
-                                    (attrName: content: rec {
-                                      name = "templates/${attrName}.yaml";
-                                      path = pkgs.writers.writeYAML name content;
-                                    })
-                                    kubernetes.config.helmTemplates
-                                ));
-                            };
-
-                            options.helmReleaseName = lib.mkOption {
-                              default = "${runtime.config._module.args.name}-${launcher.config._module.args.name}";
-                            };
-
-                            options.helmUpgrade = lib.mkOption {
-                              default = { };
-                              type = lib.types.submoduleWith {
-                                modules = [
-                                  {
-                                    imports = [ perSystem.config.ml-ops.overridablePackage ];
-                                    config.base-package = pkgs.writeShellScriptBin
-                                      "${runtime.config._module.args.name}-helm-upgrade.sh"
-
-                                      (lib.escapeShellArgs [
-                                        "${pkgs.kubernetes-helm}/bin/helm"
-                                        "upgrade"
-                                        "--install"
-                                        "--force"
-                                        kubernetes.config.helmReleaseName
-                                        kubernetes.config.helm-chart
-                                      ]);
-                                  }
-                                ];
+                            options.helm-chart = lib.mkOption
+                              {
+                                type = lib.types.package;
+                                default =
+                                  pkgs.linkFarm "helm-chart" ([
+                                    rec {
+                                      name = "Chart.yaml";
+                                      path = pkgs.writers.writeYAML name kubernetes.config.helmChartYaml;
+                                    }
+                                  ] ++ (
+                                    lib.mapAttrsToList
+                                      (attrName: content: rec {
+                                        name = "templates/${attrName}.yaml";
+                                        path = pkgs.writers.writeYAML name content;
+                                      })
+                                      kubernetes.config.helmTemplates
+                                  ));
                               };
-                            };
-                            options.helmDelete = lib.mkOption {
-                              default = { };
-                              type = lib.types.submoduleWith {
-                                modules = [
-                                  {
-                                    imports = [ perSystem.config.ml-ops.overridablePackage ];
-                                    config.base-package = pkgs.writeShellScriptBin
-                                      "${runtime.config._module.args.name}-helm-delete.sh"
-                                      (lib.escapeShellArgs [
-                                        "${pkgs.kubernetes-helm}/bin/helm"
-                                        "delete"
-                                        kubernetes.config.helmReleaseName
-                                      ]);
-                                  }
-                                ];
+
+                            options.helmReleaseName = lib.mkOption
+                              {
+                                default = "${runtime.config._module.args.name}-${launcher.config._module.args.name}";
                               };
-                            };
+
+                            options.helmUpgrade = lib.mkOption
+                              {
+                                default = { };
+                                type = lib.types.submoduleWith {
+                                  modules = [
+                                    {
+                                      imports = [ perSystem.config.ml-ops.overridablePackage ];
+                                      config.base-package = pkgs.writeShellScriptBin
+                                        "${runtime.config._module.args.name}-helm-upgrade.sh"
+
+                                        (lib.escapeShellArgs [
+                                          "${pkgs.kubernetes-helm}/bin/helm"
+                                          "upgrade"
+                                          "--install"
+                                          "--force"
+                                          kubernetes.config.helmReleaseName
+                                          kubernetes.config.helm-chart
+                                        ]);
+                                    }
+                                  ];
+                                };
+                              };
+                            options.helmDelete = lib.mkOption
+                              {
+                                default = { };
+                                type = lib.types.submoduleWith {
+                                  modules = [
+                                    {
+                                      imports = [ perSystem.config.ml-ops.overridablePackage ];
+                                      config.base-package = pkgs.writeShellScriptBin
+                                        "${runtime.config._module.args.name}-helm-delete.sh"
+                                        (lib.escapeShellArgs [
+                                          "${pkgs.kubernetes-helm}/bin/helm"
+                                          "delete"
+                                          kubernetes.config.helmReleaseName
+                                        ]);
+                                    }
+                                  ];
+                                };
+                              };
                           })
                       ];
                     };
