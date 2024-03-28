@@ -377,6 +377,39 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   ];
                                 };
                               };
+                            options.helmUninstall = lib.mkOption
+                              {
+                                default = { };
+                                type = lib.types.submoduleWith {
+                                  modules = [
+                                    {
+                                      imports = [ perSystem.config.ml-ops.overridablePackage ];
+                                      config.base-package = pkgs.writeShellScriptBin
+                                        "${runtime.config._module.args.name}-helm-uninstall.sh"
+                                        (lib.escapeShellArgs [
+                                          # We want to delete the resources of the helm release while keep the verion history
+                                          # `helm uninstall --keep-history` is supposed to do this, but it's broken due to https://github.com/helm/helm/pull/11569
+                                          # As a workaround, we upgrade the helm release to an empty chart to delete the resources
+                                          "${pkgs.kubernetes-helm}/bin/helm"
+                                          "upgrade"
+                                          "--install"
+                                          "--force"
+                                          kubernetes.config.helmReleaseName
+                                          (pkgs.linkFarm "empty-helm-chart" [
+                                            rec {
+                                              name = "Chart.yaml";
+                                              path = pkgs.writers.writeYAML name {
+                                                apiVersion = "v2";
+                                                name = "empty";
+                                                version = "1.0.0";
+                                              };
+                                            }
+                                          ])
+                                        ]);
+                                    }
+                                  ];
+                                };
+                              };
                             options.helmDelete = lib.mkOption
                               {
                                 default = { };
