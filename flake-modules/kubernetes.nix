@@ -196,14 +196,27 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                         default = [ ];
                                       };
                                       config.base-package =
+                                        let
+                                          skopeo-nix2container = inputs.nix2container.packages.${system}.skopeo-nix2container.overrideAttrs (old: {
+                                            patches = old.patches or [ ] ++ [
+                                              (pkgs.fetchpatch {
+                                                # Add --max-parallel-downloads flag
+                                                url = "https://github.com/Atry/skopeo/commit/98312aa4a3137728162d12706e621a4cb5b35787.patch";
+                                                hash = "sha256-wXO5FovWLe4Ghaq10NPDkfnJPYp8hBz0M1Zk51Lq/gw=";
+                                              })
+                                            ];
+                                          });
+                                        in
                                         pkgs.writeShellScriptBin
                                           "${runtime.config._module.args.name}-push-image-to-registry.sh"
                                           ''
                                             read -a skopeoCopyArgsArray <<< "$SKOPEO_ARGS"
                                             ${lib.escapeShellArgs [
-                                              "${inputs.nix2container.packages.${system}.skopeo-nix2container}/bin/skopeo"
+                                              "${skopeo-nix2container}/bin/skopeo"
                                               "--insecure-policy"
                                               "copy"
+                                              "--max-parallel-downloads"
+                                              "64"
                                             ]} \
                                             ${
                                               lib.escapeShellArgs pushImage.config.skopeoCopyArgs
