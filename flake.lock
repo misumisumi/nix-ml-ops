@@ -382,16 +382,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1711658454,
-        "narHash": "sha256-H+qu0fX7PcNevGABSWq1lQlK8mrnzR/gKvlSGY0eq00=",
-        "owner": "Atry",
+        "lastModified": 1711883218,
+        "narHash": "sha256-XKHhQJ0tk/S/LbYJb31VVvZKWdb+uCFnvEuUQZJkP9o=",
+        "owner": "nlewo",
         "repo": "nix2container",
-        "rev": "8d18e89b327bd8a378fb59e459e5a00cf3b42a58",
+        "rev": "2154ad0459abfa258edaab038b4716f474656e99",
         "type": "github"
       },
       "original": {
-        "owner": "Atry",
-        "ref": "max-parallel-downloads-64",
+        "owner": "nlewo",
         "repo": "nix2container",
         "type": "github"
       }

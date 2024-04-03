@@ -55,6 +55,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
           ];
           options.perSystem = flake-parts-lib.mkPerSystemOption (
             perSystem@{ pkgs, system, inputs', ... }: {
+              packages.skopeo-nix2container = inputs'.nix2container.packages.skopeo-nix2container.overrideAttrs (old: {
+                patches = old.patches or [ ] ++ [
+                  (pkgs.fetchpatch {
+                    # Add --image-parallel-copies flag
+                    url = "https://github.com/Atry/skopeo/commit/db8701ceb6c88da8def345d539e67c27e026a04b.patch";
+                    hash = "sha256-VTG/uf2yw+AiGHgyjKHkrFoEO+0Ne9wtjICmBomTHss=";
+                  })
+                ];
+              });
               ml-ops.runtime = runtime: {
                 config.launcher = launcher: {
                   options.kubernetes = lib.mkOption {
@@ -201,26 +210,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                         default = [ ];
                                       };
                                       config.base-package =
-                                        let
-                                          skopeo-nix2container = inputs.nix2container.packages.${system}.skopeo-nix2container.overrideAttrs (old: {
-                                            patches = old.patches or [ ] ++ [
-                                              (pkgs.fetchpatch {
-                                                # Add --max-parallel-downloads flag
-                                                url = "https://github.com/Atry/skopeo/commit/98312aa4a3137728162d12706e621a4cb5b35787.patch";
-                                                hash = "sha256-wXO5FovWLe4Ghaq10NPDkfnJPYp8hBz0M1Zk51Lq/gw=";
-                                              })
-                                            ];
-                                          });
-                                        in
                                         pkgs.writeShellScriptBin
                                           "${runtime.config._module.args.name}-push-image-to-registry.sh"
                                           ''
                                             read -a skopeoCopyArgsArray <<< "$SKOPEO_ARGS"
                                             ${lib.escapeShellArgs [
-                                              "${skopeo-nix2container}/bin/skopeo"
+                                              "${perSystem.config.packages.skopeo-nix2container}/bin/skopeo"
                                               "--insecure-policy"
                                               "copy"
-                                              "--max-parallel-downloads"
+                                              "--image-parallel-copies"
                                               "64"
                                             ]} \
                                             ${
@@ -458,7 +456,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
               ml-ops.devcontainer.devenvShellModule = {
                 packages = [
                   pkgs.kubectl
-                  inputs'.nix2container.packages.skopeo-nix2container
+                  perSystem.config.packages.skopeo-nix2container
                 ];
               };
             }

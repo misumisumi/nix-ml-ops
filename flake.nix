@@ -35,7 +35,7 @@
       url = "github:rrbutani/nix-mk-shell-bin";
     };
     nix2container = {
-      url = "github:Atry/nix2container/max-parallel-downloads-64";
+      url = "github:nlewo/nix2container";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-generators = {
