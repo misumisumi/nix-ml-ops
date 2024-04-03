@@ -184,6 +184,11 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                     builtins.replaceStrings ["+"] ["_"] runtime.config.version
                                   }";
                               };
+                            options.devenvContainerName = lib.mkOption
+                              {
+                                type = lib.types.str;
+                                default = "processes";
+                              };
                             options.pushImage = lib.mkOption
                               {
                                 default = { };
@@ -223,7 +228,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                             } \
                                             "''${skopeoCopyArgsArray[@]}" \
                                             ${lib.escapeShellArgs [
-                                              "nix:${perSystem.config.devenv.shells.${runtime.config.name}.containers.processes.derivation}"
+                                              "nix:${perSystem.config.devenv.shells.${runtime.config.name}.containers.${kubernetes.config.devenvContainerName}.derivation}"
                                               "docker://${kubernetes.config.remoteImage}"
                                             ]} 
                                           '';

@@ -26,11 +26,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1711496471,
-        "narHash": "sha256-mGjEtPtWXJ/Pb80P/vcm65rL2Weq06fZemtBzFMgPjU=",
+        "lastModified": 1712101228,
+        "narHash": "sha256-4LQfsKTl4UA+mQ9O+4jJ9K7qvCBBhEIVH6lNshFq6Vo=",
         "owner": "Atry",
         "repo": "devenv",
-        "rev": "f99ec24a9ba904bb5790f8b2d6cb4b20fef2e468",
+        "rev": "42b5726802a32e7fd6c52d82b7f4fe88d6c1fd10",
         "type": "github"
       },
       "original": {

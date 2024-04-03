@@ -53,20 +53,9 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
             # TODO: Figure out if we can use `pkgs.cudaPackages.cudnn.lib` instead of `pkgs.cudaPackages.cudnn`. The `.lib` one is smaller.
             pkgs.cudaPackages.cudnn
           ];
-          config.devenvShellModule.containers.processes.layers =
-            (
-              builtins.foldl'
-                (layers: cudaPackage: layers ++ [
-                  (inputs.nix2container.packages.${system}.nix2container.buildLayer {
-                    deps = [
-                      cudaPackage
-                    ];
-                    inherit layers;
-                  })
-                ])
-                [ ]
-                common.config.cuda.packages
-            );
+          config.devenvShellModule.containers.processes.layers = lib.mkBefore (
+            builtins.map (cudaPackage: { deps = [ cudaPackage ]; }) common.config.cuda.packages
+          );
         };
       };
     });
