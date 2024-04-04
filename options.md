@@ -12,7 +12,6 @@ lazy attribute set of raw value
 *Declared by:*
  - [lib\.nix, via option flake\.flakeModules\.lib](flake-modules/lib.nix)
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
- - [kubernetes\.nix](flake-modules/kubernetes.nix)
 
 
 
@@ -2899,7 +2898,7 @@ string
 
 
 *Default:*
-` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240404221238.7884533" `
+` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240404222330.86a09d8" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -6276,7 +6275,7 @@ string
 
 
 *Default:*
-` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240404221238.7884533" `
+` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240404222330.86a09d8" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
