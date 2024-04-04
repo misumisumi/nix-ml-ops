@@ -35,6 +35,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
                   };
                 };
                 options.kubernetesVolume = lib.mkOption {
+                  defaultText = lib.literalMD "";
                   default = {
                     volumeMode = "Filesystem";
                     storageClassName = "local-storage";

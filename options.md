@@ -94,6 +94,7 @@ module
 *Declared by:*
  - [vscode\.nix, via option flake\.flakeModules\.vscode](flake-modules/vscode.nix)
  - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal](flake-modules/volume-mount-local.nix)
  - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir](flake-modules/volume-mount-empty-dir.nix)
  - [skypilot\.nix, via option flake\.flakeModules\.skypilot](flake-modules/skypilot.nix)
  - [services\.nix, via option flake\.flakeModules\.services](flake-modules/services.nix)
@@ -1559,7 +1560,7 @@ unspecified value
 
 
 *Default:*
-` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.overridden-package.remoteImage `
+` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -2054,7 +2055,7 @@ unspecified value
 
 
 *Default:*
-` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.overridden-package.remoteImage `
+` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -2099,8 +2100,6 @@ unspecified value
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.spec\.template\.spec\.restartPolicy
-
-
 
 This option has no description\.
 
@@ -2598,6 +2597,48 @@ list of function that evaluates to a(n) package
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.pushImage\.skopeoCopyArgs
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of string
+
+
+
+*Default:*
+` [ ] `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.remoteImage
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240320001618.0c8c0f5-dirty" `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.volumeMounts
 
 
@@ -3057,6 +3098,105 @@ null or value “Memory” (singular enum)
 
 *Declared by:*
  - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.volumeMounts\.local
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of (submodule)
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.volumeMounts\.local\.\<name>\.kubernetesVolume
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+unspecified value
+
+
+
+*Default:*
+
+*Declared by:*
+ - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.volumeMounts\.local\.\<name>\.nodeAffinity
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of anything
+
+
+
+*Default:*
+
+```
+{
+  required = {
+    nodeSelectorTerms = [
+      {
+        matchExpressions = [
+          {
+            key = "kubernetes.io/hostname";
+            operator = "Exists";
+          }
+        ];
+      }
+    ];
+  };
+}
+```
+
+*Declared by:*
+ - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.volumeMounts\.local\.\<name>\.path
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+
+
+*Example:*
+` "/ml_data" `
+
+*Declared by:*
+ - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
@@ -4087,8 +4227,6 @@ submodule
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.aks
 
-
-
 The Azure Kubernetes Service (AKS) options\.
 
 When ` aks ` is ` null `, the AKS options are disabled\.
@@ -4216,6 +4354,8 @@ unspecified value
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.containerManifest\.env
 
+
+
 This option has no description\.
 
 
@@ -4253,7 +4393,7 @@ unspecified value
 
 
 *Default:*
-` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.overridden-package.remoteImage `
+` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -4561,6 +4701,22 @@ attribute set of attribute set of anything
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.deployment
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of attribute set of anything
+
+*Declared by:*
+ - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.deployment\.apiVersion
 
 
@@ -4748,7 +4904,7 @@ unspecified value
 
 
 *Default:*
-` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.overridden-package.remoteImage `
+` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -4813,6 +4969,27 @@ unspecified value
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.service
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+null or (attribute set of attribute set of anything)
+
+
+
+*Default:*
+` null `
+
+*Declared by:*
+ - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.service\.apiVersion
 
 
@@ -4871,7 +5048,7 @@ unspecified value
 *Default:*
 
 ```
-"${service.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.self.lastModifiedDate}-${builtins.substring 0 8 flakeModule.self.rev or "dirty"}"
+"${service.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.self.lastModifiedDate}-${flakeModule.self.shortRev or flakeModule.self.dirtyShortRev}"
 
 ```
 
@@ -5380,6 +5557,48 @@ list of function that evaluates to a(n) package
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.pushImage\.skopeoCopyArgs
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of string
+
+
+
+*Default:*
+` [ ] `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.remoteImage
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240320001618.0c8c0f5-dirty" `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.volumeMounts
 
 
@@ -5818,6 +6037,105 @@ null or value “Memory” (singular enum)
 
 *Declared by:*
  - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.volumeMounts\.local
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of (submodule)
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.volumeMounts\.local\.\<name>\.kubernetesVolume
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+unspecified value
+
+
+
+*Default:*
+
+*Declared by:*
+ - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.volumeMounts\.local\.\<name>\.nodeAffinity
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of anything
+
+
+
+*Default:*
+
+```
+{
+  required = {
+    nodeSelectorTerms = [
+      {
+        matchExpressions = [
+          {
+            key = "kubernetes.io/hostname";
+            operator = "Exists";
+          }
+        ];
+      }
+    ];
+  };
+}
+```
+
+*Declared by:*
+ - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.volumeMounts\.local\.\<name>\.path
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+
+
+*Example:*
+` "/ml_data" `
+
+*Declared by:*
+ - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
