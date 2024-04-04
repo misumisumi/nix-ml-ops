@@ -408,6 +408,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                           # As a workaround, we upgrade the helm release to an empty chart to delete the resources
                                           "${pkgs.kubernetes-helm}/bin/helm"
                                           "upgrade"
+                                          "--atomic"
                                           "--install"
                                           "--force"
                                           kubernetes.config.helmReleaseName
