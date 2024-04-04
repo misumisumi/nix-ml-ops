@@ -22,9 +22,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
           }}/lib";
         };
 
-        options.ldFallback.logging = lib.mkEnableOption {
-          default = false;
-        };
+        options.ldFallback.enablelogging = lib.mkEnableOption "logging";
 
         options.ldFallback.libaudit = lib.mkOption {
           type = lib.types.package;
@@ -47,7 +45,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                   #include <unistd.h>
 
                   ${
-                    if common.config.ldFallback.logging then ''
+                    if common.config.ldFallback.enablelogging then ''
                       #define log(...) fprintf(stderr, __VA_ARGS__)
                     '' else ''
                       #define log(...) do {} while (false)
