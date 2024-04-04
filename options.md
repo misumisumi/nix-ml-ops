@@ -11,6 +11,7 @@ lazy attribute set of raw value
 
 *Declared by:*
  - [lib\.nix, via option flake\.flakeModules\.lib](flake-modules/lib.nix)
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
  - [kubernetes\.nix](flake-modules/kubernetes.nix)
 
 
@@ -32,7 +33,7 @@ function that evaluates to a(n) attribute set of package
 ` <function> `
 
 *Declared by:*
- - [kubernetes\.nix](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
 
 
 
@@ -74,7 +75,7 @@ function that evaluates to a(n) string
 ` <function> `
 
 *Declared by:*
- - [kubernetes\.nix](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
 
 
 
@@ -103,12 +104,16 @@ module
  - [python-package\.nix, via option flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
  - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry](flake-modules/python-envs-poetry.nix)
  - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508](flake-modules/python-envs-pep508.nix)
+ - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication](flake-modules/poetry2nix-application.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix](flake-modules/poetry2nix.nix)
  - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
  - [options-document\.nix, via option flake\.flakeModules\.optionsDocument](flake-modules/options-document.nix)
  - [nixpkgs\.nix, via option flake\.flakeModules\.nixpkgs](flake-modules/nixpkgs.nix)
  - [nix-ld\.nix, via option flake\.flakeModules\.nixLd](flake-modules/nix-ld.nix)
  - [nix-ide\.nix, via option flake\.flakeModules\.nixIde](flake-modules/nix-ide.nix)
  - [link-nvidia-drivers\.nix, via option flake\.flakeModules\.linkNvidiaDrivers](flake-modules/link-nvidia-drivers.nix)
+ - [ld-fallback-manylinux\.nix, via option flake\.flakeModules\.ldFallbackManylinux](flake-modules/ld-fallback-manylinux.nix)
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback](flake-modules/ld-fallback.nix)
  - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService](flake-modules/kubernetes-service.nix)
  - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob](flake-modules/kubernetes-job.nix)
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
@@ -116,6 +121,7 @@ module
  - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential](flake-modules/gke-credential.nix)
  - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
  - [devenv-python-with-libstdc++\.nix, via option flake\.flakeModules\.devenvPythonWithLibstdcxx](flake-modules/devenv-python-with-libstdc++.nix)
+ - [devcontainer-poetry\.nix, via option flake\.flakeModules\.devcontainerPoetry](flake-modules/devcontainer-poetry.nix)
  - [devcontainer-gcp-cli-tools\.nix, via option flake\.flakeModules\.devcontainerGcpCliTools](flake-modules/devcontainer-gcp-cli-tools.nix)
  - [devcontainer-azure-cli-tools\.nix, via option flake\.flakeModules\.devcontainerAzureCliTools](flake-modules/devcontainer-azure-cli-tools.nix)
  - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
@@ -449,6 +455,90 @@ lazy attribute set of string
 
 
 
+## perSystem\.ml-ops\.devcontainer\.ldFallback\.enablelogging
+
+
+
+Whether to enable logging\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.ldFallback\.libaudit
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` <derivation libaudit.so> `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.ldFallback\.libraries
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of path
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.ldFallback\.path
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+path
+
+
+
+*Default:*
+` "/nix/store/njrpq2dgf0dsgl5vw88y45dfs8qpi5vp-ld-fallback-path/lib" `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.devcontainer\.mkPython
 
 
@@ -511,12 +601,21 @@ list of string
 
 
 
-This option has no description\.
+The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variable\.
+
+This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
+
+Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
 *Type:*
 list of path
+
+
+
+*Default:*
+` [ ] `
 
 *Declared by:*
  - [nix-ld\.nix, via option flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
@@ -541,6 +640,27 @@ attribute set of module
 
 *Declared by:*
  - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.poetry2nix\.args
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of anything
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -571,7 +691,7 @@ pkgs.appendOverlays [
 ```
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -614,7 +734,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -632,10 +752,10 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.5> `
+` <derivation python3-3.11.8> `
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -1519,6 +1639,27 @@ unspecified value
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.containerManifest\.args
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+null or (list of string)
+
+
+
+*Default:*
+` null `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.containerManifest\.env
 
 
@@ -1640,6 +1781,27 @@ module
 
 *Default:*
 ` { } `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.devenvContainerName
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+` "processes" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -1958,8 +2120,6 @@ unspecified value
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.spec\.template\.metadata\.labels\."app\.kubernetes\.io/name"
 
-
-
 This option has no description\.
 
 
@@ -2008,6 +2168,27 @@ unspecified value
 
 *Default:*
 ` launchers.<name>.environmentVariables `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.spec\.template\.spec\.containers\.\<name>\.args
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+null or (list of string)
+
+
+
+*Default:*
+` null `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -2101,6 +2282,8 @@ unspecified value
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.spec\.template\.spec\.restartPolicy
 
+
+
 This option has no description\.
 
 
@@ -2136,6 +2319,90 @@ unspecified value
 
 *Declared by:*
  - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+submodule
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall\.base-package
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Example:*
+` <derivation hello-2.12.1> `
+
+*Declared by:*
+ - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall\.overridden-package
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+applied ` base-package ` with ` pipe `
+
+*Declared by:*
+ - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall\.pipe
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of function that evaluates to a(n) package
+
+
+
+*Default:*
+` [ ] `
+
+*Declared by:*
+ - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2632,7 +2899,7 @@ string
 
 
 *Default:*
-` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240320001618.0c8c0f5-dirty" `
+` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240404221238.7884533" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -2692,6 +2959,90 @@ unspecified value
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.enablelogging
+
+
+
+Whether to enable logging\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.libaudit
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` <derivation libaudit.so> `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.libraries
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of path
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.ldFallback\.path
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+path
+
+
+
+*Default:*
+` "/nix/store/njrpq2dgf0dsgl5vw88y45dfs8qpi5vp-ld-fallback-path/lib" `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.mkPython
 
 
@@ -2738,15 +3089,45 @@ string
 
 
 
-This option has no description\.
+The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variable\.
+
+This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
+
+Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
 *Type:*
 list of path
 
+
+
+*Default:*
+` [ ] `
+
 *Declared by:*
  - [nix-ld\.nix, via option flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.poetry2nix\.args
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of anything
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -2777,7 +3158,7 @@ pkgs.appendOverlays [
 ```
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -2820,7 +3201,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -2838,10 +3219,52 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.5> `
+` <derivation python3-3.11.8> `
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.poetryApplication
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` mkPoetryApplication poetryApplicationArgs `
+
+*Declared by:*
+ - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.poetryApplicationArgs
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of anything
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
 
 
 
@@ -2859,7 +3282,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.11.5-env> `
+` <derivation python3-3.11.8-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -3052,7 +3475,7 @@ attribute set of (submodule)
 
 
 
-## perSystem\.ml-ops\.jobs\.\<name>\.volumeMounts\.emptyDir\.\<name>\.kubernetesVolume
+## perSystem\.ml-ops\.jobs\.\<name>\.volumeMounts\.emptyDir\.\<name>\.kubernetesInlineVolume
 
 
 
@@ -3559,6 +3982,90 @@ attribute set of string
 
 
 
+## perSystem\.ml-ops\.runtime\.ldFallback\.enablelogging
+
+
+
+Whether to enable logging\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.runtime\.ldFallback\.libaudit
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` <derivation libaudit.so> `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.runtime\.ldFallback\.libraries
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of path
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.runtime\.ldFallback\.path
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+path
+
+
+
+*Default:*
+` "/nix/store/njrpq2dgf0dsgl5vw88y45dfs8qpi5vp-ld-fallback-path/lib" `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
 ## perSystem\.ml-ops\.runtime\.mkPython
 
 
@@ -3605,15 +4112,45 @@ string
 
 
 
-This option has no description\.
+The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variable\.
+
+This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
+
+Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
 *Type:*
 list of path
 
+
+
+*Default:*
+` [ ] `
+
 *Declared by:*
  - [nix-ld\.nix, via option flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
+
+
+
+## perSystem\.ml-ops\.runtime\.poetry2nix\.args
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of anything
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -3644,7 +4181,7 @@ pkgs.appendOverlays [
 ```
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -3687,7 +4224,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -3705,10 +4242,10 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.5> `
+` <derivation python3-3.11.8> `
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -3734,8 +4271,6 @@ package
 
 
 ## perSystem\.ml-ops\.runtime\.pythonEnvArgs
-
-
 
 This option has no description\.
 
@@ -4227,6 +4762,8 @@ submodule
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.aks
 
+
+
 The Azure Kubernetes Service (AKS) options\.
 
 When ` aks ` is ` null `, the AKS options are disabled\.
@@ -4346,6 +4883,27 @@ unspecified value
 
 *Default:*
 ` launchers.<name>.environmentVariables `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.containerManifest\.args
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+null or (list of string)
+
+
+
+*Default:*
+` null `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -4473,6 +5031,27 @@ module
 
 *Default:*
 ` { } `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.devenvContainerName
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+` "processes" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -4863,6 +5442,27 @@ unspecified value
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.deployment\.spec\.template\.spec\.containers\.\<name>\.args
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+null or (list of string)
+
+
+
+*Default:*
+` null `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.deployment\.spec\.template\.spec\.containers\.\<name>\.env
 
 
@@ -5048,7 +5648,7 @@ unspecified value
 *Default:*
 
 ```
-"${service.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.self.lastModifiedDate}-${flakeModule.self.shortRev or flakeModule.self.dirtyShortRev}"
+"${service.config._module.args.name}-${launcher.config._module.args.name}"
 
 ```
 
@@ -5096,6 +5696,90 @@ unspecified value
 
 *Declared by:*
  - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+submodule
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall\.base-package
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Example:*
+` <derivation hello-2.12.1> `
+
+*Declared by:*
+ - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall\.overridden-package
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+applied ` base-package ` with ` pipe `
+
+*Declared by:*
+ - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmUninstall\.pipe
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of function that evaluates to a(n) package
+
+
+
+*Default:*
+` [ ] `
+
+*Declared by:*
+ - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -5592,7 +6276,7 @@ string
 
 
 *Default:*
-` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240320001618.0c8c0f5-dirty" `
+` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240404221238.7884533" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -5628,6 +6312,88 @@ list of attribute set of anything
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.enablelogging
+
+Whether to enable logging\.
+
+
+
+*Type:*
+boolean
+
+
+
+*Default:*
+` false `
+
+
+
+*Example:*
+` true `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.libaudit
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` <derivation libaudit.so> `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.libraries
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of path
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.path
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+path
+
+
+
+*Default:*
+` "/nix/store/njrpq2dgf0dsgl5vw88y45dfs8qpi5vp-ld-fallback-path/lib" `
+
+*Declared by:*
+ - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -5677,15 +6443,45 @@ string
 
 
 
-This option has no description\.
+The list of paths to be added to the ` NIX_LD_LIBRARY_PATH ` environment variable\.
+
+This option should always be kept empty\. Set ` flakeModules.ldFallback.libraries ` instead when you want any non-empty library path\. See discussion at https://github\.com/NixOS/nixpkgs/pull/248547\#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project\.
+
+Note that ` nix-ld-rs ` is still a good idea for executing non-Nix binaries in the case of https://github\.com/nix-community/NixOS-WSL/issues/222\. When there are system level ` NIX_LD_LIBRARY_PATH ` set for ` nix-ld ` or ` nix-ld-rs `, this option should be kept as empty in order to disable the system level ` NIX_LD_LIBRARY_PATH `\.
 
 
 
 *Type:*
 list of path
 
+
+
+*Default:*
+` [ ] `
+
 *Declared by:*
  - [nix-ld\.nix, via option flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.poetry2nix\.args
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of anything
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -5716,7 +6512,7 @@ pkgs.appendOverlays [
 ```
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -5759,7 +6555,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -5777,10 +6573,52 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.5> `
+` <derivation python3-3.11.8> `
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.common](flake-modules/python-envs-poetry.nix)
+ - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.poetryApplication
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+package
+
+
+
+*Default:*
+` mkPoetryApplication poetryApplicationArgs `
+
+*Declared by:*
+ - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.poetryApplicationArgs
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+attribute set of anything
+
+
+
+*Default:*
+` { } `
+
+*Declared by:*
+ - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
 
 
 
@@ -5798,7 +6636,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.11.5-env> `
+` <derivation python3-3.11.8-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -5991,7 +6829,7 @@ attribute set of (submodule)
 
 
 
-## perSystem\.ml-ops\.services\.\<name>\.volumeMounts\.emptyDir\.\<name>\.kubernetesVolume
+## perSystem\.ml-ops\.services\.\<name>\.volumeMounts\.emptyDir\.\<name>\.kubernetesInlineVolume
 
 
 
