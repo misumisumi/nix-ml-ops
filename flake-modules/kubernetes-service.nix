@@ -120,7 +120,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
       };
 
       packages =
-        topLevel.config.flake.lib.findKubernetesPackages
+        flakeModule.config.flake.lib.findKubernetesPackages
           perSystem.config.ml-ops.services;
     });
   };

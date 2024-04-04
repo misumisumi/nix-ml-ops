@@ -51,17 +51,13 @@
   outputs = inputs:
     let
       bootstrap = inputs.flake-parts.lib.mkFlake { inherit inputs; moduleLocation = ./flake.nix; } ({ lib, ... }: {
-        imports = [
-          ./flake-modules/nix-ide.nix
-          ./flake-modules/devserver.nix
-          ./flake-modules/devcontainer-gcp-cli-tools.nix
-          ./flake-modules/devcontainer-azure-cli-tools.nix
-          ./flake-modules/nix-ld.nix
-          ./flake-modules/ld-fallback-manylinux.nix
-          ./flake-modules/options-document.nix
-          ./flake-modules/lib.nix
-        ];
-
+        imports = (lib.trivial.pipe ./flake-modules [
+          builtins.readDir
+          (lib.attrsets.filterAttrs (name: type: type == "regular" && lib.strings.hasSuffix ".nix" name))
+          builtins.attrNames
+          (builtins.map (name: ./flake-modules/${name}))
+        ]);
+        systems = import inputs.systems;
       });
     in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, ... }: {
@@ -74,13 +70,7 @@
         bootstrap.flakeModules.nixLd
         bootstrap.flakeModules.ldFallbackManylinux
         bootstrap.flakeModules.optionsDocument
-      ] ++
-      # import all nix files under ./flake-modules/
-      (lib.trivial.pipe ./flake-modules [
-        builtins.readDir
-        (lib.attrsets.filterAttrs (name: type: type == "regular" && lib.strings.hasSuffix ".nix" name))
-        builtins.attrNames
-        (builtins.map (name: ./flake-modules/${name}))
-      ]);
+      ];
+      flake = bootstrap;
     });
 }

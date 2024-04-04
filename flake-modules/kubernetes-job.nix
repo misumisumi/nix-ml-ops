@@ -5,7 +5,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
     ./nixpkgs.nix
     inputs.flake-parts.flakeModules.flakeModules
   ];
-  flake.flakeModules.kubernetesJob = {
+  flake.flakeModules.kubernetesJob = flakeModule: {
     imports = [
       topLevel.config.flake.flakeModules.jobs
       topLevel.config.flake.flakeModules.kubernetes
@@ -78,7 +78,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
       };
 
       packages =
-        topLevel.config.flake.lib.findKubernetesPackages
+        flakeModule.config.flake.lib.findKubernetesPackages
           perSystem.config.ml-ops.jobs;
 
     });
