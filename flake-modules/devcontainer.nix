@@ -44,6 +44,9 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                   use flake . ${
                     lib.escapeShellArgs devcontainer.config.nixDirenvFlakeFlags
                   }
+
+                  # TODO: change this to `dotenv_if_exists .env` once https://github.com/direnv/direnv/issues/1028 is fixed
+                  source_env_if_exists .envrc.private
                 '';
                 hook.mode = "copy";
                 engine = { data, output, ... }: pkgs.writeTextFile {
