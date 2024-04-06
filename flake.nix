@@ -5,7 +5,7 @@
       flake = false;
     };
     poetry2nix = {
-      url = "github:Atry/poetry2nix/vllm";
+      url = "github:Atry/poetry2nix/jupyter-existing-provisioner-vllm";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     conda-channels = {
