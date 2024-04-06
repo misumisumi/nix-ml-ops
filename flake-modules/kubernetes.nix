@@ -146,6 +146,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                               staticModules = [
                                 (container: {
                                   config._module.freeformType = lib.types.attrsOf lib.types.anything;
+                                  config.env =
+                                    lib.attrsets.mapAttrsToList
+                                      (name: value: {
+                                        inherit name;
+                                        # Escape '$' in value to avoid being expanded by Kubernetes.
+                                        # See https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#environment-variables
+                                        value = builtins.replaceStrings [ "$" ] [ "$$" ] value;
+                                      })
+                                      container.config._module.environmentVariables;
                                   options = {
                                     name = lib.mkOption {
                                       type = lib.types.str;
@@ -159,14 +168,8 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                       default = null;
                                     };
                                     env = lib.mkOption {
-                                      defaultText = lib.literalExpression ''
-                                        lib.attrsets.mapAttrsToList
-                                          lib.attrsets.nameValuePair
-                                          perSystem.ml-ops.services|jobs.<name>.launchers.<name>.kubernetes.containerManifest._module.environmentVariables
-                                      '';
-                                      default = lib.attrsets.mapAttrsToList
-                                        lib.attrsets.nameValuePair
-                                        container.config._module.environmentVariables;
+                                      type = lib.types.listOf lib.types.anything;
+                                      default = [ ];
                                     };
                                     volumeMounts = lib.mkOption {
                                       default = kubernetes.config.volumeMounts;
