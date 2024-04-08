@@ -48,11 +48,25 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                                 (containerName: container: container.manifest)
                                 kubernetes.config.containers;
                             options.job.spec.template.spec.containers = lib.mkOption {
-                              type = lib.types.attrsOf (lib.types.submoduleWith {
-                                modules = [
-                                  kubernetes.config.containerManifest
-                                ];
-                              });
+                              type = lib.types.coercedTo
+                                (lib.types.listOf lib.types.anything)
+                                (containerList:
+                                  lib.attrsets.zipAttrsWith (name: values: { imports = values; })
+                                    (builtins.map
+                                      (container: {
+                                        ${
+                                        if lib.isFunction container
+                                        then (container null).config.name or (container null).name
+                                        else container.config.name or container.name
+                                        } = container;
+                                      })
+                                      containerList)
+                                )
+                                (lib.types.attrsOf (lib.types.submoduleWith {
+                                  modules = [
+                                    kubernetes.config.containerManifest
+                                  ];
+                                }));
                               apply = lib.attrsets.mapAttrsToList (name: value:
                                 value // {
                                   inherit name;
