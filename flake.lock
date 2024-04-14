@@ -644,22 +644,6 @@
         "type": "indirect"
       }
     },
-    "poetry-add-requirements-txt": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1654077719,
-        "narHash": "sha256-BpryyfhKTNPDYIZXHTfHexVPZMhl76L81tsfOGvQKto=",
-        "owner": "tddschn",
-        "repo": "poetry-add-requirements.txt",
-        "rev": "710dde128b3746e7269e423f46f1e0e432c47043",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tddschn",
-        "repo": "poetry-add-requirements.txt",
-        "type": "github"
-      }
-    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": "flake-utils_9",
@@ -742,7 +726,6 @@
         "nixos-generators": "nixos-generators",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs_22_05": "nixpkgs_22_05",
-        "poetry-add-requirements-txt": "poetry-add-requirements-txt",
         "poetry2nix": "poetry2nix",
         "pypi-deps-db": "pypi-deps-db",
         "systems": "systems_6"

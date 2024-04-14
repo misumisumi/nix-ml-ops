@@ -13,7 +13,12 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
           options.poetry-add-requirements-txt = lib.mkOption {
             type = lib.types.package;
             default = devcontainer.config.poetry2nix.poetry2nixLib.mkPoetryApplication {
-              projectDir = inputs.poetry-add-requirements-txt;
+              projectDir = pkgs.fetchFromGitHub {
+                owner = "tddschn";
+                repo = "poetry-add-requirements.txt";
+                rev = "710dde128b3746e7269e423f46f1e0e432c47043";
+                hash = "sha256-BpryyfhKTNPDYIZXHTfHexVPZMhl76L81tsfOGvQKto=";
+              };
               preferWheels = true;
             };
           };

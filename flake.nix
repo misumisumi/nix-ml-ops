@@ -1,9 +1,5 @@
 {
   inputs = {
-    poetry-add-requirements-txt = {
-      url = "github:tddschn/poetry-add-requirements.txt";
-      flake = false;
-    };
     poetry2nix = {
       url = "github:Atry/poetry2nix/jupyter-existing-provisioner-vllm";
       inputs.nixpkgs.follows = "nixpkgs";
