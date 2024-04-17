@@ -19,15 +19,15 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
           '';
 
           type = lib.types.listOf lib.types.path;
-          default = [];
+          default = [ ];
 
         };
 
         config.environmentVariables = {
-          NIX_LD =
-            toString (pkgs.runCommand "ld.so" { } ''
-              ln -s "$(cat '${pkgs.stdenv.cc}/nix-support/dynamic-linker')" $out
-            '');
+          NIX_LD = "${pkgs.runCommand "ld.so" { } ''
+            mkdir -p "$out/lib"
+            ln -s "$(< ${pkgs.stdenv.cc}/nix-support/dynamic-linker)" "$out"/lib/ld.so
+          ''}/lib/ld.so";
           NIX_LD_LIBRARY_PATH = lib.makeLibraryPath common.config.nixLdLibraries;
         };
 
