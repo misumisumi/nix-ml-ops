@@ -48,6 +48,34 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             languages.python.enable = true;
             languages.python.poetry.enable = true;
 
+            pre-commit = {
+              hooks.amend-poetry-lock = {
+                enable = true;
+                stages = [ "post-merge" ];
+                entry = lib.getExe (pkgs.writeShellApplication {
+                  name = "amend-poetry-lock.sh";
+                  runtimeInputs = [
+                    pkgs.git
+                    pkgs.poetry
+                    pkgs.coreutils
+                  ];
+                  text = ''
+                    set -ex
+                    if ! git diff --exit-code HEAD^@ -- poetry.lock
+                    then
+                      poetry lock --no-update &&
+                      git add poetry.lock &&
+                      GITDIR="$(git rev-parse --git-dir)" &&
+                      mv "$GITDIR"/MERGE_HEAD "$GITDIR"/MERGE_HEAD.bak &&
+                      git commit --amend --no-edit --no-verify &&
+                      mv "$GITDIR"/MERGE_HEAD.bak "$GITDIR"/MERGE_HEAD
+                    fi
+                  '';
+                });
+                always_run = true;
+              };
+            };
+
             enterShell = ''
               git config --local --replace-all merge.theirs.driver "git merge-file --theirs --marker-size %L %A %O %B"
             '';

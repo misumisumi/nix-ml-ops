@@ -36,6 +36,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 ".devenv/"
                 ".envrc.private"
                 "result"
+                ".pre-commit-config.yaml"
               ];
               options.gitattributes = lib.mkOption {
                 type = lib.types.lines;

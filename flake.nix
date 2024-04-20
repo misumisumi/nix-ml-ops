@@ -21,11 +21,18 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.url = "github:nix-community/nixpkgs.lib";
     systems.url = "github:nix-systems/default";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     devenv = {
       # TODO: Switch to `github:cachix/devenv` when https://github.com/cachix/devenv/pull/718, https://github.com/cachix/devenv/pull/820, https://github.com/cachix/devenv/pull/872 and https://github.com/cachix/devenv/pull/873 get merged
       # url = "github:cachix/devenv";
       url = "github:Atry/devenv/nix-ml-ops";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.pre-commit-hooks.follows = "pre-commit-hooks";
     };
     mk-shell-bin = {
       url = "github:rrbutani/nix-mk-shell-bin";
