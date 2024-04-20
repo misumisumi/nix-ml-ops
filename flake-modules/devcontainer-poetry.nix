@@ -22,6 +22,11 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
               preferWheels = true;
             };
           };
+          config.gitattributes = ''
+            # Avoid merge conflicts in poetry.lock due to conflicting content-hash
+            # See https://github.com/python-poetry/poetry/issues/496
+            poetry.lock merge=theirs
+          '';
           config.devenvShellModule = {
             scripts.import-requirements-to-poetry.exec = ''
               if [ ! -f ./pyproject.toml ]
@@ -42,6 +47,10 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             '';
             languages.python.enable = true;
             languages.python.poetry.enable = true;
+
+            enterShell = ''
+              git config --local --replace-all merge.theirs.driver "git merge-file --theirs --marker-size %L %A %O %B"
+            '';
           };
         };
 
