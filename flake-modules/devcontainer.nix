@@ -28,6 +28,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 };
                 default = { };
               };
+              options.gitignore = lib.mkOption {
+                type = lib.types.listOf lib.types.str;
+              };
+              config.gitignore = [
+                ".direnv/"
+                ".devenv/"
+                ".envrc.private"
+                "result"
+              ];
               options.gitattributes = lib.mkOption {
                 type = lib.types.lines;
               };
@@ -104,6 +113,12 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 enterShell =
                   lib.mkMerge
                     ([
+                      ''
+                        ${pkgs.git-extras}/bin/git-ignore ${
+                          lib.escapeShellArgs devcontainer.config.gitignore
+                        }
+                      ''
+
                       (inputs.nixago.lib.${system}.makeAll (
                         lib.attrsets.mapAttrsToList
                           (output: request: {
