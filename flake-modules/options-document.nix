@@ -10,7 +10,10 @@ topLevel@{ inputs, lib, flake-parts-lib, ... }: {
     ];
     options.perSystem = flake-parts-lib.mkPerSystemOption (
       perSystem@{ pkgs, system, inputs', self', ... }:
-      {
+      rec {
+        devcontainer.nixago.copiedFiles = [
+          packages.options-document.name
+        ];
         packages = rec {
           copy-options-document-to-current-directory = (inputs.nixago.lib.${system}.make {
             output = options-document.name;
