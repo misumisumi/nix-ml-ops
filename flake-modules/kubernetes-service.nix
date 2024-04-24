@@ -31,7 +31,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                                 type = lib.types.nullOr (lib.types.submoduleWith {
                                   modules = [
                                     {
-                                      config._module.freeformType = lib.types.attrsOf (lib.types.attrsOf lib.types.anything);
+                                      config._module.freeformType = lib.types.attrsOf lib.types.anything;
                                       options = lib.attrsets.mapAttrsRecursive
                                         (path: value: lib.mkOption { default = value; })
                                         {
@@ -47,6 +47,10 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                                         defaultText = lib.literalExpression ''
                                           "''${service.config._module.args.name}-''${launcher.config._module.args.name}"
                                         '';
+                                      };
+                                      options.spec.ports = lib.mkOption {
+                                        type = lib.types.listOf lib.types.anything;
+                                        default = [ ];
                                       };
                                     }
                                   ];

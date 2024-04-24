@@ -46,10 +46,17 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
           };
           config.poetry2nix.args = {
             preferWheels = lib.mkDefault true;
-            projectDir = lib.mkDefault "${flakeModule.self}";
             python = common.config.poetry2nix.python;
             groups = [ ];
-          };
+          } // (lib.optionalAttrs (builtins.compareVersions builtins.nixVersion "2.20" == -1) {
+            # For nix 2.19 or earlier, use flake's self input to determine projectDir.
+            # This approach will lead to stack overflow in nix 2.20 or later due to https://github.com/NixOS/nix/issues/9672
+            projectDir = lib.mkDefault flakeModule.self.sourceInfo.outPath;
+          }) // (lib.optionalAttrs (builtins.isPath flakeModule.moduleLocation) {
+            # For nix 2.20 or later, use the `mkFlake`'s `moduleLocation` to determine projectDir if it is a path.
+            # Assuming `moduleLocation` is `./flake.nix`, then the Poetry project directory is set to `./flake.nix/..`, normalized to `./.`
+            projectDir = lib.mkDefault /${flakeModule.moduleLocation}/..;
+          });
         };
 
       });

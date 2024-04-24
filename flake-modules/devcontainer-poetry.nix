@@ -13,10 +13,20 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
           options.poetry-add-requirements-txt = lib.mkOption {
             type = lib.types.package;
             default = devcontainer.config.poetry2nix.poetry2nixLib.mkPoetryApplication {
-              projectDir = inputs.poetry-add-requirements-txt;
+              projectDir = pkgs.fetchFromGitHub {
+                owner = "tddschn";
+                repo = "poetry-add-requirements.txt";
+                rev = "710dde128b3746e7269e423f46f1e0e432c47043";
+                hash = "sha256-BpryyfhKTNPDYIZXHTfHexVPZMhl76L81tsfOGvQKto=";
+              };
               preferWheels = true;
             };
           };
+          config.gitattributes = ''
+            # Avoid merge conflicts in poetry.lock due to conflicting content-hash
+            # See https://github.com/python-poetry/poetry/issues/496
+            poetry.lock merge=theirs
+          '';
           config.devenvShellModule = {
             scripts.import-requirements-to-poetry.exec = ''
               if [ ! -f ./pyproject.toml ]
@@ -37,6 +47,38 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             '';
             languages.python.enable = true;
             languages.python.poetry.enable = true;
+
+            pre-commit = {
+              hooks.amend-poetry-lock = {
+                enable = true;
+                stages = [ "post-merge" ];
+                entry = lib.getExe (pkgs.writeShellApplication {
+                  name = "amend-poetry-lock.sh";
+                  runtimeInputs = [
+                    pkgs.git
+                    pkgs.poetry
+                    pkgs.coreutils
+                  ];
+                  text = ''
+                    set -ex
+                    if ! git diff --exit-code HEAD^@ -- poetry.lock
+                    then
+                      poetry lock --no-update &&
+                      git add poetry.lock &&
+                      GITDIR="$(git rev-parse --git-dir)" &&
+                      mv "$GITDIR"/MERGE_HEAD "$GITDIR"/MERGE_HEAD.bak &&
+                      git commit --amend --no-edit --no-verify &&
+                      mv "$GITDIR"/MERGE_HEAD.bak "$GITDIR"/MERGE_HEAD
+                    fi
+                  '';
+                });
+                always_run = true;
+              };
+            };
+
+            enterShell = ''
+              git config --local --replace-all merge.theirs.driver "git merge-file --theirs --marker-size %L %A %O %B"
+            '';
           };
         };
 
