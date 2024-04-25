@@ -672,16 +672,16 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1712902604,
-        "narHash": "sha256-rny1Xaupt7DbmUxE1C/wejP8m6xovxW1j4OZhRMRh98=",
+        "lastModified": 1714088893,
+        "narHash": "sha256-sMmaWk291qBrL9necTtMKIUEuQMUZT9/GMCq+3v+iXE=",
         "owner": "Atry",
         "repo": "poetry2nix",
-        "rev": "e7a79a169883200a7eb61f5e42a8cba4eb802aeb",
+        "rev": "5938adbc89bf3ed11d076904ffcb319b2cfe8b20",
         "type": "github"
       },
       "original": {
         "owner": "Atry",
-        "ref": "jupyter-existing-provisioner-vllm",
+        "ref": "jupyter-existing-provisioner-vllm-deepspeed",
         "repo": "poetry2nix",
         "type": "github"
       }
