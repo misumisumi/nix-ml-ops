@@ -1,7 +1,7 @@
 {
   inputs = {
     poetry2nix = {
-      url = "github:Atry/poetry2nix/jupyter-existing-provisioner-vllm-deepspeed";
+      url = "github:Atry/poetry2nix/vllm-0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     conda-channels = {
