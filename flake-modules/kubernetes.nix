@@ -385,14 +385,20 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   config.base-package = pkgs.writeShellScriptBin
                                     "${runtime.config._module.args.name}-helm-upgrade.sh"
 
-                                    (lib.escapeShellArgs [
-                                      "${pkgs.kubernetes-helm}/bin/helm"
-                                      "upgrade"
-                                      "--install"
-                                      "--force"
-                                      kubernetes.config.helmReleaseName
-                                      kubernetes.config.helm-chart
-                                    ]);
+                                    ''
+                                      ${
+                                        (lib.escapeShellArg (lib.getExe kubernetes.config.pushImage.overridden-package))
+                                      } && ${
+                                        (lib.escapeShellArgs [
+                                          (lib.getExe pkgs.kubernetes-helm)
+                                          "upgrade"
+                                          "--install"
+                                          "--force"
+                                          kubernetes.config.helmReleaseName
+                                          kubernetes.config.helm-chart
+                                        ])
+                                      }
+                                    '';
                                 }
                               ];
                             };
