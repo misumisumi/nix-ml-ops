@@ -114,11 +114,11 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 enterShell =
                   lib.mkMerge
                     ([
-                      ''
-                        ${pkgs.git-extras}/bin/git-ignore ${
-                          lib.escapeShellArgs devcontainer.config.gitignore
-                        }
-                      ''
+                      (lib.escapeShellArgs (
+                        [
+                          (lib.getExe' pkgs.git-extras "git-ignore")
+                        ] ++ devcontainer.config.gitignore
+                      ))
 
                       (inputs.nixago.lib.${system}.makeAll (
                         lib.attrsets.mapAttrsToList

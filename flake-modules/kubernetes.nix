@@ -219,7 +219,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                       ''
                                         read -a skopeoCopyArgsArray <<< "$SKOPEO_ARGS"
                                         ${lib.escapeShellArgs [
-                                          "${perSystem.config.packages.skopeo-nix2container}/bin/skopeo"
+                                          (lib.getExe perSystem.config.packages.skopeo-nix2container)
                                           "--insecure-policy"
                                           "copy"
                                           "--image-parallel-copies"
@@ -416,7 +416,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                       # We want to delete the resources of the helm release while keep the verion history
                                       # `helm uninstall --keep-history` is supposed to do this, but it's broken due to https://github.com/helm/helm/pull/11569
                                       # As a workaround, we upgrade the helm release to an empty chart to delete the resources
-                                      "${pkgs.kubernetes-helm}/bin/helm"
+                                      (lib.getExe pkgs.kubernetes-helm)
                                       "upgrade"
                                       "--atomic"
                                       "--install"
@@ -447,7 +447,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   config.base-package = pkgs.writeShellScriptBin
                                     "${runtime.config._module.args.name}-helm-delete.sh"
                                     (lib.escapeShellArgs [
-                                      "${pkgs.kubernetes-helm}/bin/helm"
+                                      (lib.getExe pkgs.kubernetes-helm)
                                       "delete"
                                       "--cascade"
                                       "foreground"

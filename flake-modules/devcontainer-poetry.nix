@@ -37,11 +37,22 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
               then
                 if [ -f ./requirements.txt ]
                 then
-                  ${devcontainer.config.poetry-add-requirements-txt}/bin/poeareq ./requirements.txt
+                  ${
+                    lib.escapeShellArgs [
+                      (lib.getExe' devcontainer.config.poetry-add-requirements-txt "poeareq")
+                      "./requirements.txt"
+                    ]
+                  }
                 fi
                 if [ -f ./requirements-dev.txt ]
                 then
-                  ${devcontainer.config.poetry-add-requirements-txt}/bin/poeareq -D ./requirements-dev.txt
+                  ${
+                    lib.escapeShellArgs [
+                      (lib.getExe' devcontainer.config.poetry-add-requirements-txt "poeareq")
+                      "-D"
+                      "./requirements-dev.txt"
+                    ]
+                  }
                 fi
               fi
             '';
