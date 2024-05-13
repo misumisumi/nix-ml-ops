@@ -18,8 +18,17 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             ({ config, ... }: {
               options.version = lib.mkOption {
                 type = lib.types.str;
-                defaultText = lib.literalMD "1.0.0+<lastModifiedDate>.<hash>";
-                default = "1.0.0+${flakeModule.self.lastModifiedDate}.${flakeModule.self.shortRev or flakeModule.self.dirtyShortRev}";
+                defaultText = lib.literalMD "1.0.0+<lastModifiedDate>.<git-revision>.<narHash>";
+                default = "1.0.0+${
+                  flakeModule.self.lastModifiedDate
+                }.${
+                  flakeModule.self.shortRev or flakeModule.self.dirtyShortRev
+                }.${
+                  builtins.convertHash {
+                    hash = flakeModule.self.narHash;
+                    toHashFormat = "nix32";
+                  }
+                }";
                 description = lib.mdDoc ''
                   Version of job or service.
                   This will be used as the image tag.
