@@ -24,10 +24,12 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
                 }.${
                   flakeModule.self.shortRev or flakeModule.self.dirtyShortRev
                 }.${
-                  builtins.convertHash {
-                    hash = flakeModule.self.narHash;
-                    toHashFormat = "nix32";
-                  }
+                  # Don't use `convertHash` because it is not available in the latest stable nix version 2.18
+                  # builtins.convertHash {
+                  #   hash = flakeModule.self.narHash;
+                  #   toHashFormat = "nix32";
+                  # }
+                  lib.strings.sanitizeDerivationName flakeModule.self.narHash
                 }";
                 description = lib.mdDoc ''
                   Version of job or service.
