@@ -29,7 +29,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
                   #   hash = flakeModule.self.narHash;
                   #   toHashFormat = "nix32";
                   # }
-                  lib.strings.sanitizeDerivationName flakeModule.self.narHash
+                  lib.toLower (builtins.replaceStrings ["sha256" "=" "+" "/"] ["" "" "-" "_"] flakeModule.self.narHash)
                 }";
                 description = lib.mdDoc ''
                   Version of job or service.
