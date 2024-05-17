@@ -29,7 +29,9 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
                   #   hash = flakeModule.self.narHash;
                   #   toHashFormat = "nix32";
                   # }
-                  lib.toLower (builtins.replaceStrings ["sha256" "=" "+" "/"] ["" "" "-" "_"] flakeModule.self.narHash)
+
+                  # semver only allows alphanumeric characters and hyphens
+                  builtins.replaceStrings ["=" "+" "/"] ["" "-" "-"] flakeModule.self.narHash
                 }";
                 description = lib.mdDoc ''
                   Version of job or service.
