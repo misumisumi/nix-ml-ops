@@ -1,7 +1,7 @@
 {
   inputs = {
     poetry2nix = {
-      url = "github:Atry/poetry2nix/patch-1";
+      url = "github:Atry/poetry2nix/vllm-0.4.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     conda-channels = {
