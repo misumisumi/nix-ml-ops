@@ -413,25 +413,12 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   config.base-package = pkgs.writeShellScriptBin
                                     "${runtime.config._module.args.name}-helm-uninstall.sh"
                                     (lib.escapeShellArgs [
-                                      # We want to delete the resources of the helm release while keep the verion history
-                                      # `helm uninstall --keep-history` is supposed to do this, but it's broken due to https://github.com/helm/helm/pull/11569
-                                      # As a workaround, we upgrade the helm release to an empty chart to delete the resources
                                       (lib.getExe pkgs.kubernetes-helm)
-                                      "upgrade"
-                                      "--atomic"
-                                      "--install"
-                                      "--force"
+                                      "uninstall"
+                                      "--keep-history"
+                                      "--cascade"
+                                      "foreground"
                                       kubernetes.config.helmReleaseName
-                                      (pkgs.linkFarm "empty-helm-chart" [
-                                        rec {
-                                          name = "Chart.yaml";
-                                          path = pkgs.writers.writeYAML name {
-                                            apiVersion = "v2";
-                                            name = "empty";
-                                            version = "1.0.0";
-                                          };
-                                        }
-                                      ])
                                     ]);
                                 }
                               ];
