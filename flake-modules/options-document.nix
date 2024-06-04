@@ -11,7 +11,7 @@ topLevel@{ inputs, lib, flake-parts-lib, ... }: {
     options.perSystem = flake-parts-lib.mkPerSystemOption (
       perSystem@{ pkgs, system, inputs', self', ... }:
       rec {
-        devcontainer.nixago.copiedFiles = [
+        ml-ops.devcontainer.nixago.copiedFiles = [
           packages.options-document.name
         ];
         packages = rec {
