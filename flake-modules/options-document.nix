@@ -10,18 +10,7 @@ topLevel@{ inputs, lib, flake-parts-lib, ... }: {
     ];
     options.perSystem = flake-parts-lib.mkPerSystemOption (
       perSystem@{ pkgs, system, inputs', self', ... }:
-      rec {
-        ml-ops.devcontainer.nixago.copiedFiles = [
-          packages.options-document.name
-        ];
-        packages = rec {
-          copy-options-document-to-current-directory = (inputs.nixago.lib.${system}.make {
-            output = options-document.name;
-            data = options-document;
-            engine = { data, ... }: data;
-            hook.mode = "copy";
-          }).install;
-
+      let 
           options-document = (pkgs.nixosOptionsDoc {
             options = (
               inputs.flake-parts.lib.evalFlakeModule
@@ -66,6 +55,19 @@ topLevel@{ inputs, lib, flake-parts-lib, ... }: {
               visible = declarations != [ ];
             };
           }).optionsCommonMark;
+      in 
+      {
+        ml-ops.devcontainer.nixago = {
+          copiedFiles = [
+            options-document.name
+          ];
+          requests.${options-document.name} = {
+            data = options-document;
+            engine = { data, ... }: data;
+          };
+        };
+        packages = {
+          inherit options-document;
         };
       }
     );
