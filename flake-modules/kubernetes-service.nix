@@ -38,15 +38,21 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                                           apiVersion = "v1";
                                           kind = "Service";
                                           spec.selector."app.kubernetes.io/name" = "${service.config._module.args.name}-${launcher.config._module.args.name}";
+                                          spec.selector."app.kubernetes.io/namespace" = kubernetes.config.namespace;
                                           spec.type = "LoadBalancer";
                                         };
                                     }
                                     {
-                                      options.metadata.name = lib.mkOption {
-                                        default = "${service.config._module.args.name}-${launcher.config._module.args.name}";
-                                        defaultText = lib.literalExpression ''
-                                          "''${service.config._module.args.name}-''${launcher.config._module.args.name}"
-                                        '';
+                                      options.metadata = {
+                                        name = lib.mkOption {
+                                          default = "${service.config._module.args.name}-${launcher.config._module.args.name}";
+                                          defaultText = lib.literalExpression ''
+                                            "''${service.config._module.args.name}-''${launcher.config._module.args.name}"
+                                          '';
+                                        };
+                                        namespace = lib.mkOption {
+                                          default = kubernetes.config.namespace;
+                                        };
                                       };
                                       options.spec.ports = lib.mkOption {
                                         type = lib.types.listOf lib.types.anything;
@@ -68,16 +74,24 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                                           kind = "Deployment";
                                           spec.selector.matchLabels."app.kubernetes.io/name" =
                                             "${service.config._module.args.name}-${launcher.config._module.args.name}";
+                                          spec.selector.matchLabels."app.kubernetes.io/namespace" =
+                                            kubernetes.config.namespace;
                                           spec.template.metadata.labels."app.kubernetes.io/name" = "${service.config._module.args.name}-${launcher.config._module.args.name}";
+                                          spec.template.metadata.labels."app.kubernetes.io/namespace" = kubernetes.config.namespace;
                                           spec.template.spec.volumes = kubernetes.config.volumes;
                                         };
                                     }
                                     {
-                                      options.metadata.name = lib.mkOption {
-                                        default = "${service.config._module.args.name}-${launcher.config._module.args.name}";
-                                        defaultText = lib.literalExpression ''
-                                          "''${service.config._module.args.name}-''${launcher.config._module.args.name}"
-                                        '';
+                                      options.metadata = {
+                                        name = lib.mkOption {
+                                          default = "${service.config._module.args.name}-${launcher.config._module.args.name}";
+                                          defaultText = lib.literalExpression ''
+                                            "''${service.config._module.args.name}-''${launcher.config._module.args.name}"
+                                          '';
+                                        };
+                                        namespace = lib.mkOption {
+                                          default = kubernetes.config.namespace;
+                                        };
                                       };
 
                                       config.spec.template.spec.containers =
@@ -116,8 +130,6 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                                 };
                               };
                             };
-
-
                         }
                       ];
                     };

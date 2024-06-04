@@ -43,6 +43,7 @@
         ml-ops.common.environmentVariables.MY_VAR = "Hello, World!";
         ml-ops.devcontainer.environmentVariables.MY_VAR_2 = "Hello, Preemo!";
         ml-ops.services.my-service.environmentVariables.MY_VAR_4 = "Hello, Inference!";
+        ml-ops.services.my-service.launchers.my-launcher.kubernetes.namespace = "test";
         ml-ops.services.my-service.launchers.my-launcher.kubernetes.imageRegistry = {
           host = "us-central1-docker.pkg.dev";
           path = "my-workspace/my-image";

@@ -82,10 +82,10 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                               }";
                       in
                       {
-                        # TODO: support namespace
-                        # namespace = lib.mkOption {
-                        #   default = "default";
-                        # };}
+                        options.namespace = lib.mkOption {
+                          type = lib.types.str;
+                          default = "default";
+                        };
                         options.imageRegistry.host = lib.mkOption {
                           type = lib.types.str;
                           default = "registry.hub.docker.com";
@@ -271,9 +271,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                     kind = lib.mkOption {
                                       default = "PersistentVolume";
                                     };
-                                    metadata.name = lib.mkOption {
-                                      type = lib.types.str;
+                                    metadata = {
+                                      name = lib.mkOption {
+                                        type = lib.types.str;
+                                      };
+                                      namespace = lib.mkOption {
+                                        type = lib.types.str;
+                                      };
                                     };
+                                    
                                     spec = lib.mkOption {
                                       type = lib.types.attrsOf lib.types.anything;
                                     };
@@ -292,7 +298,10 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   accessModes = [ "ReadWriteMany" ];
                                   capacity.storage = "1000Ti";
                                 };
-                                metadata.name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-volume";
+                                metadata = {
+                                  name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-volume";
+                                  namespace = kubernetes.config.namespace;
+                                };
                               };
                             })
                             (lib.attrsets.mergeAttrsList (builtins.attrValues runtime.config.volumeMounts or { }));
@@ -309,9 +318,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                     kind = lib.mkOption {
                                       default = "PersistentVolumeClaim";
                                     };
-                                    metadata.name = lib.mkOption {
-                                      type = lib.types.str;
+                                    metadata = {
+                                      name = lib.mkOption {
+                                        type = lib.types.str;
+                                      };
+                                      namespace = lib.mkOption {
+                                        type = lib.types.str;
+                                      };
                                     };
+                              
                                     spec.volumeName = lib.mkOption {
                                       type = lib.types.str;
                                     };
@@ -335,7 +350,10 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                               "${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-claim" = {
                                 spec.volumeName = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-volume";
                                 spec.storageClassName = protocolConfig.kubernetesVolume.storageClassName or "";
-                                metadata.name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-claim";
+                                metadata = {
+                                  name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-claim";
+                                  namespace = kubernetes.config.namespace;
+                                };
                               };
                             })
                             (lib.attrsets.mergeAttrsList (builtins.attrValues runtime.config.volumeMounts or { }));
