@@ -188,14 +188,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                             type = lib.types.str;
                             default =
                               "${
-                                    hostPath
-                                  }/${
-                                    runtime.config._module.args.name
-                                  }-${
-                                    launcher.config._module.args.name
-                                  }:${
-                                    builtins.replaceStrings ["+"] ["_"] runtime.config.version
-                                  }";
+                                hostPath
+                              }/${
+                                runtime.config._module.args.name
+                              }-${
+                                launcher.config._module.args.name
+                              }:${
+                                builtins.replaceStrings ["+"] ["_"] runtime.config.version
+                              }";
+                            defaultText = "registry.hub.docker.com/‹job-or-service-name›-‹launcher-name›:‹version›.‹git-rivision›.‹narHash›";
                           };
                         options.devenvContainerName = lib.mkOption
                           {

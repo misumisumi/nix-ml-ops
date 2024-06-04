@@ -3030,7 +3030,7 @@ string
 
 
 *Default:*
-` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240604211625.6c13c14-dirty.sha256-28Jdhi4-sTS5r--Kz4wgr6Sjug5LDVr2SxjY-7ccCis" `
+` "registry.hub.docker.com/‹job-or-service-name›-‹launcher-name›:‹version›.‹git-rivision›.‹narHash›" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -6572,7 +6572,7 @@ string
 
 
 *Default:*
-` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240604211625.6c13c14-dirty.sha256-28Jdhi4-sTS5r--Kz4wgr6Sjug5LDVr2SxjY-7ccCis" `
+` "registry.hub.docker.com/‹job-or-service-name›-‹launcher-name›:‹version›.‹git-rivision›.‹narHash›" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
