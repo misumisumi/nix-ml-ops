@@ -73,9 +73,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                     source_url "https://raw.githubusercontent.com/nix-community/nix-direnv/2.3.0/direnvrc" "sha256-Dmd+j63L84wuzgyjITIfSxSD57Tx7v51DMxVZOsiUD8="
                   fi
 
-                  use flake . ${
-                    lib.escapeShellArgs devcontainer.config.nixDirenvFlakeFlags
-                  }
+                  use flake . ${devcontainer.config.rawNixDirenvFlakeFlags}
 
                   # TODO: change this to `dotenv_if_exists .env` once https://github.com/direnv/direnv/issues/1028 is fixed
                   source_env_if_exists .envrc.private
@@ -85,10 +83,13 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                   text = data;
                 };
               };
-              options.nixDirenvFlakeFlags = lib.mkOption
-                {
-                  type = lib.types.listOf lib.types.str;
-                };
+              options.rawNixDirenvFlakeFlags = lib.mkOption {
+                type = lib.types.separatedString " ";
+                default = lib.escapeShellArgs devcontainer.config.nixDirenvFlakeFlags;
+              };
+              options.nixDirenvFlakeFlags = lib.mkOption {
+                type = lib.types.listOf lib.types.str;
+              };
               config.nixDirenvFlakeFlags = [
                 # Disable Nix's eval-cache so that we can always see error messages if any.
                 "--no-eval-cache"
@@ -96,10 +97,9 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 # Environment variables are cached by direnv, so we don't need Nix's eval-cache.
                 "--show-trace"
               ];
-              options.mountVolumeWithSudo = lib.mkOption
-                {
-                  default = true;
-                };
+              options.mountVolumeWithSudo = lib.mkOption {
+                default = true;
+              };
               config.devenvShellModule = {
                 name = "devcontainer";
 
