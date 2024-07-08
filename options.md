@@ -121,6 +121,7 @@ module
  - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
  - [devenv-python-with-libstdc++\.nix, via option flake\.flakeModules\.devenvPythonWithLibstdcxx](flake-modules/devenv-python-with-libstdc++.nix)
  - [devcontainer-poetry\.nix, via option flake\.flakeModules\.devcontainerPoetry](flake-modules/devcontainer-poetry.nix)
+ - [devcontainer-nix\.nix, via option flake\.flakeModules\.devcontainerNix](flake-modules/devcontainer-nix.nix)
  - [devcontainer-gcp-cli-tools\.nix, via option flake\.flakeModules\.devcontainerGcpCliTools](flake-modules/devcontainer-gcp-cli-tools.nix)
  - [devcontainer-azure-cli-tools\.nix, via option flake\.flakeModules\.devcontainerAzureCliTools](flake-modules/devcontainer-azure-cli-tools.nix)
  - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
@@ -321,7 +322,7 @@ string
 
 
 *Default:*
-1\.0\.0+\<lastModifiedDate>\.\<hash>
+1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
  - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
@@ -454,6 +455,38 @@ lazy attribute set of string
 
 
 
+## perSystem\.ml-ops\.devcontainer\.gitattributes
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+strings concatenated with “\\n”
+
+*Declared by:*
+ - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.gitignore
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of string
+
+*Declared by:*
+ - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+
+
+
 ## perSystem\.ml-ops\.devcontainer\.ldFallback\.enablelogging
 
 
@@ -531,7 +564,7 @@ path
 
 
 *Default:*
-` "/nix/store/njrpq2dgf0dsgl5vw88y45dfs8qpi5vp-ld-fallback-path/lib" `
+` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -618,6 +651,22 @@ list of path
 
 *Declared by:*
  - [nix-ld\.nix, via option flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.nixago\.copiedFiles
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of string
+
+*Declared by:*
+ - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -751,7 +800,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.8> `
+` <derivation python3-3.11.9> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -894,7 +943,7 @@ string
 
 
 *Default:*
-1\.0\.0+\<lastModifiedDate>\.\<hash>
+1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
  - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
@@ -1668,18 +1717,12 @@ This option has no description\.
 
 
 *Type:*
-unspecified value
+list of anything
 
 
 
 *Default:*
-
-```
-lib.attrsets.mapAttrsToList
-  lib.attrsets.nameValuePair
-  perSystem.ml-ops.services|jobs.<name>.launchers.<name>.kubernetes.containerManifest._module.environmentVariables
-
-```
+` [ ] `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -2052,8 +2095,6 @@ unspecified value
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.kind
 
-
-
 This option has no description\.
 
 
@@ -2096,6 +2137,27 @@ unspecified value
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.metadata\.namespace
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+unspecified value
+
+
+
+*Default:*
+` "default" `
+
+*Declared by:*
+ - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.spec\.backoffLimit
 
 
@@ -2119,6 +2181,8 @@ unspecified value
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.spec\.template\.metadata\.labels\."app\.kubernetes\.io/name"
 
+
+
 This option has no description\.
 
 
@@ -2136,6 +2200,27 @@ unspecified value
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.spec\.template\.metadata\.labels\."app\.kubernetes\.io/namespace"
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+unspecified value
+
+
+
+*Default:*
+` "default" `
+
+*Declared by:*
+ - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.spec\.template\.spec\.containers
 
 
@@ -2145,7 +2230,7 @@ This option has no description\.
 
 
 *Type:*
-attribute set of (attribute set of anything)
+(attribute set of (attribute set of anything)) or (list of anything) convertible to it
 
 *Declared by:*
  - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
@@ -2203,18 +2288,12 @@ This option has no description\.
 
 
 *Type:*
-unspecified value
+list of anything
 
 
 
 *Default:*
-
-```
-lib.attrsets.mapAttrsToList
-  lib.attrsets.nameValuePair
-  perSystem.ml-ops.services|jobs.<name>.launchers.<name>.kubernetes.containerManifest._module.environmentVariables
-
-```
+` [ ] `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -2531,6 +2610,27 @@ null or string
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.namespace
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+` "default" `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests
 
 
@@ -2590,6 +2690,22 @@ unspecified value
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.metadata\.name
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.metadata\.namespace
 
 
 
@@ -2763,6 +2879,22 @@ string
 
 
 
+## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeManifests\.\<name>\.metadata\.namespace
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeManifests\.\<name>\.spec
 
 
@@ -2898,7 +3030,7 @@ string
 
 
 *Default:*
-` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240404222330.86a09d8" `
+` "registry.hub.docker.com/‹job-or-service-name›-‹launcher-name›:‹version›.‹git-rivision›.‹narHash›" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -3035,7 +3167,7 @@ path
 
 
 *Default:*
-` "/nix/store/njrpq2dgf0dsgl5vw88y45dfs8qpi5vp-ld-fallback-path/lib" `
+` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -3218,7 +3350,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.8> `
+` <derivation python3-3.11.9> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -3281,7 +3413,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.11.8-env> `
+` <derivation python3-3.11.9-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -3445,7 +3577,7 @@ string
 
 
 *Default:*
-1\.0\.0+\<lastModifiedDate>\.\<hash>
+1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
  - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
@@ -4058,7 +4190,7 @@ path
 
 
 *Default:*
-` "/nix/store/njrpq2dgf0dsgl5vw88y45dfs8qpi5vp-ld-fallback-path/lib" `
+` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -4066,8 +4198,6 @@ path
 
 
 ## perSystem\.ml-ops\.runtime\.mkPython
-
-
 
 This option has no description\.
 
@@ -4241,7 +4371,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.8> `
+` <derivation python3-3.11.9> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -4270,6 +4400,8 @@ package
 
 
 ## perSystem\.ml-ops\.runtime\.pythonEnvArgs
+
+
 
 This option has no description\.
 
@@ -4382,7 +4514,7 @@ string
 
 
 *Default:*
-1\.0\.0+\<lastModifiedDate>\.\<hash>
+1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
  - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
@@ -4918,18 +5050,12 @@ This option has no description\.
 
 
 *Type:*
-unspecified value
+list of anything
 
 
 
 *Default:*
-
-```
-lib.attrsets.mapAttrsToList
-  lib.attrsets.nameValuePair
-  perSystem.ml-ops.services|jobs.<name>.launchers.<name>.kubernetes.containerManifest._module.environmentVariables
-
-```
+` [ ] `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -5362,6 +5488,27 @@ unspecified value
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.deployment\.metadata\.namespace
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+unspecified value
+
+
+
+*Default:*
+` "default" `
+
+*Declared by:*
+ - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.deployment\.spec\.selector\.matchLabels\."app\.kubernetes\.io/name"
 
 
@@ -5377,6 +5524,27 @@ unspecified value
 
 *Default:*
 ` "‹name›-‹name›" `
+
+*Declared by:*
+ - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.deployment\.spec\.selector\.matchLabels\."app\.kubernetes\.io/namespace"
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+unspecified value
+
+
+
+*Default:*
+` "default" `
 
 *Declared by:*
  - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
@@ -5404,6 +5572,27 @@ unspecified value
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.deployment\.spec\.template\.metadata\.labels\."app\.kubernetes\.io/namespace"
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+unspecified value
+
+
+
+*Default:*
+` "default" `
+
+*Declared by:*
+ - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.deployment\.spec\.template\.spec\.containers
 
 
@@ -5413,7 +5602,7 @@ This option has no description\.
 
 
 *Type:*
-attribute set of (attribute set of anything)
+(attribute set of (attribute set of anything)) or (list of anything) convertible to it
 
 *Declared by:*
  - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
@@ -5471,18 +5660,12 @@ This option has no description\.
 
 
 *Type:*
-unspecified value
+list of anything
 
 
 
 *Default:*
-
-```
-lib.attrsets.mapAttrsToList
-  lib.attrsets.nameValuePair
-  perSystem.ml-ops.services|jobs.<name>.launchers.<name>.kubernetes.containerManifest._module.environmentVariables
-
-```
+` [ ] `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -5577,7 +5760,7 @@ This option has no description\.
 
 
 *Type:*
-null or (attribute set of attribute set of anything)
+null or (attribute set of anything)
 
 
 
@@ -5656,6 +5839,48 @@ unspecified value
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.service\.metadata\.namespace
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+unspecified value
+
+
+
+*Default:*
+` "default" `
+
+*Declared by:*
+ - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.service\.spec\.ports
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of anything
+
+
+
+*Default:*
+` [ ] `
+
+*Declared by:*
+ - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.service\.spec\.selector\."app\.kubernetes\.io/name"
 
 
@@ -5671,6 +5896,27 @@ unspecified value
 
 *Default:*
 ` "‹name›-‹name›" `
+
+*Declared by:*
+ - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.service\.spec\.selector\."app\.kubernetes\.io/namespace"
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+unspecified value
+
+
+
+*Default:*
+` "default" `
 
 *Declared by:*
  - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
@@ -5908,6 +6154,27 @@ null or string
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.namespace
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+
+
+*Default:*
+` "default" `
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests
 
 
@@ -5982,6 +6249,22 @@ string
 
 
 
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.metadata\.namespace
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.spec\.accessModes
 
 
@@ -6009,8 +6292,6 @@ unspecified value
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.spec\.resources\.requests\.storage
-
-
 
 This option has no description\.
 
@@ -6125,6 +6406,22 @@ unspecified value
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeManifests\.\<name>\.metadata\.name
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+string
+
+*Declared by:*
+ - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+
+
+
+## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeManifests\.\<name>\.metadata\.namespace
 
 
 
@@ -6275,7 +6572,7 @@ string
 
 
 *Default:*
-` "registry.hub.docker.com/‹name›-‹name›:1.0.0_20240404222330.86a09d8" `
+` "registry.hub.docker.com/‹job-or-service-name›-‹launcher-name›:‹version›.‹git-rivision›.‹narHash›" `
 
 *Declared by:*
  - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
@@ -6315,6 +6612,8 @@ list of attribute set of anything
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.ldFallback\.enablelogging
+
+
 
 Whether to enable logging\.
 
@@ -6389,7 +6688,7 @@ path
 
 
 *Default:*
-` "/nix/store/njrpq2dgf0dsgl5vw88y45dfs8qpi5vp-ld-fallback-path/lib" `
+` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
 
 *Declared by:*
  - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
@@ -6572,7 +6871,7 @@ unspecified value
 
 
 *Default:*
-` <derivation python3-3.11.8> `
+` <derivation python3-3.11.9> `
 
 *Declared by:*
  - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
@@ -6635,7 +6934,7 @@ package
 
 
 *Default:*
-` <derivation python3-3.11.8-env> `
+` <derivation python3-3.11.9-env> `
 
 *Declared by:*
  - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
@@ -6799,7 +7098,7 @@ string
 
 
 *Default:*
-1\.0\.0+\<lastModifiedDate>\.\<hash>
+1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
  - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)

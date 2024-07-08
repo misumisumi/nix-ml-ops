@@ -82,10 +82,10 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                               }";
                       in
                       {
-                        # TODO: support namespace
-                        # namespace = lib.mkOption {
-                        #   default = "default";
-                        # };}
+                        options.namespace = lib.mkOption {
+                          type = lib.types.str;
+                          default = "default";
+                        };
                         options.imageRegistry.host = lib.mkOption {
                           type = lib.types.str;
                           default = "registry.hub.docker.com";
@@ -188,14 +188,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                             type = lib.types.str;
                             default =
                               "${
-                                    hostPath
-                                  }/${
-                                    runtime.config._module.args.name
-                                  }-${
-                                    launcher.config._module.args.name
-                                  }:${
-                                    builtins.replaceStrings ["+"] ["_"] runtime.config.version
-                                  }";
+                                hostPath
+                              }/${
+                                runtime.config._module.args.name
+                              }-${
+                                launcher.config._module.args.name
+                              }:${
+                                builtins.replaceStrings ["+"] ["_"] runtime.config.version
+                              }";
+                            defaultText = "registry.hub.docker.com/‹job-or-service-name›-‹launcher-name›:‹version›.‹git-rivision›.‹narHash›";
                           };
                         options.devenvContainerName = lib.mkOption
                           {
@@ -219,7 +220,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                       ''
                                         read -a skopeoCopyArgsArray <<< "$SKOPEO_ARGS"
                                         ${lib.escapeShellArgs [
-                                          "${perSystem.config.packages.skopeo-nix2container}/bin/skopeo"
+                                          (lib.getExe perSystem.config.packages.skopeo-nix2container)
                                           "--insecure-policy"
                                           "copy"
                                           "--image-parallel-copies"
@@ -271,9 +272,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                     kind = lib.mkOption {
                                       default = "PersistentVolume";
                                     };
-                                    metadata.name = lib.mkOption {
-                                      type = lib.types.str;
+                                    metadata = {
+                                      name = lib.mkOption {
+                                        type = lib.types.str;
+                                      };
+                                      namespace = lib.mkOption {
+                                        type = lib.types.str;
+                                      };
                                     };
+                                    
                                     spec = lib.mkOption {
                                       type = lib.types.attrsOf lib.types.anything;
                                     };
@@ -292,7 +299,10 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   accessModes = [ "ReadWriteMany" ];
                                   capacity.storage = "1000Ti";
                                 };
-                                metadata.name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-volume";
+                                metadata = {
+                                  name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-volume";
+                                  namespace = kubernetes.config.namespace;
+                                };
                               };
                             })
                             (lib.attrsets.mergeAttrsList (builtins.attrValues runtime.config.volumeMounts or { }));
@@ -309,9 +319,15 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                     kind = lib.mkOption {
                                       default = "PersistentVolumeClaim";
                                     };
-                                    metadata.name = lib.mkOption {
-                                      type = lib.types.str;
+                                    metadata = {
+                                      name = lib.mkOption {
+                                        type = lib.types.str;
+                                      };
+                                      namespace = lib.mkOption {
+                                        type = lib.types.str;
+                                      };
                                     };
+                              
                                     spec.volumeName = lib.mkOption {
                                       type = lib.types.str;
                                     };
@@ -335,7 +351,10 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                               "${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-claim" = {
                                 spec.volumeName = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-volume";
                                 spec.storageClassName = protocolConfig.kubernetesVolume.storageClassName or "";
-                                metadata.name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-claim";
+                                metadata = {
+                                  name = "${runtime.config._module.args.name}-${launcher.config._module.args.name}-${flakeModule.config.flake.lib.pathToKubernetesName mountPath}-claim";
+                                  namespace = kubernetes.config.namespace;
+                                };
                               };
                             })
                             (lib.attrsets.mergeAttrsList (builtins.attrValues runtime.config.volumeMounts or { }));
@@ -385,14 +404,20 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   config.base-package = pkgs.writeShellScriptBin
                                     "${runtime.config._module.args.name}-helm-upgrade.sh"
 
-                                    (lib.escapeShellArgs [
-                                      "${pkgs.kubernetes-helm}/bin/helm"
-                                      "upgrade"
-                                      "--install"
-                                      "--force"
-                                      kubernetes.config.helmReleaseName
-                                      kubernetes.config.helm-chart
-                                    ]);
+                                    ''
+                                      ${
+                                        (lib.escapeShellArg (lib.getExe kubernetes.config.pushImage.overridden-package))
+                                      } && ${
+                                        (lib.escapeShellArgs [
+                                          (lib.getExe pkgs.kubernetes-helm)
+                                          "upgrade"
+                                          "--install"
+                                          "--force"
+                                          kubernetes.config.helmReleaseName
+                                          kubernetes.config.helm-chart
+                                        ])
+                                      }
+                                    '';
                                 }
                               ];
                             };
@@ -407,25 +432,12 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   config.base-package = pkgs.writeShellScriptBin
                                     "${runtime.config._module.args.name}-helm-uninstall.sh"
                                     (lib.escapeShellArgs [
-                                      # We want to delete the resources of the helm release while keep the verion history
-                                      # `helm uninstall --keep-history` is supposed to do this, but it's broken due to https://github.com/helm/helm/pull/11569
-                                      # As a workaround, we upgrade the helm release to an empty chart to delete the resources
-                                      "${pkgs.kubernetes-helm}/bin/helm"
-                                      "upgrade"
-                                      "--atomic"
-                                      "--install"
-                                      "--force"
+                                      (lib.getExe pkgs.kubernetes-helm)
+                                      "uninstall"
+                                      "--keep-history"
+                                      "--cascade"
+                                      "foreground"
                                       kubernetes.config.helmReleaseName
-                                      (pkgs.linkFarm "empty-helm-chart" [
-                                        rec {
-                                          name = "Chart.yaml";
-                                          path = pkgs.writers.writeYAML name {
-                                            apiVersion = "v2";
-                                            name = "empty";
-                                            version = "1.0.0";
-                                          };
-                                        }
-                                      ])
                                     ]);
                                 }
                               ];
@@ -441,7 +453,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                                   config.base-package = pkgs.writeShellScriptBin
                                     "${runtime.config._module.args.name}-helm-delete.sh"
                                     (lib.escapeShellArgs [
-                                      "${pkgs.kubernetes-helm}/bin/helm"
+                                      (lib.getExe pkgs.kubernetes-helm)
                                       "delete"
                                       "--cascade"
                                       "foreground"

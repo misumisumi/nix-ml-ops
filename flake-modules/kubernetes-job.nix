@@ -31,18 +31,23 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                                 kind = "Job";
                                 spec.backoffLimit = 0;
                                 spec.template.metadata.labels."app.kubernetes.io/name" = "${job.config._module.args.name}-${launcher.config._module.args.name}";
+                                spec.template.metadata.labels."app.kubernetes.io/namespace" = kubernetes.config.namespace;
                                 spec.template.spec.restartPolicy = "Never";
                                 spec.template.spec.volumes = kubernetes.config.volumes;
                               };
                           }
                           {
-                            options.job.metadata.name = lib.mkOption {
-                              default = "${job.config._module.args.name}-${launcher.config._module.args.name}-${builtins.replaceStrings ["+"] ["-"] job.config.version}";
-                              defaultText = lib.literalExpression ''
-                                "''${job.config._module.args.name}-''${launcher.config._module.args.name}-''${builtins.replaceStrings ["+"] ["-"] job.config.version}"
-                              '';
+                            options.job.metadata = {
+                              name = lib.mkOption {
+                                default = "${job.config._module.args.name}-${launcher.config._module.args.name}-${builtins.replaceStrings ["+"] ["-"] job.config.version}";
+                                defaultText = lib.literalExpression ''
+                                  "''${job.config._module.args.name}-''${launcher.config._module.args.name}-''${builtins.replaceStrings ["+"] ["-"] job.config.version}"
+                                '';
+                              };
+                              namespace = lib.mkOption {
+                                default = kubernetes.config.namespace;
+                              };
                             };
-
                             config.job.spec.template.spec.containers =
                               lib.mapAttrs
                                 (containerName: container: container.manifest)

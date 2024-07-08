@@ -14,10 +14,10 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
         nixago.requests = {
           ".vscode/settings.json".data = {
             "nix.enableLanguageServer" = true;
-            "nix.serverPath" = "${pkgs.nil}/bin/nil";
+            "nix.serverPath" = lib.getExe pkgs.nil;
             "nix.serverSettings" = {
               nil.formatting.command = lib.mkForce [
-                "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt"
+                (lib.getExe pkgs.nixpkgs-fmt)
               ];
             };
           };

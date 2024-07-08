@@ -18,8 +18,21 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             ({ config, ... }: {
               options.version = lib.mkOption {
                 type = lib.types.str;
-                defaultText = lib.literalMD "1.0.0+<lastModifiedDate>.<hash>";
-                default = "1.0.0+${flakeModule.self.lastModifiedDate}.${flakeModule.self.shortRev or flakeModule.self.dirtyShortRev}";
+                defaultText = lib.literalMD "1.0.0+<lastModifiedDate>.<git-revision>.<narHash>";
+                default = "1.0.0+${
+                  flakeModule.self.lastModifiedDate
+                }.${
+                  flakeModule.self.shortRev or flakeModule.self.dirtyShortRev
+                }.${
+                  # Don't use `convertHash` because it is not available in the latest stable nix version 2.18
+                  # builtins.convertHash {
+                  #   hash = flakeModule.self.narHash;
+                  #   toHashFormat = "nix32";
+                  # }
+
+                  # semver only allows alphanumeric characters and hyphens
+                  builtins.replaceStrings ["=" "+" "/"] ["" "-" "-"] flakeModule.self.narHash
+                }";
                 description = lib.mdDoc ''
                   Version of job or service.
                   This will be used as the image tag.

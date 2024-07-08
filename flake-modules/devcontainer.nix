@@ -73,10 +73,14 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                     source_url "https://raw.githubusercontent.com/nix-community/nix-direnv/2.3.0/direnvrc" "sha256-Dmd+j63L84wuzgyjITIfSxSD57Tx7v51DMxVZOsiUD8="
                   fi
 
-                  use flake . ${devcontainer.config.rawNixDirenvFlakeFlags}
+                  # TODO: change this to `dotenv_if_exists .env` once https://github.com/direnv/direnv/issues/1028 is fixed
+                  source_env_if_exists .envrc.private
+
 
                   # TODO: change this to `dotenv_if_exists .env` once https://github.com/direnv/direnv/issues/1028 is fixed
                   source_env_if_exists .envrc.private
+
+                  use flake . ${devcontainer.config.rawNixDirenvFlakeFlags}
                 '';
                 engine = { data, output, ... }: pkgs.writeTextFile {
                   name = output;
@@ -114,11 +118,11 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 enterShell =
                   lib.mkMerge
                     ([
-                      ''
-                        ${pkgs.git-extras}/bin/git-ignore ${
-                          lib.escapeShellArgs devcontainer.config.gitignore
-                        }
-                      ''
+                      (lib.escapeShellArgs (
+                        [
+                          (lib.getExe' pkgs.git-extras "git-ignore")
+                        ] ++ devcontainer.config.gitignore
+                      ))
 
                       (inputs.nixago.lib.${system}.makeAll (
                         lib.attrsets.mapAttrsToList

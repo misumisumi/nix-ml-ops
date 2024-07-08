@@ -10,7 +10,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
     options.perSystem = flake-parts-lib.mkPerSystemOption ({ lib, config, pkgs, ... }: {
       ml-ops.devcontainer = {
         config.devenvShellModule.packages = [
-          pkgs.nixUnstable
+          pkgs.nixVersions.latest
         ];
       };
     });
