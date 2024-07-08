@@ -76,10 +76,6 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                   # TODO: change this to `dotenv_if_exists .env` once https://github.com/direnv/direnv/issues/1028 is fixed
                   source_env_if_exists .envrc.private
 
-
-                  # TODO: change this to `dotenv_if_exists .env` once https://github.com/direnv/direnv/issues/1028 is fixed
-                  source_env_if_exists .envrc.private
-
                   use flake . ${devcontainer.config.rawNixDirenvFlakeFlags}
                 '';
                 engine = { data, output, ... }: pkgs.writeTextFile {
