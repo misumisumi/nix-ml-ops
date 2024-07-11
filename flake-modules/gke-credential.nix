@@ -50,7 +50,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                     in
                     {
                       options.gke = lib.mkOption {
-                        description = lib.mdDoc ''
+                        description = ''
                           The Google Kubernetes Engine (GKE) options.
 
                           When `gke` is `null`, the GKE options are disabled.
@@ -63,13 +63,13 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                             {
                               options.region = lib.mkOption {
                                 type = lib.types.str;
-                                description = lib.mdDoc ''
+                                description = ''
                                   The GCP region.
                                 '';
                               };
                               options.cluster = lib.mkOption {
                                 type = lib.types.str;
-                                description = lib.mdDoc ''
+                                description = ''
                                   The GKE cluster name.
                                 '';
                               };

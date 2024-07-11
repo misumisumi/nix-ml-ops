@@ -33,7 +33,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
                   # semver only allows alphanumeric characters and hyphens
                   builtins.replaceStrings ["=" "+" "/"] ["" "-" "-"] flakeModule.self.narHash
                 }";
-                description = lib.mdDoc ''
+                description = ''
                   Version of job or service.
                   This will be used as the image tag.
                 '';
@@ -45,7 +45,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
               options.environmentVariables = lib.mkOption {
                 type = lib.types.lazyAttrsOf lib.types.str;
                 default = { };
-                description = lib.mdDoc ''
+                description = ''
                   Environment variables for either devcontainer, jobs or services.
 
                   For devcontainer, these variables will be copied to via `devenv`'s [env](https://devenv.sh/reference/options/#env) config.
@@ -53,7 +53,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
                 '';
               };
               options.devenvShellModule = lib.mkOption {
-                description = lib.mdDoc ''
+                description = ''
                   Common config that will be copied to `config.devenv.shells.`*<shell_name>*`.config` for each shell.
 
                   See [devenv options](https://devenv.sh/reference/options/) for supported nested options.
@@ -71,7 +71,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
             })
           ];
         };
-        description = lib.mdDoc ''
+        description = ''
           Settings shared between devcontainer and all jobs and services.
           For example, config of `perSystem.ml-ops.common.xxx` will be copied to `perSystem.ml-ops.devcontainer.xxx`, all `perSystem.ml-ops.jobs.<name>.xx` and all `perSystem.ml-ops.services.<name>.xxx`.
         '';

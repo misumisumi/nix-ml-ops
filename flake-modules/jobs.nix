@@ -13,7 +13,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
       options.ml-ops.job = lib.mkOption {
         type = lib.types.deferredModule;
 
-        description = lib.mdDoc ''
+        description = ''
           The shared options among all jobs.
 
           For example, config of `perSystem.ml-ops.job.xxx` will be copied to all `perSystem.ml-ops.jobs.<name>.xxx`.
