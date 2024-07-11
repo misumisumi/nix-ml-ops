@@ -28,7 +28,7 @@ topLevel@{ flake-parts-lib, lib, ... }: {
               type = lib.types.listOf lib.types.str;
               default = [ ];
             };
-            ".vscode/settings.json" = {
+            ${settingsJson} = {
               data = lib.mkOption {
                 type = lib.types.attrsOf lib.types.anything;
                 default = { };
@@ -38,11 +38,15 @@ topLevel@{ flake-parts-lib, lib, ... }: {
 
           config =
             {
-              "${settingsJson}".data =
-                if builtins.pathExists "${flakeModule.self}/${settingsJson}"
-                then mkRecursiveDefault (builtins.fromJSON (builtins.readFile "${flakeModule.self}/${settingsJson}"))
-                else { }
-              ;
+              ${settingsJson}.data = lib.mkMerge [
+                (
+                  if builtins.pathExists "${flakeModule.self}/${settingsJson}"
+                  then mkRecursiveDefault (builtins.fromJSON (builtins.readFile "${flakeModule.self}/${settingsJson}"))
+                  else { }
+                )
+                { "files.associations".".envrc.private" = "shellscript"; }
+              ];
+
               ".vscode/extensions.json".data = {
                 "recommendations" = [
                   "mkhl.direnv"

@@ -42,8 +42,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
             # TODO: Remove `pkgs.cudaPackages.cudatoolkit` in favor of fine-grained packages.
             pkgs.cudaPackages.cudatoolkit
 
-            # TODO: Figure out if we can use `pkgs.cudaPackages.cuda_cudart.lib` instead of `pkgs.cudaPackages.cuda_cudart`. The `.lib` one is smaller.
-            pkgs.cudaPackages.cuda_cudart
+            pkgs.cudaPackages.cuda_cudart.lib
 
             # TODO: Figure out if we can use `pkgs.cudaPackages.libcublas.lib` instead of `pkgs.cudaPackages.libcublas`. The `.lib` one is smaller.
             pkgs.cudaPackages.libcublas
