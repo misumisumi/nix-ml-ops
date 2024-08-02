@@ -2,7 +2,6 @@
   flake.nixosModules.nvidiaDocker = { config, pkgs, ... }: {
     hardware.opengl.enable = true;
     hardware.opengl.driSupport32Bit = true;
-    hardware.opengl.setLdLibraryPath = true;
     # hardware.nvidia.modesetting.enable = true;                                    
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
