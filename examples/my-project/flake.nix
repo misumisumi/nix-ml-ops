@@ -29,7 +29,7 @@
         inputs.nix-ml-ops.flakeModules.kubernetesJob
         inputs.nix-ml-ops.flakeModules.kubernetesService
         inputs.nix-ml-ops.flakeModules.devcontainer
-        inputs.nix-ml-ops.flakeModules.linkNvidiaDrivers
+        inputs.nix-ml-ops.flakeModules.cuda
         inputs.nix-ml-ops.flakeModules.volumeMountNfs
         inputs.nix-ml-ops.flakeModules.devcontainerGcpCliTools
         inputs.nix-ml-ops.flakeModules.gkeCredential

@@ -50,6 +50,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-ld-rs.url = "github:nix-community/nix-ld-rs";
+    nix-gl-host = {
+      url = "github:Atry/nix-gl-host";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs:
     let
