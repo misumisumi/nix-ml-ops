@@ -110,7 +110,6 @@ module
  - [nixpkgs\.nix, via option flake\.flakeModules\.nixpkgs](flake-modules/nixpkgs.nix)
  - [nix-ld\.nix, via option flake\.flakeModules\.nixLd](flake-modules/nix-ld.nix)
  - [nix-ide\.nix, via option flake\.flakeModules\.nixIde](flake-modules/nix-ide.nix)
- - [link-nvidia-drivers\.nix, via option flake\.flakeModules\.linkNvidiaDrivers](flake-modules/link-nvidia-drivers.nix)
  - [ld-fallback-manylinux\.nix, via option flake\.flakeModules\.ldFallbackManylinux](flake-modules/ld-fallback-manylinux.nix)
  - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback](flake-modules/ld-fallback.nix)
  - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService](flake-modules/kubernetes-service.nix)
@@ -925,6 +924,27 @@ list of function that evaluates to a(n) package
 
 *Declared by:*
  - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.rawNixDirenvFlakeFlags
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+strings concatenated with " "
+
+
+
+*Default:*
+` "'--no-eval-cache' '--show-trace'" `
+
+*Declared by:*
+ - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -2074,8 +2094,6 @@ attribute set of attribute set of anything
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.apiVersion
 
-
-
 This option has no description\.
 
 
@@ -2094,6 +2112,8 @@ unspecified value
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.kind
+
+
 
 This option has no description\.
 
@@ -4178,8 +4198,6 @@ list of path
 
 ## perSystem\.ml-ops\.runtime\.ldFallback\.path
 
-
-
 This option has no description\.
 
 
@@ -4198,6 +4216,8 @@ path
 
 
 ## perSystem\.ml-ops\.runtime\.mkPython
+
+
 
 This option has no description\.
 
@@ -6267,8 +6287,6 @@ string
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.spec\.accessModes
 
-
-
 This option has no description\.
 
 
@@ -6292,6 +6310,8 @@ unspecified value
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.spec\.resources\.requests\.storage
+
+
 
 This option has no description\.
 
