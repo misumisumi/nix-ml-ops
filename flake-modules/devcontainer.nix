@@ -73,7 +73,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                     source_url "https://raw.githubusercontent.com/nix-community/nix-direnv/2.3.0/direnvrc" "sha256-Dmd+j63L84wuzgyjITIfSxSD57Tx7v51DMxVZOsiUD8="
                   fi
 
-                  # TODO: change this to `dotenv_if_exists .env` once https://github.com/direnv/direnv/issues/1028 is fixed
+                  dotenv_if_exists .env
                   source_env_if_exists .envrc.private
 
                   use flake . ${devcontainer.config.rawNixDirenvFlakeFlags}
