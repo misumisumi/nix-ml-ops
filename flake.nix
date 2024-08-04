@@ -1,5 +1,9 @@
 {
   inputs = {
+    devenv-root = {
+      url = "file+file:///dev/null";
+      flake = false;
+    };
     poetry2nix = {
       url = "github:nix-community/poetry2nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,9 +32,7 @@
       };
     };
     devenv = {
-      # TODO: Switch to `github:cachix/devenv` when https://github.com/cachix/devenv/pull/718, https://github.com/cachix/devenv/pull/820, https://github.com/cachix/devenv/pull/872 and https://github.com/cachix/devenv/pull/873 get merged
-      # url = "github:cachix/devenv";
-      url = "github:Atry/devenv/nix-ml-ops";
+      url = "github:cachix/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.pre-commit-hooks.follows = "pre-commit-hooks";
     };
