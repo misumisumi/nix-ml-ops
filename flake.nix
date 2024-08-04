@@ -69,7 +69,7 @@
         systems = import inputs.systems;
       });
     in
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, ... }: {
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, flake-parts-lib, ... }: {
       imports = [
         bootstrap.flakeModules.lib
         bootstrap.flakeModules.nixIde
@@ -81,5 +81,8 @@
         bootstrap.flakeModules.optionsDocument
       ];
       flake = bootstrap;
+      perSystem.ml-ops.devcontainer = devcontainer: {
+        rawNixDirenvFlakeFlags = "--override-input devenv-root \"file+file://\"<(printf %s \"$PWD\") ${lib.escapeShellArgs devcontainer.config.nixDirenvFlakeFlags}";
+      };
     });
 }

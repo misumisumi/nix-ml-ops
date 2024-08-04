@@ -941,7 +941,7 @@ strings concatenated with " "
 
 
 *Default:*
-` "--override-input devenv-root \"file+file://\"<(printf %s \"$PWD\") '--no-eval-cache' '--show-trace'" `
+` "--override-input nix-ml-ops/devenv-root \"file+file://\"<(printf %s \"$PWD\") '--no-eval-cache' '--show-trace'" `
 
 *Declared by:*
  - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)

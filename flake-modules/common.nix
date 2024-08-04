@@ -66,7 +66,7 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
               config.devenvShellModule.env = config.environmentVariables;
               config.devenvShellModule.devenv.root =
                 let
-                  devenvRootFileContent = builtins.readFile flakeModule.inputs.devenv-root.outPath;
+                  devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
                 in
                 lib.mkIf (devenvRootFileContent != "") devenvRootFileContent;
 
