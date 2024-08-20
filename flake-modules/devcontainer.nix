@@ -73,6 +73,9 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                     source_url "https://raw.githubusercontent.com/nix-community/nix-direnv/2.3.0/direnvrc" "sha256-Dmd+j63L84wuzgyjITIfSxSD57Tx7v51DMxVZOsiUD8="
                   fi
 
+                  DEVENV_ROOT_FILE="$(mktemp)"
+                  printf %s "$PWD" > "$DEVENV_ROOT_FILE"
+
                   dotenv_if_exists .env
                   source_env_if_exists .envrc.private
 
@@ -85,7 +88,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
               };
               options.rawNixDirenvFlakeFlags = lib.mkOption {
                 type = lib.types.separatedString " ";
-                default = "--override-input nix-ml-ops/devenv-root \"file+file://\"<(printf %s \"$PWD\") ${lib.escapeShellArgs devcontainer.config.nixDirenvFlakeFlags}";
+                default = "--override-input nix-ml-ops/devenv-root \"file+file://$DEVENV_ROOT_FILE\" ${lib.escapeShellArgs devcontainer.config.nixDirenvFlakeFlags}";
               };
               options.nixDirenvFlakeFlags = lib.mkOption {
                 type = lib.types.listOf lib.types.str;
