@@ -119,6 +119,11 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 enterShell =
                   lib.mkMerge
                     ([
+                      (lib.mkIf ((builtins.readFile inputs.devenv-root.outPath) == "") ''
+                        echo 'Cannot find devenv root file. Please run `nix develop --override-input nix-ml-ops/devenv-root "file+file://"<(printf %s "$PWD")` or `direnv reload` instead of `nix develop`.' >&2
+                        exit 1
+                      '')
+
                       (lib.escapeShellArgs (
                         [
                           (lib.getExe' pkgs.git-extras "git-ignore")
