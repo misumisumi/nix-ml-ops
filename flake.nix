@@ -84,8 +84,5 @@
         bootstrap.flakeModules.optionsDocument
       ];
       flake = bootstrap;
-      perSystem.ml-ops.devcontainer = devcontainer: {
-        rawNixDirenvFlakeFlags = "--override-input devenv-root \"file+file://\"<(printf %s \"$PWD\") ${lib.escapeShellArgs devcontainer.config.nixDirenvFlakeFlags}";
-      };
     });
 }
