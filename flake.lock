@@ -17,42 +17,6 @@
         ]
       },
       "locked": {
-        "lastModified": 1722558916,
-        "narHash": "sha256-+lslN4NB9xsCJkbuHc3G2IDiuMZQH2D+aXUJY2E2h7Y=",
-        "owner": "cachix",
-        "repo": "cachix",
-        "rev": "3139072c8b5b8412f753420cbf4a3758293819c4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cachix",
-        "repo": "cachix",
-        "type": "github"
-      }
-    },
-    "cachix_2": {
-      "inputs": {
-        "devenv": "devenv_3",
-        "flake-compat": [
-          "devenv",
-          "cachix",
-          "devenv",
-          "flake-compat"
-        ],
-        "nixpkgs": [
-          "devenv",
-          "cachix",
-          "devenv",
-          "nixpkgs"
-        ],
-        "pre-commit-hooks": [
-          "devenv",
-          "cachix",
-          "devenv",
-          "pre-commit-hooks"
-        ]
-      },
-      "locked": {
         "lastModified": 1712055811,
         "narHash": "sha256-7FcfMm5A/f02yyzuavJe06zLa9hcMHsagE28ADcmQvk=",
         "owner": "cachix",
@@ -86,7 +50,7 @@
       "inputs": {
         "cachix": "cachix",
         "flake-compat": "flake-compat_2",
-        "nix": "nix_3",
+        "nix": "nix_2",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -95,15 +59,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1722605649,
-        "narHash": "sha256-T5dzUFRb2ocZ+LB2qBZufewdUFQs0pB4fnLKIWBLd9Y=",
-        "owner": "cachix",
+        "lastModified": 1725522568,
+        "narHash": "sha256-9WZRj5wNx06WXzqQgWkKZZ4OM8I90EFg24YdmzW8eYM=",
+        "owner": "Atry",
         "repo": "devenv",
-        "rev": "a07842582c030fdf2ccf07d3b1402b2a46908856",
+        "rev": "61ac87d765a23021ec643c44874a494b6c98bcec",
         "type": "github"
       },
       "original": {
-        "owner": "cachix",
+        "owner": "Atry",
+        "ref": "layers-attempt-2",
         "repo": "devenv",
         "type": "github"
       }
@@ -122,43 +87,7 @@
     },
     "devenv_2": {
       "inputs": {
-        "cachix": "cachix_2",
         "flake-compat": [
-          "devenv",
-          "cachix",
-          "flake-compat"
-        ],
-        "nix": "nix_2",
-        "nixpkgs": [
-          "devenv",
-          "cachix",
-          "nixpkgs"
-        ],
-        "pre-commit-hooks": [
-          "devenv",
-          "cachix",
-          "pre-commit-hooks"
-        ]
-      },
-      "locked": {
-        "lastModified": 1719759336,
-        "narHash": "sha256-3a34VL/QnHprl5gMy9xlx6d8J+iNp+W88Ex8smkgH9M=",
-        "owner": "cachix",
-        "repo": "devenv",
-        "rev": "bb32aa986f2f695385e54428d0eaf7d05b31466e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cachix",
-        "repo": "devenv",
-        "type": "github"
-      }
-    },
-    "devenv_3": {
-      "inputs": {
-        "flake-compat": [
-          "devenv",
-          "cachix",
           "devenv",
           "cachix",
           "flake-compat"
@@ -167,8 +96,6 @@
         "nixpkgs": "nixpkgs",
         "poetry2nix": "poetry2nix",
         "pre-commit-hooks": [
-          "devenv",
-          "cachix",
           "devenv",
           "cachix",
           "pre-commit-hooks"
@@ -208,11 +135,11 @@
     "flake-compat_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1673956053,
-        "narHash": "sha256-4gtG9iQuiKITOjNQQeQIpoIB6b16fm+504Ch3sNKLd8=",
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
         "owner": "edolstra",
         "repo": "flake-compat",
-        "rev": "35bb57c0c8d8b62bbfd284272c928ceb64ddbde9",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
         "type": "github"
       },
       "original": {
@@ -495,8 +422,6 @@
           "devenv",
           "cachix",
           "devenv",
-          "cachix",
-          "devenv",
           "nixpkgs"
         ],
         "nixpkgs-regression": "nixpkgs-regression"
@@ -519,8 +444,6 @@
     "nix-github-actions": {
       "inputs": {
         "nixpkgs": [
-          "devenv",
-          "cachix",
           "devenv",
           "cachix",
           "devenv",
@@ -629,13 +552,9 @@
       "inputs": {
         "flake-compat": [
           "devenv",
-          "cachix",
-          "devenv",
           "flake-compat"
         ],
         "nixpkgs": [
-          "devenv",
-          "cachix",
           "devenv",
           "nixpkgs"
         ],
@@ -647,33 +566,6 @@
         "owner": "domenkozar",
         "repo": "nix",
         "rev": "b24a9318ea3f3600c1e24b4a00691ee912d4de12",
-        "type": "github"
-      },
-      "original": {
-        "owner": "domenkozar",
-        "ref": "devenv-2.21",
-        "repo": "nix",
-        "type": "github"
-      }
-    },
-    "nix_3": {
-      "inputs": {
-        "flake-compat": [
-          "devenv",
-          "flake-compat"
-        ],
-        "nixpkgs": [
-          "devenv",
-          "nixpkgs"
-        ],
-        "nixpkgs-regression": "nixpkgs-regression_3"
-      },
-      "locked": {
-        "lastModified": 1718382440,
-        "narHash": "sha256-aUqR+pxqKTKLtj8HAI5sbdT6C1VgtHDcrKjmn+wWkXQ=",
-        "owner": "domenkozar",
-        "repo": "nix",
-        "rev": "31b9700169d9bba693c379d59d587cd20bf115a6",
         "type": "github"
       },
       "original": {
@@ -903,22 +795,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-regression_3": {
-      "locked": {
-        "lastModified": 1643052045,
-        "narHash": "sha256-uGJ0VXIhWKGXxkeNnq4TvV3CIOkUJ3PAoLZ3HMzNVMw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "215d4d0fd80ca5163643b03a33fde804a29cc1e2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "215d4d0fd80ca5163643b03a33fde804a29cc1e2",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1710695816,
@@ -987,8 +863,6 @@
         "flake-utils": "flake-utils",
         "nix-github-actions": "nix-github-actions",
         "nixpkgs": [
-          "devenv",
-          "cachix",
           "devenv",
           "cachix",
           "devenv",
