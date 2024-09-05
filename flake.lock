@@ -59,16 +59,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1725522568,
-        "narHash": "sha256-9WZRj5wNx06WXzqQgWkKZZ4OM8I90EFg24YdmzW8eYM=",
+        "lastModified": 1725560651,
+        "narHash": "sha256-wxGJYf3oDVAL17RnqNlbj3va90l0rNkafFTG9B6MDY0=",
         "owner": "Atry",
         "repo": "devenv",
-        "rev": "61ac87d765a23021ec643c44874a494b6c98bcec",
+        "rev": "8a9b89be8c5a0157d4bae822109537fa774d7bc8",
         "type": "github"
       },
       "original": {
         "owner": "Atry",
-        "ref": "layers-attempt-2",
         "repo": "devenv",
         "type": "github"
       }

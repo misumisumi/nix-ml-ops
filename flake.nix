@@ -32,10 +32,11 @@
       };
     };
     devenv = {
-      # Switch to the upstream devenv flake once the following PR is merged:
-      # https://github.com/cachix/devenv/pull/1415
+      # Switch to the upstream devenv flake once the following PRs are merged:
+      # - https://github.com/cachix/devenv/pull/1415
+      # - https://github.com/cachix/devenv/pull/1418
       # url = "github:cachix/devenv";
-      url = "github:Atry/devenv/layers-attempt-2";
+      url = "github:Atry/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.pre-commit-hooks.follows = "pre-commit-hooks";
     };
