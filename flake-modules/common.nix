@@ -64,11 +64,6 @@ topLevel@{ inputs, flake-parts-lib, ... }: {
                 };
               };
               config.devenvShellModule.env = config.environmentVariables;
-              config.devenvShellModule.devenv.root =
-                let
-                  devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
-                in
-                if devenvRootFileContent == "" then "/env" else devenvRootFileContent;
 
               config.devenvShellModule.enterShell = ''
                 export LD_LIBRARY_PATH=${config.LD_LIBRARY_PATH}:''${LD_LIBRARY_PATH:-}

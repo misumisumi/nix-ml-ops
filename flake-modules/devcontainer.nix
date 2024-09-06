@@ -17,6 +17,13 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
           modules = [
             (devcontainer: {
               imports = [ perSystem.config.ml-ops.common ];
+
+              config.devenvShellModule.devenv.root =
+                let
+                  devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
+                in
+                if devenvRootFileContent != "" then devenvRootFileContent else ".";
+
               options.nixago.copiedFiles = lib.mkOption {
                 type = lib.types.listOf lib.types.str;
               };

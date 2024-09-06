@@ -25,6 +25,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 default = runtime.config._module.args.name;
               };
               config.devenvShellModule.name = runtime.config.name;
+              config.devenvShellModule.devenv.root = "/env";
               options.launcher = lib.mkOption {
                 type = lib.types.deferredModuleWith {
                   staticModules = [
