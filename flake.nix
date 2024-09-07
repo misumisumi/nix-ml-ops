@@ -78,6 +78,7 @@
         bootstrap.flakeModules.lib
         bootstrap.flakeModules.nixIde
         bootstrap.flakeModules.devserver
+        bootstrap.flakeModules.devcontainerNix
         bootstrap.flakeModules.devcontainerGcpCliTools
         bootstrap.flakeModules.devcontainerAzureCliTools
         bootstrap.flakeModules.nixLd

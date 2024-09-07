@@ -19,7 +19,13 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
               case "$1" in
                 flake)
                   if [ "$#" -ge 2 ]; then
-                    NUMBER_OF_SUB_COMMANDS=2
+                    case "$2" in
+                      lock|update)
+                        ;;
+                      *)
+                        NUMBER_OF_SUB_COMMANDS=2
+                        ;;
+                    esac
                   fi
                   ;;
                 develop|shell|flake|build|run|check|repl|bundle)
