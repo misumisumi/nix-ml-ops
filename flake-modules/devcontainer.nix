@@ -84,7 +84,11 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                   watch_file flake.lock
 
                   mkdir -p .devenv/state/
-                  printf %s "$PWD" > .devenv/state/pwd
+
+                  if [ "$PWD" != "$(<.devenv/state/pwd)" ]
+                  then
+                    printf %s "$PWD" > .devenv/state/pwd
+                  fi
 
                   dotenv_if_exists .env
                   source_env_if_exists .envrc.private
