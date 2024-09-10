@@ -22,7 +22,11 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 let
                   devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
                 in
-                if devenvRootFileContent != "" then devenvRootFileContent else ".";
+                if devenvRootFileContent != "" then
+                  devenvRootFileContent
+                else
+                # /dev/null is a placeholder to suppress the error when evaluating `devenv.dotfile`, so that the `enterShell` script can be run to generate `.envrc`, even when some other commands in `enterShell` script would fail. Then when rerunning `direnv reload`, we will have the correct `devenv.root` value.
+                  "/dev/null";
 
               options.nixago.copiedFiles = lib.mkOption {
                 type = lib.types.listOf lib.types.str;
@@ -166,7 +170,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                         (builtins.attrValues (devcontainer.config.volumeMounts or { }))
                     ) ++ [
                       (lib.mkIf ((builtins.readFile inputs.devenv-root.outPath) == "") ''
-                        echo 'Cannot find devenv root file. Please run `direnv reload` instead of `nix develop`.' >&2
+                        echo 'Cannot find devenv root file. Please rerun `direnv reload`.' >&2
                         exit 1
                       '')
                     ]);
