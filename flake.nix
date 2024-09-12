@@ -1,5 +1,9 @@
 {
   inputs = {
+    devenv-root = {
+      url = "file+file:///dev/null";
+      flake = false;
+    };
     poetry2nix = {
       url = "github:nix-community/poetry2nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,9 +32,11 @@
       };
     };
     devenv = {
-      # TODO: Switch to `github:cachix/devenv` when https://github.com/cachix/devenv/pull/718, https://github.com/cachix/devenv/pull/820, https://github.com/cachix/devenv/pull/872 and https://github.com/cachix/devenv/pull/873 get merged
+      # Switch to the upstream devenv flake once the following PRs are merged:
+      # - https://github.com/cachix/devenv/pull/1415
+      # - https://github.com/cachix/devenv/pull/1418
       # url = "github:cachix/devenv";
-      url = "github:Atry/devenv/nix-ml-ops";
+      url = "github:Atry/devenv";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.pre-commit-hooks.follows = "pre-commit-hooks";
     };
@@ -50,30 +56,46 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-ld-rs.url = "github:nix-community/nix-ld-rs";
+    nix-gl-host = {
+      url = "github:Atry/nix-gl-host";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = inputs:
-    let
-      bootstrap = inputs.flake-parts.lib.mkFlake { inherit inputs; moduleLocation = ./flake.nix; } ({ lib, ... }: {
-        imports = (lib.trivial.pipe ./flake-modules [
+  outputs = inputs: inputs.flake-parts.lib.mkFlake
+    {
+      inherit inputs;
+
+      # TODO: remove moduleLocation as it is not needed since using partitions
+      moduleLocation = ./flake.nix;
+    }
+    ({ lib, config, ... }: {
+      imports = [
+        inputs.flake-parts.flakeModules.partitions
+      ] ++ (
+        lib.pipe ./flake-modules [
           builtins.readDir
           (lib.attrsets.filterAttrs (name: type: type == "regular" && lib.strings.hasSuffix ".nix" name))
           builtins.attrNames
           (builtins.map (name: ./flake-modules/${name}))
-        ]);
-        systems = import inputs.systems;
-      });
-    in
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } ({ lib, ... }: {
-      imports = [
-        bootstrap.flakeModules.lib
-        bootstrap.flakeModules.nixIde
-        bootstrap.flakeModules.devserver
-        bootstrap.flakeModules.devcontainerGcpCliTools
-        bootstrap.flakeModules.devcontainerAzureCliTools
-        bootstrap.flakeModules.nixLd
-        bootstrap.flakeModules.ldFallbackManylinux
-        bootstrap.flakeModules.optionsDocument
-      ];
-      flake = bootstrap;
+        ]
+      );
+      systems = import inputs.systems;
+      partitionedAttrs.devShells = "dev";
+      partitionedAttrs.lib = "dev";
+      partitions.dev = {
+        module = {
+          imports = [
+            config.flake.flakeModules.lib
+            config.flake.flakeModules.nixIde
+            config.flake.flakeModules.devserver
+            config.flake.flakeModules.devcontainerNix
+            config.flake.flakeModules.devcontainerGcpCliTools
+            config.flake.flakeModules.devcontainerAzureCliTools
+            config.flake.flakeModules.nixLd
+            config.flake.flakeModules.ldFallbackManylinux
+            config.flake.flakeModules.optionsDocument
+          ];
+        };
+      };
     });
 }

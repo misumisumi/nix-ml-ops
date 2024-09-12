@@ -10,8 +10,8 @@ configuration merging\.
 lazy attribute set of raw value
 
 *Declared by:*
- - [lib\.nix, via option flake\.flakeModules\.lib](flake-modules/lib.nix)
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
+ - [lib\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.lib](flake-modules/lib.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
 
 
 
@@ -32,7 +32,7 @@ function that evaluates to a(n) attribute set of package
 ` <function> `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
 
 
 
@@ -53,7 +53,7 @@ function that evaluates to a(n) function that evaluates to a(n) attribute set of
 ` <function> `
 
 *Declared by:*
- - [lib\.nix, via option flake\.flakeModules\.lib](flake-modules/lib.nix)
+ - [lib\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.lib](flake-modules/lib.nix)
 
 
 
@@ -74,7 +74,7 @@ function that evaluates to a(n) string
 ` <function> `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
 
 
 
@@ -92,42 +92,41 @@ Modules defined here have access to the suboptions and [some convenient module a
 module
 
 *Declared by:*
- - [vscode\.nix, via option flake\.flakeModules\.vscode](flake-modules/vscode.nix)
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs](flake-modules/volume-mount-nfs.nix)
- - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal](flake-modules/volume-mount-local.nix)
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir](flake-modules/volume-mount-empty-dir.nix)
- - [skypilot\.nix, via option flake\.flakeModules\.skypilot](flake-modules/skypilot.nix)
- - [services\.nix, via option flake\.flakeModules\.services](flake-modules/services.nix)
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
- - [python-vscode\.nix, via option flake\.flakeModules\.pythonVscode](flake-modules/python-vscode.nix)
- - [python-package\.nix, via option flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry](flake-modules/python-envs-poetry.nix)
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508](flake-modules/python-envs-pep508.nix)
- - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication](flake-modules/poetry2nix-application.nix)
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix](flake-modules/poetry2nix.nix)
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
- - [options-document\.nix, via option flake\.flakeModules\.optionsDocument](flake-modules/options-document.nix)
- - [nixpkgs\.nix, via option flake\.flakeModules\.nixpkgs](flake-modules/nixpkgs.nix)
- - [nix-ld\.nix, via option flake\.flakeModules\.nixLd](flake-modules/nix-ld.nix)
- - [nix-ide\.nix, via option flake\.flakeModules\.nixIde](flake-modules/nix-ide.nix)
- - [link-nvidia-drivers\.nix, via option flake\.flakeModules\.linkNvidiaDrivers](flake-modules/link-nvidia-drivers.nix)
- - [ld-fallback-manylinux\.nix, via option flake\.flakeModules\.ldFallbackManylinux](flake-modules/ld-fallback-manylinux.nix)
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback](flake-modules/ld-fallback.nix)
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService](flake-modules/kubernetes-service.nix)
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob](flake-modules/kubernetes-job.nix)
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
- - [jobs\.nix, via option flake\.flakeModules\.jobs](flake-modules/jobs.nix)
- - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential](flake-modules/gke-credential.nix)
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
- - [devenv-python-with-libstdc++\.nix, via option flake\.flakeModules\.devenvPythonWithLibstdcxx](flake-modules/devenv-python-with-libstdc++.nix)
- - [devcontainer-poetry\.nix, via option flake\.flakeModules\.devcontainerPoetry](flake-modules/devcontainer-poetry.nix)
- - [devcontainer-nix\.nix, via option flake\.flakeModules\.devcontainerNix](flake-modules/devcontainer-nix.nix)
- - [devcontainer-gcp-cli-tools\.nix, via option flake\.flakeModules\.devcontainerGcpCliTools](flake-modules/devcontainer-gcp-cli-tools.nix)
- - [devcontainer-azure-cli-tools\.nix, via option flake\.flakeModules\.devcontainerAzureCliTools](flake-modules/devcontainer-azure-cli-tools.nix)
- - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
- - [cuda\.nix, via option flake\.flakeModules\.cuda](flake-modules/cuda.nix)
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential](flake-modules/aks-credential.nix)
+ - [vscode\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.vscode](flake-modules/vscode.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-local\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountLocal](flake-modules/volume-mount-local.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir](flake-modules/volume-mount-empty-dir.nix)
+ - [skypilot\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.skypilot](flake-modules/skypilot.nix)
+ - [services\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.services](flake-modules/services.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [python-vscode\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonVscode](flake-modules/python-vscode.nix)
+ - [python-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
+ - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry](flake-modules/python-envs-poetry.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508](flake-modules/python-envs-pep508.nix)
+ - [poetry2nix-application\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nixApplication](flake-modules/poetry2nix-application.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix](flake-modules/poetry2nix.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [options-document\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.optionsDocument](flake-modules/options-document.nix)
+ - [nixpkgs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.nixpkgs](flake-modules/nixpkgs.nix)
+ - [nix-ld\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.nixLd](flake-modules/nix-ld.nix)
+ - [nix-ide\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.nixIde](flake-modules/nix-ide.nix)
+ - [ld-fallback-manylinux\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallbackManylinux](flake-modules/ld-fallback-manylinux.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback](flake-modules/ld-fallback.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService](flake-modules/kubernetes-service.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob](flake-modules/kubernetes-job.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes](flake-modules/kubernetes.nix)
+ - [jobs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.jobs](flake-modules/jobs.nix)
+ - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential](flake-modules/gke-credential.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devenv-python-with-libstdc++\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devenvPythonWithLibstdcxx](flake-modules/devenv-python-with-libstdc++.nix)
+ - [devcontainer-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerPoetry](flake-modules/devcontainer-poetry.nix)
+ - [devcontainer-nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerNix](flake-modules/devcontainer-nix.nix)
+ - [devcontainer-gcp-cli-tools\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerGcpCliTools](flake-modules/devcontainer-gcp-cli-tools.nix)
+ - [devcontainer-azure-cli-tools\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainerAzureCliTools](flake-modules/devcontainer-azure-cli-tools.nix)
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda](flake-modules/cuda.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential](flake-modules/aks-credential.nix)
  - [options-document\.nix](flake-modules/options-document.nix)
 
 
@@ -150,8 +149,8 @@ module
 ` { } `
 
 *Declared by:*
- - [python-package\.nix, via option flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [python-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -172,7 +171,7 @@ strings concatenated with “:”
 ` "" `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -195,7 +194,7 @@ module
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -219,7 +218,7 @@ lazy attribute set of string
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -240,7 +239,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [python-package\.nix, via option flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
+ - [python-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
 
 
 
@@ -261,7 +260,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -282,7 +281,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -303,7 +302,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -325,7 +324,7 @@ string
 1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -346,7 +345,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -367,7 +366,7 @@ strings concatenated with “:”
 ` "" `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -383,7 +382,7 @@ This option has no description\.
 list of package
 
 *Declared by:*
- - [cuda\.nix, via option flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
 
 
@@ -404,7 +403,7 @@ package
 ` <derivation cuda-home> `
 
 *Declared by:*
- - [cuda\.nix, via option flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
 
 
@@ -427,7 +426,7 @@ module
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -451,7 +450,7 @@ lazy attribute set of string
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -467,7 +466,7 @@ This option has no description\.
 strings concatenated with “\\n”
 
 *Declared by:*
- - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -483,7 +482,7 @@ This option has no description\.
 list of string
 
 *Declared by:*
- - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -509,7 +508,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -530,7 +529,7 @@ package
 ` <derivation libaudit.so> `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -546,7 +545,7 @@ This option has no description\.
 list of path
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -567,7 +566,7 @@ path
 ` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -588,7 +587,7 @@ unspecified value
 ` <function> `
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -609,7 +608,7 @@ unspecified value
 ` true `
 
 *Declared by:*
- - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -625,7 +624,7 @@ This option has no description\.
 list of string
 
 *Declared by:*
- - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -650,7 +649,7 @@ list of path
 ` [ ] `
 
 *Declared by:*
- - [nix-ld\.nix, via option flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
+ - [nix-ld\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
 
 
 
@@ -666,7 +665,7 @@ This option has no description\.
 list of string
 
 *Declared by:*
- - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -687,7 +686,7 @@ attribute set of module
 ` { } `
 
 *Declared by:*
- - [devcontainer\.nix, via option flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -708,7 +707,7 @@ attribute set of anything
 ` { } `
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -739,7 +738,7 @@ pkgs.appendOverlays [
 ```
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -782,7 +781,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -803,7 +802,7 @@ unspecified value
 ` <derivation python3-3.11.9> `
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -824,7 +823,7 @@ package
 ` <derivation python3-3.9.16-env> `
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -840,7 +839,7 @@ This option has no description\.
 attribute set of anything
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -861,7 +860,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [python-package\.nix, via option flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
+ - [python-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
 
 
 
@@ -882,7 +881,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -903,7 +902,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -924,7 +923,28 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.rawNixDirenvFlakeFlags
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+strings concatenated with " "
+
+
+
+*Default:*
+` "--no-eval-cache --show-trace --override-input devenv-root path:./.devenv/state/pwd" `
+
+*Declared by:*
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
 
 
 
@@ -946,7 +966,7 @@ string
 1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -967,7 +987,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -988,7 +1008,7 @@ null or value “Memory” (singular enum)
 ` null `
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -1009,7 +1029,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -1037,7 +1057,7 @@ list of string
 ```
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -1058,7 +1078,7 @@ string
 ` "/ml_data" `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -1079,7 +1099,7 @@ string
 ` "nfs.example.com" `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -1095,7 +1115,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1116,7 +1136,7 @@ string
 ` "images" `
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1132,7 +1152,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1153,7 +1173,7 @@ string
 ` "mlsolutionimages" `
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1174,7 +1194,7 @@ string
 ` "ml-ops-vm-images" `
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1190,7 +1210,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1206,7 +1226,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1227,7 +1247,7 @@ string
 ` "ml-ops-vm-images" `
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1243,7 +1263,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1259,7 +1279,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1275,7 +1295,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1296,7 +1316,7 @@ string
 ` "images" `
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1317,7 +1337,7 @@ string
 ` "mlsolutionimages" `
 
 *Declared by:*
- - [devserver\.nix, via option flake\.flakeModules\.devserver](flake-modules/devserver.nix)
+ - [devserver\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devserver](flake-modules/devserver.nix)
 
 
 
@@ -1335,7 +1355,7 @@ For example, config of ` perSystem.ml-ops.job.xxx ` will be copied to all ` perS
 module
 
 *Declared by:*
- - [jobs\.nix, via option flake\.flakeModules\.jobs](flake-modules/jobs.nix)
+ - [jobs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.jobs](flake-modules/jobs.nix)
 
 
 
@@ -1356,7 +1376,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [jobs\.nix, via option flake\.flakeModules\.jobs](flake-modules/jobs.nix)
+ - [jobs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.jobs](flake-modules/jobs.nix)
 
 
 
@@ -1377,7 +1397,7 @@ strings concatenated with “:”
 ` "" `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -1393,7 +1413,7 @@ This option has no description\.
 list of package
 
 *Declared by:*
- - [cuda\.nix, via option flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
 
 
@@ -1414,7 +1434,7 @@ package
 ` <derivation cuda-home> `
 
 *Declared by:*
- - [cuda\.nix, via option flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
 
 
@@ -1437,7 +1457,7 @@ module
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -1461,7 +1481,7 @@ lazy attribute set of string
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -1482,7 +1502,7 @@ module
 ` { } `
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -1498,7 +1518,7 @@ This option has no description\.
 attribute set of string
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -1519,7 +1539,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [jobs\.nix, via option flake\.flakeModules\.jobs, via option perSystem\.ml-ops\.job](flake-modules/jobs.nix)
+ - [jobs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.jobs, via option perSystem\.ml-ops\.job](flake-modules/jobs.nix)
 
 
 
@@ -1535,7 +1555,7 @@ This option has no description\.
 attribute set of string
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -1551,10 +1571,10 @@ This option has no description\.
 submodule
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
- - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/gke-credential.nix)
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/gke-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -1578,7 +1598,7 @@ null or (submodule)
 ` null `
 
 *Declared by:*
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -1599,7 +1619,7 @@ string
 ` "ml-aks" `
 
 *Declared by:*
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -1620,7 +1640,7 @@ string
 ` "mlsolutionregistry" `
 
 *Declared by:*
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -1641,7 +1661,7 @@ string
 ` "ml-solutions" `
 
 *Declared by:*
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -1662,7 +1682,7 @@ module
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1683,7 +1703,7 @@ unspecified value
 ` launchers.<name>.environmentVariables `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1704,7 +1724,7 @@ null or (list of string)
 ` null `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1725,7 +1745,7 @@ list of anything
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1746,7 +1766,7 @@ unspecified value
 ` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1762,7 +1782,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1783,7 +1803,7 @@ unspecified value
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1804,7 +1824,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1825,7 +1845,7 @@ module
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1846,7 +1866,7 @@ string
 ` "processes" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1870,7 +1890,7 @@ null or (submodule)
 ` null `
 
 *Declared by:*
- - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/gke-credential.nix)
+ - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/gke-credential.nix)
 
 
 
@@ -1886,7 +1906,7 @@ The GKE cluster name\.
 string
 
 *Declared by:*
- - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/gke-credential.nix)
+ - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/gke-credential.nix)
 
 
 
@@ -1902,7 +1922,7 @@ The GCP region\.
 string
 
 *Declared by:*
- - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/gke-credential.nix)
+ - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/gke-credential.nix)
 
 
 
@@ -1923,7 +1943,7 @@ package
 ` <derivation helm-chart> `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1939,7 +1959,7 @@ This option has no description\.
 attribute set of anything
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1960,7 +1980,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -1981,7 +2001,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2002,7 +2022,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2023,7 +2043,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2044,7 +2064,7 @@ unspecified value
 ` "‹name›-‹name›" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2067,14 +2087,12 @@ attribute set of attribute set of anything
 ` { } `
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.apiVersion
-
-
 
 This option has no description\.
 
@@ -2089,11 +2107,13 @@ unspecified value
 ` "batch/v1" `
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.kind
+
+
 
 This option has no description\.
 
@@ -2108,7 +2128,7 @@ unspecified value
 ` "Job" `
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
@@ -2133,7 +2153,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
@@ -2154,7 +2174,7 @@ unspecified value
 ` "default" `
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
@@ -2175,7 +2195,7 @@ unspecified value
 ` 0 `
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
@@ -2196,7 +2216,7 @@ unspecified value
 ` "‹name›-‹name›" `
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
@@ -2217,7 +2237,7 @@ unspecified value
 ` "default" `
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
@@ -2233,7 +2253,7 @@ This option has no description\.
 (attribute set of (attribute set of anything)) or (list of anything) convertible to it
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
@@ -2254,7 +2274,7 @@ unspecified value
 ` launchers.<name>.environmentVariables `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2275,7 +2295,7 @@ null or (list of string)
 ` null `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2296,7 +2316,7 @@ list of anything
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2317,7 +2337,7 @@ unspecified value
 ` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2333,7 +2353,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2354,7 +2374,7 @@ unspecified value
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2375,7 +2395,7 @@ unspecified value
 ` "Never" `
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
@@ -2396,7 +2416,7 @@ unspecified value
 ` [ ] `
 
 *Declared by:*
- - [kubernetes-job\.nix, via option flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
+ - [kubernetes-job\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesJob, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes-job.nix)
 
 
 
@@ -2417,7 +2437,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2438,7 +2458,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2459,7 +2479,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2480,7 +2500,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2501,7 +2521,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2522,7 +2542,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2543,7 +2563,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2564,7 +2584,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2585,7 +2605,7 @@ string
 ` "registry.hub.docker.com" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2606,7 +2626,7 @@ null or string
 ` null `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2627,7 +2647,7 @@ string
 ` "default" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2643,7 +2663,7 @@ This option has no description\.
 attribute set of (submodule)
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2664,7 +2684,7 @@ unspecified value
 ` "v1" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2685,7 +2705,7 @@ unspecified value
 ` "PersistentVolumeClaim" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2701,7 +2721,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2717,7 +2737,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2743,7 +2763,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2764,7 +2784,7 @@ unspecified value
 ` "1000Ti" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2785,7 +2805,7 @@ unspecified value
 ` "" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2801,7 +2821,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2817,7 +2837,7 @@ This option has no description\.
 attribute set of (submodule)
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2838,7 +2858,7 @@ unspecified value
 ` "v1" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2859,7 +2879,7 @@ unspecified value
 ` "PersistentVolume" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2875,7 +2895,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2891,7 +2911,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2907,7 +2927,7 @@ This option has no description\.
 attribute set of anything
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2928,7 +2948,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -2949,7 +2969,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2970,7 +2990,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -2991,7 +3011,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -3012,7 +3032,7 @@ list of string
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -3033,7 +3053,7 @@ string
 ` "registry.hub.docker.com/‹job-or-service-name›-‹launcher-name›:‹version›.‹git-rivision›.‹narHash›" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -3049,7 +3069,7 @@ This option has no description\.
 list of attribute set of anything
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -3065,7 +3085,7 @@ This option has no description\.
 list of attribute set of anything
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -3086,7 +3106,7 @@ unspecified value
 ` "blah blah" `
 
 *Declared by:*
- - [skypilot\.nix, via option flake\.flakeModules\.skypilot, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/skypilot.nix)
+ - [skypilot\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.skypilot, via option perSystem\.ml-ops\.job, via option perSystem\.ml-ops\.jobs\.\<name>\.launcher](flake-modules/skypilot.nix)
 
 
 
@@ -3112,7 +3132,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -3133,7 +3153,7 @@ package
 ` <derivation libaudit.so> `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -3149,7 +3169,7 @@ This option has no description\.
 list of path
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -3170,7 +3190,7 @@ path
 ` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -3191,7 +3211,7 @@ unspecified value
 ` <function> `
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -3212,7 +3232,7 @@ string
 ` "‹name›" `
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -3237,7 +3257,7 @@ list of path
 ` [ ] `
 
 *Declared by:*
- - [nix-ld\.nix, via option flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
+ - [nix-ld\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
 
 
 
@@ -3258,7 +3278,7 @@ attribute set of anything
 ` { } `
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -3289,7 +3309,7 @@ pkgs.appendOverlays [
 ```
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -3332,7 +3352,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -3353,7 +3373,7 @@ unspecified value
 ` <derivation python3-3.11.9> `
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -3374,7 +3394,7 @@ package
 ` mkPoetryApplication poetryApplicationArgs `
 
 *Declared by:*
- - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+ - [poetry2nix-application\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
 
 
 
@@ -3395,7 +3415,7 @@ attribute set of anything
 ` { } `
 
 *Declared by:*
- - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+ - [poetry2nix-application\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
 
 
 
@@ -3416,7 +3436,7 @@ package
 ` <derivation python3-3.11.9-env> `
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
+ - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
 
 
 
@@ -3437,7 +3457,7 @@ attribute set of anything
 ` { } `
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
+ - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
 
 
 
@@ -3458,7 +3478,7 @@ package
 ` <derivation python3-3.9.16-env> `
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -3474,7 +3494,7 @@ This option has no description\.
 attribute set of anything
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -3495,7 +3515,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [python-package\.nix, via option flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
+ - [python-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
 
 
 
@@ -3516,7 +3536,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -3537,7 +3557,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -3558,7 +3578,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -3580,7 +3600,7 @@ string
 1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -3601,8 +3621,8 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -3630,7 +3650,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -3651,7 +3671,7 @@ null or value “Memory” (singular enum)
 ` null `
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -3672,7 +3692,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+ - [volume-mount-local\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
@@ -3692,7 +3712,7 @@ unspecified value
 *Default:*
 
 *Declared by:*
- - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+ - [volume-mount-local\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
@@ -3729,7 +3749,7 @@ attribute set of anything
 ```
 
 *Declared by:*
- - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+ - [volume-mount-local\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
@@ -3750,7 +3770,7 @@ string
 ` "/ml_data" `
 
 *Declared by:*
- - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+ - [volume-mount-local\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
@@ -3771,8 +3791,8 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -3792,7 +3812,7 @@ unspecified value
 *Default:*
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -3820,7 +3840,7 @@ list of string
 ```
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -3841,7 +3861,7 @@ string
 ` "/ml_data" `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -3862,7 +3882,7 @@ string
 ` "nfs.example.com" `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -3883,7 +3903,7 @@ module
 ` { } `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -3904,7 +3924,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -3925,7 +3945,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -3946,7 +3966,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -3967,7 +3987,7 @@ module
 ` { } `
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -3988,7 +4008,7 @@ strings concatenated with “:”
 ` "" `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -4004,7 +4024,7 @@ This option has no description\.
 list of package
 
 *Declared by:*
- - [cuda\.nix, via option flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
 
 
@@ -4025,7 +4045,7 @@ package
 ` <derivation cuda-home> `
 
 *Declared by:*
- - [cuda\.nix, via option flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
 
 
@@ -4048,7 +4068,7 @@ module
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -4072,7 +4092,7 @@ lazy attribute set of string
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -4093,7 +4113,7 @@ module
 ` { } `
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -4109,7 +4129,7 @@ This option has no description\.
 attribute set of string
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -4135,7 +4155,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -4156,7 +4176,7 @@ package
 ` <derivation libaudit.so> `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -4172,13 +4192,11 @@ This option has no description\.
 list of path
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
 ## perSystem\.ml-ops\.runtime\.ldFallback\.path
-
-
 
 This option has no description\.
 
@@ -4193,11 +4211,13 @@ path
 ` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
 ## perSystem\.ml-ops\.runtime\.mkPython
+
+
 
 This option has no description\.
 
@@ -4212,7 +4232,7 @@ unspecified value
 ` <function> `
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -4233,7 +4253,7 @@ string
 ` "‹name›" `
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -4258,7 +4278,7 @@ list of path
 ` [ ] `
 
 *Declared by:*
- - [nix-ld\.nix, via option flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
+ - [nix-ld\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
 
 
 
@@ -4279,7 +4299,7 @@ attribute set of anything
 ` { } `
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -4310,7 +4330,7 @@ pkgs.appendOverlays [
 ```
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -4353,7 +4373,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -4374,7 +4394,7 @@ unspecified value
 ` <derivation python3-3.11.9> `
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -4395,7 +4415,7 @@ package
 ` <derivation python3-3.9.16-env> `
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -4411,7 +4431,7 @@ This option has no description\.
 attribute set of anything
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -4432,7 +4452,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [python-package\.nix, via option flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
+ - [python-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
 
 
 
@@ -4453,7 +4473,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -4474,7 +4494,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -4495,7 +4515,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -4517,7 +4537,7 @@ string
 1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -4538,7 +4558,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -4559,7 +4579,7 @@ null or value “Memory” (singular enum)
 ` null `
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -4580,7 +4600,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -4608,7 +4628,7 @@ list of string
 ```
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -4629,7 +4649,7 @@ string
 ` "/ml_data" `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -4650,7 +4670,7 @@ string
 ` "nfs.example.com" `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -4668,7 +4688,7 @@ For example, config of ` perSystem.ml-ops.service.xxx ` will be copied to all ` 
 module
 
 *Declared by:*
- - [services\.nix, via option flake\.flakeModules\.services](flake-modules/services.nix)
+ - [services\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.services](flake-modules/services.nix)
 
 
 
@@ -4689,7 +4709,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [services\.nix, via option flake\.flakeModules\.services](flake-modules/services.nix)
+ - [services\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.services](flake-modules/services.nix)
 
 
 
@@ -4710,7 +4730,7 @@ strings concatenated with “:”
 ` "" `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -4726,7 +4746,7 @@ This option has no description\.
 list of package
 
 *Declared by:*
- - [cuda\.nix, via option flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
 
 
@@ -4747,7 +4767,7 @@ package
 ` <derivation cuda-home> `
 
 *Declared by:*
- - [cuda\.nix, via option flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
+ - [cuda\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.cuda, via option perSystem\.ml-ops\.common](flake-modules/cuda.nix)
 
 
 
@@ -4770,7 +4790,7 @@ module
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -4794,7 +4814,7 @@ lazy attribute set of string
 ` { } `
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -4815,7 +4835,7 @@ module
 ` { } `
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -4831,7 +4851,7 @@ This option has no description\.
 attribute set of string
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -4852,7 +4872,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [services\.nix, via option flake\.flakeModules\.services, via option perSystem\.ml-ops\.service](flake-modules/services.nix)
+ - [services\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.services, via option perSystem\.ml-ops\.service](flake-modules/services.nix)
 
 
 
@@ -4868,7 +4888,7 @@ This option has no description\.
 attribute set of string
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -4884,10 +4904,10 @@ This option has no description\.
 submodule
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
- - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/gke-credential.nix)
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/gke-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -4911,7 +4931,7 @@ null or (submodule)
 ` null `
 
 *Declared by:*
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -4932,7 +4952,7 @@ string
 ` "ml-aks" `
 
 *Declared by:*
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -4953,7 +4973,7 @@ string
 ` "mlsolutionregistry" `
 
 *Declared by:*
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -4974,7 +4994,7 @@ string
 ` "ml-solutions" `
 
 *Declared by:*
- - [aks-credential\.nix, via option flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
+ - [aks-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.aksCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/aks-credential.nix)
 
 
 
@@ -4995,7 +5015,7 @@ module
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5016,7 +5036,7 @@ unspecified value
 ` launchers.<name>.environmentVariables `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5037,7 +5057,7 @@ null or (list of string)
 ` null `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5058,7 +5078,7 @@ list of anything
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5079,7 +5099,7 @@ unspecified value
 ` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5095,7 +5115,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5116,7 +5136,7 @@ unspecified value
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5137,7 +5157,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5158,7 +5178,7 @@ module
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5179,7 +5199,7 @@ string
 ` "processes" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5203,7 +5223,7 @@ null or (submodule)
 ` null `
 
 *Declared by:*
- - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/gke-credential.nix)
+ - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/gke-credential.nix)
 
 
 
@@ -5219,7 +5239,7 @@ The GKE cluster name\.
 string
 
 *Declared by:*
- - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/gke-credential.nix)
+ - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/gke-credential.nix)
 
 
 
@@ -5235,7 +5255,7 @@ The GCP region\.
 string
 
 *Declared by:*
- - [gke-credential\.nix, via option flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/gke-credential.nix)
+ - [gke-credential\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.gkeCredential, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/gke-credential.nix)
 
 
 
@@ -5256,7 +5276,7 @@ package
 ` <derivation helm-chart> `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5272,7 +5292,7 @@ This option has no description\.
 attribute set of anything
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5293,7 +5313,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5314,7 +5334,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -5335,7 +5355,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -5356,7 +5376,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -5377,7 +5397,7 @@ unspecified value
 ` "‹name›-‹name›" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5400,8 +5420,8 @@ attribute set of attribute set of anything
 ` { } `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5417,7 +5437,7 @@ This option has no description\.
 attribute set of attribute set of anything
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5438,7 +5458,7 @@ unspecified value
 ` "apps/v1" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5459,7 +5479,7 @@ unspecified value
 ` "Deployment" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5484,7 +5504,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5505,7 +5525,7 @@ unspecified value
 ` "default" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5526,7 +5546,7 @@ unspecified value
 ` "‹name›-‹name›" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5547,7 +5567,7 @@ unspecified value
 ` "default" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5568,7 +5588,7 @@ unspecified value
 ` "‹name›-‹name›" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5589,7 +5609,7 @@ unspecified value
 ` "default" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5605,7 +5625,7 @@ This option has no description\.
 (attribute set of (attribute set of anything)) or (list of anything) convertible to it
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5626,7 +5646,7 @@ unspecified value
 ` launchers.<name>.environmentVariables `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5647,7 +5667,7 @@ null or (list of string)
 ` null `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5668,7 +5688,7 @@ list of anything
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5689,7 +5709,7 @@ unspecified value
 ` perSystem.services|jobs.<name>.launchers.<name>.kubernetes.<name>.remoteImage `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5705,7 +5725,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5726,7 +5746,7 @@ unspecified value
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5747,7 +5767,7 @@ unspecified value
 ` [ ] `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5768,7 +5788,7 @@ null or (attribute set of anything)
 ` null `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5789,7 +5809,7 @@ unspecified value
 ` "v1" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5810,7 +5830,7 @@ unspecified value
 ` "Service" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5835,7 +5855,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5856,7 +5876,7 @@ unspecified value
 ` "default" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5877,7 +5897,7 @@ list of anything
 ` [ ] `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5898,7 +5918,7 @@ unspecified value
 ` "‹name›-‹name›" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5919,7 +5939,7 @@ unspecified value
 ` "default" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5940,7 +5960,7 @@ unspecified value
 ` "LoadBalancer" `
 
 *Declared by:*
- - [kubernetes-service\.nix, via option flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
+ - [kubernetes-service\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetesService, via option perSystem\.ml-ops\.service, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes-service.nix)
 
 
 
@@ -5961,7 +5981,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -5982,7 +6002,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -6003,7 +6023,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -6024,7 +6044,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -6045,7 +6065,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6066,7 +6086,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -6087,7 +6107,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -6108,7 +6128,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -6129,7 +6149,7 @@ string
 ` "registry.hub.docker.com" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6150,7 +6170,7 @@ null or string
 ` null `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6171,7 +6191,7 @@ string
 ` "default" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6187,7 +6207,7 @@ This option has no description\.
 attribute set of (submodule)
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6208,7 +6228,7 @@ unspecified value
 ` "v1" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6229,7 +6249,7 @@ unspecified value
 ` "PersistentVolumeClaim" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6245,7 +6265,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6261,13 +6281,11 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.spec\.accessModes
-
-
 
 This option has no description\.
 
@@ -6287,11 +6305,13 @@ unspecified value
 ```
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.spec\.resources\.requests\.storage
+
+
 
 This option has no description\.
 
@@ -6306,7 +6326,7 @@ unspecified value
 ` "1000Ti" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6327,7 +6347,7 @@ unspecified value
 ` "" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6343,7 +6363,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6359,7 +6379,7 @@ This option has no description\.
 attribute set of (submodule)
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6380,7 +6400,7 @@ unspecified value
 ` "v1" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6401,7 +6421,7 @@ unspecified value
 ` "PersistentVolume" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6417,7 +6437,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6433,7 +6453,7 @@ This option has no description\.
 string
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6449,7 +6469,7 @@ This option has no description\.
 attribute set of anything
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6470,7 +6490,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6491,7 +6511,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -6512,7 +6532,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -6533,7 +6553,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -6554,7 +6574,7 @@ list of string
 ` [ ] `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6575,7 +6595,7 @@ string
 ` "registry.hub.docker.com/‹job-or-service-name›-‹launcher-name›:‹version›.‹git-rivision›.‹narHash›" `
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6591,7 +6611,7 @@ This option has no description\.
 list of attribute set of anything
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6607,7 +6627,7 @@ This option has no description\.
 list of attribute set of anything
 
 *Declared by:*
- - [kubernetes\.nix, via option flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
+ - [kubernetes\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.kubernetes, via option perSystem\.ml-ops\.runtime, via option perSystem\.ml-ops\.services\.\<name>\.launcher](flake-modules/kubernetes.nix)
 
 
 
@@ -6633,7 +6653,7 @@ boolean
 ` true `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -6654,7 +6674,7 @@ package
 ` <derivation libaudit.so> `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -6670,7 +6690,7 @@ This option has no description\.
 list of path
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -6691,7 +6711,7 @@ path
 ` "/nix/store/l4lmlsn4jjrqs667sfar12b8bidwqav7-ld-fallback-path/lib" `
 
 *Declared by:*
- - [ld-fallback\.nix, via option flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
+ - [ld-fallback\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.ldFallback, via option perSystem\.ml-ops\.common](flake-modules/ld-fallback.nix)
 
 
 
@@ -6712,7 +6732,7 @@ unspecified value
 ` <function> `
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -6733,7 +6753,7 @@ string
 ` "‹name›" `
 
 *Declared by:*
- - [runtime\.nix, via option flake\.flakeModules\.runtime](flake-modules/runtime.nix)
+ - [runtime\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.runtime](flake-modules/runtime.nix)
 
 
 
@@ -6758,7 +6778,7 @@ list of path
 ` [ ] `
 
 *Declared by:*
- - [nix-ld\.nix, via option flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
+ - [nix-ld\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.nixLd, via option perSystem\.ml-ops\.common](flake-modules/nix-ld.nix)
 
 
 
@@ -6779,7 +6799,7 @@ attribute set of anything
 ` { } `
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -6810,7 +6830,7 @@ pkgs.appendOverlays [
 ```
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -6853,7 +6873,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -6874,7 +6894,7 @@ unspecified value
 ` <derivation python3-3.11.9> `
 
 *Declared by:*
- - [poetry2nix\.nix, via option flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
+ - [poetry2nix\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nix, via option perSystem\.ml-ops\.common](flake-modules/poetry2nix.nix)
 
 
 
@@ -6895,7 +6915,7 @@ package
 ` mkPoetryApplication poetryApplicationArgs `
 
 *Declared by:*
- - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+ - [poetry2nix-application\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
 
 
 
@@ -6916,7 +6936,7 @@ attribute set of anything
 ` { } `
 
 *Declared by:*
- - [poetry2nix-application\.nix, via option flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
+ - [poetry2nix-application\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.poetry2nixApplication, via option perSystem\.ml-ops\.runtime](flake-modules/poetry2nix-application.nix)
 
 
 
@@ -6937,7 +6957,7 @@ package
 ` <derivation python3-3.11.9-env> `
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
+ - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
 
 
 
@@ -6958,7 +6978,7 @@ attribute set of anything
 ` { } `
 
 *Declared by:*
- - [python-envs-poetry\.nix, via option flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
+ - [python-envs-poetry\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPoetry, via option perSystem\.ml-ops\.runtime](flake-modules/python-envs-poetry.nix)
 
 
 
@@ -6979,7 +6999,7 @@ package
 ` <derivation python3-3.9.16-env> `
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -6995,7 +7015,7 @@ This option has no description\.
 attribute set of anything
 
 *Declared by:*
- - [python-envs-pep508\.nix, via option flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
+ - [python-envs-pep508\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonEnvsPep508, via option perSystem\.ml-ops\.common](flake-modules/python-envs-pep508.nix)
 
 
 
@@ -7016,7 +7036,7 @@ submodule
 ` { } `
 
 *Declared by:*
- - [python-package\.nix, via option flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
+ - [python-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.pythonPackage](flake-modules/python-package.nix)
 
 
 
@@ -7037,7 +7057,7 @@ package
 ` <derivation hello-2.12.1> `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -7058,7 +7078,7 @@ package
 applied ` base-package ` with ` pipe `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -7079,7 +7099,7 @@ list of function that evaluates to a(n) package
 ` [ ] `
 
 *Declared by:*
- - [overridable-package\.nix, via option flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
+ - [overridable-package\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.overridablePackage](flake-modules/overridable-package.nix)
 
 
 
@@ -7101,7 +7121,7 @@ string
 1\.0\.0+\<lastModifiedDate>\.\<git-revision>\.\<narHash>
 
 *Declared by:*
- - [common\.nix, via option flake\.flakeModules\.common](flake-modules/common.nix)
+ - [common\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.common](flake-modules/common.nix)
 
 
 
@@ -7122,8 +7142,8 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -7151,7 +7171,7 @@ unspecified value
 ```
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -7172,7 +7192,7 @@ null or value “Memory” (singular enum)
 ` null `
 
 *Declared by:*
- - [volume-mount-empty-dir\.nix, via option flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
+ - [volume-mount-empty-dir\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountEmptyDir, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-empty-dir.nix)
 
 
 
@@ -7193,7 +7213,7 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+ - [volume-mount-local\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
@@ -7213,7 +7233,7 @@ unspecified value
 *Default:*
 
 *Declared by:*
- - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+ - [volume-mount-local\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
@@ -7250,7 +7270,7 @@ attribute set of anything
 ```
 
 *Declared by:*
- - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+ - [volume-mount-local\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
@@ -7271,7 +7291,7 @@ string
 ` "/ml_data" `
 
 *Declared by:*
- - [volume-mount-local\.nix, via option flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
+ - [volume-mount-local\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountLocal, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-local.nix)
 
 
 
@@ -7292,8 +7312,8 @@ attribute set of (submodule)
 ` { } `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -7313,7 +7333,7 @@ unspecified value
 *Default:*
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.runtime](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -7341,7 +7361,7 @@ list of string
 ```
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -7362,7 +7382,7 @@ string
 ` "/ml_data" `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 
 
@@ -7383,6 +7403,6 @@ string
 ` "nfs.example.com" `
 
 *Declared by:*
- - [volume-mount-nfs\.nix, via option flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
+ - [volume-mount-nfs\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.volumeMountNfs, via option perSystem\.ml-ops\.common](flake-modules/volume-mount-nfs.nix)
 
 

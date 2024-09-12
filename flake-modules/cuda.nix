@@ -2,12 +2,10 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
   imports = [
     inputs.flake-parts.flakeModules.flakeModules
     ./common.nix
-    ./link-nvidia-drivers.nix
   ];
   flake.flakeModules.cuda = {
     imports = [
       topLevel.config.flake.flakeModules.common
-      topLevel.config.flake.flakeModules.linkNvidiaDrivers
     ];
     options.perSystem = flake-parts-lib.mkPerSystemOption ({ lib, pkgs, system, ... }: {
       config = lib.mkIf (system != "aarch64-darwin") {
@@ -15,11 +13,14 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
         nixpkgs.config.cudaSupport = true;
 
         ml-ops.common = common: {
-          config.LD_LIBRARY_PATH = lib.mkMerge [
-            "/run/opengl-driver/lib"
-            # bitsandbytes need to search for CUDA libraries
-            "${common.config.environmentVariables.CUDA_HOME}/lib"
-          ];
+          config.devenvShellModule.enterShell = ''
+            export LD_LIBRARY_PATH="$(${
+              lib.escapeShellArgs [
+                "${inputs.nix-gl-host.defaultPackage.${system}}/bin/nixglhost"
+                "--print-ld-library-path"
+              ]
+            })":''${LD_LIBRARY_PATH:-}
+          '';
           config.devenvShellModule.packages = [
             common.config.cuda.home
           ];
