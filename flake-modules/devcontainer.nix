@@ -194,7 +194,7 @@ topLevel@{ flake-parts-lib, lib, ... }: {
                     ) ++ [
                       devcontainer.config.inputsGenerator
 
-                      (lib.mkIf ((builtins.readFile topLevel.inputs.devenv-root.outPath) == "") ''
+                      (lib.mkIf ((builtins.readFile flakeModule.inputs.devenv-root.outPath) == "") ''
                         echo 'Cannot find devenv root file. Please rerun `direnv reload`.' >&2
                         exit 1
                       '')
