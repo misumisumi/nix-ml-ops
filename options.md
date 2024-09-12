@@ -486,6 +486,22 @@ list of string
 
 
 
+## perSystem\.ml-ops\.devcontainer\.inputsGenerator
+
+
+
+A script that will be run in both ` direnv reload ` and ` nix develop ` to generate the flake inputs for the development environment\.
+
+
+
+*Type:*
+strings concatenated with “\\n”
+
+*Declared by:*
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+
+
+
 ## perSystem\.ml-ops\.devcontainer\.ldFallback\.enablelogging
 
 
@@ -606,6 +622,22 @@ unspecified value
 
 *Default:*
 ` true `
+
+*Declared by:*
+ - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
+
+
+
+## perSystem\.ml-ops\.devcontainer\.nixCommonFlakeFlags
+
+
+
+This option has no description\.
+
+
+
+*Type:*
+list of string
 
 *Declared by:*
  - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
@@ -2049,8 +2081,6 @@ list of function that evaluates to a(n) package
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmReleaseName
 
-
-
 This option has no description\.
 
 
@@ -2093,6 +2123,8 @@ attribute set of attribute set of anything
 
 
 ## perSystem\.ml-ops\.jobs\.\<name>\.launchers\.\<name>\.kubernetes\.helmTemplates\.job\.apiVersion
+
+
 
 This option has no description\.
 
@@ -4161,8 +4193,6 @@ boolean
 
 ## perSystem\.ml-ops\.runtime\.ldFallback\.libaudit
 
-
-
 This option has no description\.
 
 
@@ -4197,6 +4227,8 @@ list of path
 
 
 ## perSystem\.ml-ops\.runtime\.ldFallback\.path
+
+
 
 This option has no description\.
 
@@ -6255,8 +6287,6 @@ unspecified value
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.metadata\.name
 
-
-
 This option has no description\.
 
 
@@ -6286,6 +6316,8 @@ string
 
 
 ## perSystem\.ml-ops\.services\.\<name>\.launchers\.\<name>\.kubernetes\.persistentVolumeClaimManifests\.\<name>\.spec\.accessModes
+
+
 
 This option has no description\.
 

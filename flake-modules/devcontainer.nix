@@ -1,9 +1,9 @@
-topLevel@{ flake-parts-lib, inputs, lib, ... }: {
+topLevel@{ flake-parts-lib, lib, ... }: {
   imports = [
-    inputs.flake-parts.flakeModules.flakeModules
+    topLevel.inputs.flake-parts.flakeModules.flakeModules
     ./common.nix
   ];
-  flake.flakeModules.devcontainer = {
+  flake.flakeModules.devcontainer = flakeModule: {
     imports = [
       topLevel.config.flake.flakeModules.common
     ];
@@ -18,15 +18,6 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
             (devcontainer: {
               imports = [ perSystem.config.ml-ops.common ];
 
-              config.devenvShellModule.devenv.root =
-                let
-                  devenvRootFileContent = builtins.readFile inputs.devenv-root.outPath;
-                in
-                if devenvRootFileContent != "" then
-                  devenvRootFileContent
-                else
-                # /dev/null is a placeholder to suppress the error when evaluating `devenv.dotfile`, so that the `enterShell` script can be run to generate `.envrc`, even when some other commands in `enterShell` script would fail. Then when rerunning `direnv reload`, we will have the correct `devenv.root` value.
-                  "/dev/null";
 
               options.nixago.copiedFiles = lib.mkOption {
                 type = lib.types.listOf lib.types.str;
@@ -87,12 +78,9 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                   watch_file flake.nix
                   watch_file flake.lock
 
-                  mkdir -p .devenv/state/
-
-                  if [ "$PWD" != "$(<.devenv/state/pwd)" ]
-                  then
-                    printf %s "$PWD" > .devenv/state/pwd
-                  fi
+                  ${
+                    devcontainer.config.inputsGenerator
+                  }
 
                   dotenv_if_exists .env
                   source_env_if_exists .envrc.private
@@ -108,6 +96,14 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                 type = lib.types.separatedString " ";
                 default = lib.escapeShellArgs devcontainer.config.nixDirenvFlakeFlags;
               };
+              options.nixCommonFlakeFlags = lib.mkOption {
+                type = lib.types.listOf lib.types.str;
+              };
+              config.nixCommonFlakeFlags = [
+                "--override-input"
+                "devenv-root"
+                "path:./.devenv/state/pwd"
+              ];
               options.nixDirenvFlakeFlags = lib.mkOption {
                 type = lib.types.listOf lib.types.str;
               };
@@ -117,16 +113,43 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
 
                 # Environment variables are cached by direnv, so we don't need Nix's eval-cache.
                 "--show-trace"
-
-                "--override-input"
-                "devenv-root"
-                "path:./.devenv/state/pwd"
-              ];
+              ] ++ devcontainer.config.nixCommonFlakeFlags;
               options.mountVolumeWithSudo = lib.mkOption {
                 default = true;
               };
+              options.inputsGenerator = lib.mkOption {
+                type = lib.types.lines;
+                description = ''
+                  A script that will be run in both `direnv reload` and `nix develop` to generate the flake inputs for the development environment.
+                '';
+              };
+              config.inputsGenerator = lib.mkMerge [
+                ''
+                  mkdir -p .devenv/state/
+                ''
+                (lib.mkAfter ''
+                  if [ "$PWD" != "$(<.devenv/state/pwd)" ]
+                  then
+                    printf %s "$PWD" > .devenv/state/pwd
+                  fi
+                '')
+              ];
               config.devenvShellModule = {
                 name = "devcontainer";
+
+                devenv = {
+                  root =
+                    let
+                      devenvRootFileContent = builtins.readFile flakeModule.inputs.devenv-root.outPath;
+                    in
+                    if devenvRootFileContent != "" then
+                      devenvRootFileContent
+                    else
+                    # /dev/null is a placeholder to suppress the error when evaluating `devenv.dotfile`, so that the `enterShell` script can be run to generate `.envrc`, even when some other commands in `enterShell` script would fail. Then when rerunning `direnv reload`, we will have the correct `devenv.root` value.
+                      "/dev/null";
+
+                  flakeArgs = lib.mkForce devcontainer.config.nixCommonFlakeFlags;
+                };
 
                 devcontainer.enable = true;
                 devcontainer.settings.updateContentCommand = "direnv allow";
@@ -144,7 +167,7 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                         ] ++ devcontainer.config.gitignore
                       ))
 
-                      (inputs.nixago.lib.${system}.makeAll (
+                      (topLevel.inputs.nixago.lib.${system}.makeAll (
                         lib.attrsets.mapAttrsToList
                           (output: request: {
                             imports = [ request ];
@@ -169,7 +192,9 @@ topLevel@{ flake-parts-lib, inputs, lib, ... }: {
                         )
                         (builtins.attrValues (devcontainer.config.volumeMounts or { }))
                     ) ++ [
-                      (lib.mkIf ((builtins.readFile inputs.devenv-root.outPath) == "") ''
+                      devcontainer.config.inputsGenerator
+
+                      (lib.mkIf ((builtins.readFile topLevel.inputs.devenv-root.outPath) == "") ''
                         echo 'Cannot find devenv root file. Please rerun `direnv reload`.' >&2
                         exit 1
                       '')
