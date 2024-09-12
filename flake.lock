@@ -184,15 +184,16 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1698882062,
-        "narHash": "sha256-HkhafUayIqxXyHH1X8d9RDl1M2CkFgZLjKD3MzabiEo=",
-        "owner": "hercules-ci",
+        "lastModified": 1726120839,
+        "narHash": "sha256-LsjY8H9i7YzXVLCwQHIuybYvQGaACTpg6OpARS096AA=",
+        "owner": "Atry",
         "repo": "flake-parts",
-        "rev": "8c9fa2545007b49a5db5f650ae91f227672c3877",
+        "rev": "0921e541aec5995d344dd39378c630333fa17e5b",
         "type": "github"
       },
       "original": {
-        "owner": "hercules-ci",
+        "owner": "Atry",
+        "ref": "patch-3",
         "repo": "flake-parts",
         "type": "github"
       }
@@ -749,11 +750,11 @@
     },
     "nixpkgs-lib": {
       "locked": {
-        "lastModified": 1712450863,
-        "narHash": "sha256-K6IkdtMtq9xktmYPj0uaYc8NsIqHuaAoRBaMgu9Fvrw=",
+        "lastModified": 1725757153,
+        "narHash": "sha256-c1a6iLmCVPFI9EUVMrBN8xdmFxFXEjcVwiTSVmqajOs=",
         "owner": "nix-community",
         "repo": "nixpkgs.lib",
-        "rev": "3c62b6a12571c9a7f65ab037173ee153d539905f",
+        "rev": "68584f89dd0eb16fea5d80ae127f3f681f6a5df7",
         "type": "github"
       },
       "original": {
