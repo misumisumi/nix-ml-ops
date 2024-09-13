@@ -108,10 +108,6 @@ topLevel@{ flake-parts-lib, lib, ... }: {
                 type = lib.types.listOf lib.types.str;
               };
               config.nixDirenvFlakeFlags = [
-                # Disable Nix's eval-cache so that we can always see error messages if any.
-                "--no-eval-cache"
-
-                # Environment variables are cached by direnv, so we don't need Nix's eval-cache.
                 "--show-trace"
               ] ++ devcontainer.config.nixCommonFlakeFlags;
               options.mountVolumeWithSudo = lib.mkOption {
