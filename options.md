@@ -973,7 +973,7 @@ strings concatenated with " "
 
 
 *Default:*
-` "--no-eval-cache --show-trace --override-input devenv-root path:./.devenv/state/pwd" `
+` "--show-trace --override-input devenv-root path:./.devenv/state/pwd" `
 
 *Declared by:*
  - [devcontainer\.nix, via option partitions\.dev\.module\.flake\.flakeModules\.devcontainer](flake-modules/devcontainer.nix)
