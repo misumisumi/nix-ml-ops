@@ -128,6 +128,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
                                     }
                                   ];
                                 };
+                                default = { };
                               };
                             };
                         }
