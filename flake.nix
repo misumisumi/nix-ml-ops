@@ -41,7 +41,9 @@
       inputs.pre-commit-hooks.follows = "pre-commit-hooks";
     };
     mk-shell-bin = {
-      url = "github:rrbutani/nix-mk-shell-bin";
+      # Use a forked version of mk-shell-bin that includes a fix for declaring associative arrays
+      # https://github.com/rrbutani/nix-mk-shell-bin/pull/8
+      url = "github:Atry/nix-mk-shell-bin/patch-1";
     };
     nix2container = {
       url = "github:nlewo/nix2container";
