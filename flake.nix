@@ -23,10 +23,7 @@
     # Used by mach-nix, which is not compatible with the latest nixpkgs-unstable
     nixpkgs_22_05.url = "nixpkgs/nixos-22.05";
 
-    # poetry2nix's dependency pytest-runner has been removed in https://github.com/NixOS/nixpkgs/commit/39374875a0814c725f1e442520ec87791399c770
-    # The following commit is the last one that has pytest-runner
-    # See discussion at https://github.com/nix-community/poetry2nix/issues/1814
-    nixpkgs.url = "github:nixos/nixpkgs/12b31a7434ba00e1b6db78aa5d503232be646452";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     flake-parts.url = "github:Atry/flake-parts/key";
     flake-parts.inputs.nixpkgs-lib.url = "github:nix-community/nixpkgs.lib";
