@@ -15,7 +15,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
 
             This option should always be kept empty. Set `flakeModules.ldFallback.libraries` instead when you want any non-empty library path. See discussion at https://github.com/NixOS/nixpkgs/pull/248547#issuecomment-1995469926 about why nix-ld is not a good idea for libraries used in a project.
 
-            Note that `nix-ld-rs` is still a good idea for executing non-Nix binaries in the case of https://github.com/nix-community/NixOS-WSL/issues/222. When there are system level `NIX_LD_LIBRARY_PATH` set for `nix-ld` or `nix-ld-rs`, this option should be kept as empty in order to disable the system level `NIX_LD_LIBRARY_PATH`.
+            Note that `nix-ld` is still a good idea for executing non-Nix binaries in the case of https://github.com/nix-community/NixOS-WSL/issues/222. When there are system level `NIX_LD_LIBRARY_PATH` set for `nix-ld`, this option should be kept as empty in order to disable the system level `NIX_LD_LIBRARY_PATH`.
           '';
 
           type = lib.types.listOf lib.types.path;
