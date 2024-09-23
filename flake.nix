@@ -45,7 +45,9 @@
     };
     nix2container = {
       url = "github:nlewo/nix2container";
-      inputs.nixpkgs.follows = "nixpkgs";
+
+      # Use an old nixpkgs version because nix2container's patch against skopeo doesn't apply to the latest nixpkgs's skopeo
+      inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     };
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
