@@ -12,7 +12,9 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
         nixpkgs.config.allowUnfree = true;
         nixpkgs.config.cudaSupport = true;
 
-        ml-ops.common = common: {
+        ml-ops.common = common: let
+          finalPackages = common.config.cuda.packages common.config.cuda.version;
+        in {
           config.devenvShellModule.enterShell = ''
             export LD_LIBRARY_PATH="$(${
               lib.escapeShellArgs [
@@ -30,31 +32,36 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
             type = lib.types.package;
             default = pkgs.symlinkJoin {
               name = "cuda-home";
-              paths = common.config.cuda.packages;
+              paths = finalPackages;
             };
           };
-          options.cuda.packages = lib.mkOption {
-            type = lib.types.listOf lib.types.package;
+          options.cuda.version = lib.mkOption {
+            type = lib.types.attrsOf lib.types.package;
+            default = pkgs.cudaPackages;
           };
-          config.cuda.packages = [
-            # TODO: Figure out if we can use `pkgs.cudaPackages.cuda_nvcc.lib` instead of `pkgs.cudaPackages.cuda_nvcc`. The `.lib` one is smaller.
-            pkgs.cudaPackages.cuda_nvcc
+          options.cuda.packages = lib.mkOption {
+            type = lib.types.functionTo (lib.types.listOf lib.types.package);
+            default = cp: with cp; [
+              # TODO: Figure out if we can use `pkgs.cudaPackages.cuda_nvcc.lib` instead of `pkgs.cudaPackages.cuda_nvcc`. The `.lib` one is smaller.
+              cuda_nvcc
 
-            # TODO: Remove `pkgs.cudaPackages.cudatoolkit` in favor of fine-grained packages.
-            pkgs.cudaPackages.cudatoolkit
+              # TODO: Remove `pkgs.cudaPackages.cudatoolkit` in favor of fine-grained packages.
+              cudatoolkit
 
-            pkgs.cudaPackages.cuda_cudart.lib
+              cuda_cudart.lib
 
-            # TODO: Figure out if we can use `pkgs.cudaPackages.libcublas.lib` instead of `pkgs.cudaPackages.libcublas`. The `.lib` one is smaller.
-            pkgs.cudaPackages.libcublas
+              # TODO: Figure out if we can use `pkgs.cudaPackages.libcublas.lib` instead of `pkgs.cudaPackages.libcublas`. The `.lib` one is smaller.
+              libcublas
 
-            pkgs.cudaPackages.nccl
+              nccl
 
-            # TODO: Figure out if we can use `pkgs.cudaPackages.cudnn.lib` instead of `pkgs.cudaPackages.cudnn`. The `.lib` one is smaller.
-            pkgs.cudaPackages.cudnn
-          ];
+              # TODO: Figure out if we can use `pkgs.cudaPackages.cudnn.lib` instead of `pkgs.cudaPackages.cudnn`. The `.lib` one is smaller.
+              cudnn
+            ];
+          };
+          
           config.devenvShellModule.containers.processes.layers = lib.mkBefore (
-            builtins.map (cudaPackage: { deps = [ cudaPackage ]; }) common.config.cuda.packages
+            builtins.map (cudaPackage: { deps = [ cudaPackage ]; }) finalPackages
           );
         };
       };
