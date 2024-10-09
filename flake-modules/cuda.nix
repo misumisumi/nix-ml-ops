@@ -12,9 +12,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
         nixpkgs.config.allowUnfree = true;
         nixpkgs.config.cudaSupport = true;
 
-        ml-ops.common = common: let
-          finalPackages = common.config.cuda.packages common.config.cuda.version;
-        in {
+        ml-ops.common = common: {
           config.devenvShellModule.enterShell = ''
             export LD_LIBRARY_PATH="$(${
               lib.escapeShellArgs [
@@ -32,16 +30,16 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
             type = lib.types.package;
             default = pkgs.symlinkJoin {
               name = "cuda-home";
-              paths = finalPackages;
+              paths = common.config.cuda.packages;
             };
           };
-          options.cuda.version = lib.mkOption {
+          options.cuda.cudaPackages = lib.mkOption {
             type = lib.types.attrsOf lib.types.package;
             default = pkgs.cudaPackages;
           };
           options.cuda.packages = lib.mkOption {
-            type = lib.types.functionTo (lib.types.listOf lib.types.package);
-            default = cp: with cp; [
+            type = lib.types.listOf lib.types.package;
+            default = with common.config.cuda.cudaPackages; [
               # TODO: Figure out if we can use `pkgs.cudaPackages.cuda_nvcc.lib` instead of `pkgs.cudaPackages.cuda_nvcc`. The `.lib` one is smaller.
               cuda_nvcc
 
@@ -61,7 +59,7 @@ topLevel@{ flake-parts-lib, inputs, ... }: {
           };
           
           config.devenvShellModule.containers.processes.layers = lib.mkBefore (
-            builtins.map (cudaPackage: { deps = [ cudaPackage ]; }) finalPackages
+            builtins.map (cudaPackage: { deps = [ cudaPackage ]; }) common.config.cuda.packages
           );
         };
       };
